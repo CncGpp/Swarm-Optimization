@@ -34,7 +34,7 @@ public class Bot extends Entity{
 
 		visited = new boolean[map.getRows()][map.getCols()];
 
-		c = new Circle(25);
+		c = new Circle(map.getTileSize()/2);
 		c.setFill(Color.DARKGREY);
 		c.setStrokeWidth(1);
 		c.setStroke(Color.BLACK);
