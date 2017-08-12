@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Observable;
 
 import javafx.application.Platform;
 import model.entity.Colony;
@@ -29,6 +30,7 @@ public class Game {
 		ends.clear();
 		map = new Map(this);
 		colony = new Colony(map, 20, start);
+		for(End e : ends) colony.addObserver(e);
 		Timer.reset();
 		gameStatus = GameStatus.READY;
 	}

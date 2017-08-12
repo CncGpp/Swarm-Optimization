@@ -84,7 +84,11 @@ public class Bot extends Entity{
 		return newDirections;
 	}
 
-
+	public void leaved(){
+		System.out.println("Sono uscito dal labirinto YEAHHH");
+		colony.hasLeft(this);
+		this.remove();
+	}
 
 
 
