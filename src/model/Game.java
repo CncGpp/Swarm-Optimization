@@ -34,7 +34,7 @@ public class Game implements Observer{
 		manholes.clear();
 		ends.clear();
 		map = new Map(this);
-		colony = new Colony(map, 20, start);
+		colony = new Colony(map, Settings.BOT_NUMBER, start);
 
 		//AGGIUNGO GLI OBSERVER!
 		for(End e : ends) colony.addObserver(e);
@@ -89,6 +89,7 @@ public class Game implements Observer{
 	public void add(){
 		map.add();
 		start.add();
+		for(Manhole m : manholes) m.add();
 		for(End e : ends) e.add();
 		colony.add();
 	}
@@ -96,6 +97,7 @@ public class Game implements Observer{
 	public void remove(){
 		map.remove();
 		start.remove();
+		for(Manhole m : manholes) m.remove();
 		for(End e : ends) e.remove();
 		colony.remove();
 	}
