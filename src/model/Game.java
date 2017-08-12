@@ -61,7 +61,7 @@ public class Game implements Observer{
 
 		   	if(gameStatus == GameStatus.ENDED){
 		   		//SUBMIT SCORE
-		   		Controllers.bottomViewController.updateTimer(Timer.getElapsedTime());
+		   		//Controllers.bottomViewController.updateTimer(Timer.getElapsedTime());
 		   	}
 
 		} } ).start();
