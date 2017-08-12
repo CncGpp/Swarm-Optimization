@@ -1,0 +1,28 @@
+package view.map;
+
+import application.Main;
+import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.layout.AnchorPane;
+import util.Gloabal.Controllers;
+
+public class EntityMapController {
+
+    @FXML private AnchorPane drawingPane;
+
+    public void setSize(final double height, final double width){
+    	drawingPane.setMinSize(width, height);
+    	drawingPane.setPrefSize(height, width);
+    	drawingPane.setMaxSize(width, height);
+    	Main.stage.sizeToScene();
+    }
+
+    @FXML
+    void initialize(){
+    	Controllers.entityMap = this;
+    }
+
+    /** METODI DI MANIPOLAZIONE DELLA UI **/
+    public void add(final Node node){ drawingPane.getChildren().add(node); }
+    public void remove(final Node node){ drawingPane.getChildren().remove(node); }
+}
