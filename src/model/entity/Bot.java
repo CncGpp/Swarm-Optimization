@@ -20,6 +20,7 @@ public class Bot extends Entity{
 	private Map map;
 	private Colony colony;
 
+	boolean visited[][];
 	private Path path = new Path();
 
 	public Bot(final Colony colony) {
@@ -30,6 +31,9 @@ public class Bot extends Entity{
 		super(new Coord(row,col));
 		this.colony = colony;
 		this.map = colony.getMap();
+
+		visited = new boolean[map.getRows()][map.getCols()];
+
 		c = new Circle(25);
 		c.setFill(Color.DARKGREY);
 		c.setStrokeWidth(1);
@@ -44,11 +48,14 @@ public class Bot extends Entity{
 		//translateTo(nextPos);
 		moveTo(nextPos);
 		setCoordinate(nextPos);
-		path.addNode(nextPos);
 	}
 
-	public void moveTo(Coord position){
-		setCoordinate(position);
+	public void moveTo(Node coord){
+		if(!visited[coord.getRow()][coord.getCol()]){
+			path.addNode(coord);
+			visited[coord.getRow()][coord.getCol()] = true;
+		}
+		setCoordinate(coord);
 		this.draw();
 	}
 
@@ -69,9 +76,7 @@ public class Bot extends Entity{
 	 * @param oldDirections è un parametro di <code>in/out</code> dove verranno ritornate le vecchie direzioni, ovvero
 	 * quelle che nell'intorno sono state già visitate dal bot.
 	 */
-	public ArrayList<Node> getNeighbors(){
-		ArrayList<Node> newDirections = new ArrayList<Node>();
-
+	public void getNeighbors(ArrayList<Node> newDirections, ArrayList<Node> oldDirections){
 		//Il bot può muoversi secondo un intorno 8-connesso di dimensione 3x3
 		for(int i = 0; i < 3; i++){
 			for(int j = 0; j < 3; j++){
@@ -87,12 +92,12 @@ public class Bot extends Entity{
 				/** Essendo la map basata su griglia quadrata le direzioni diagonali avranno peso sqrt(2), le restanti 1*/
 				final double peso = (_row == getRow() || _col == getCol()) ? 1 : 1.4142135623;
 
-				//Se è una direzione possibile lo aggiungo a newDirections
-				if(map.getTileTypeAt(_row, _col) != TileType.WALL) newDirections.add(new Node(_row, _col, peso));
+				//Se l'ho gia' visitato, lo aggiungo a oldDirections, altrimenti se è una direzione
+				//possibile lo aggiungo a newDirections
+				if(visited[_row][_col]) oldDirections.add(new Node(_row, _col, peso));
+				else if(map.getTileTypeAt(_row, _col) != TileType.WALL) newDirections.add(new Node(_row, _col, peso));
 			}
 		}
-
-		return newDirections;
 	}
 
 	public void leaved(){
