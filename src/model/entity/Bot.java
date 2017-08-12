@@ -11,12 +11,16 @@ import util.Coord;
 import util.Gloabal.Controllers;
 import util.Gloabal.Settings;
 import util.Node;
+import util.Path;
 
 public class Bot extends Entity{
 
 	private Circle c;
-	private Colony colony;
+
 	private Map map;
+	private Colony colony;
+
+	private Path path = new Path();
 
 	public Bot(final Colony colony) {
 		this(colony, -1, -1);
@@ -36,10 +40,11 @@ public class Bot extends Entity{
 	public void move(){
 		colony.getStrategy().onlineUpdate(map, this);
 
-		Coord nextPos = colony.getStrategy().selectNextMove(map, this);
+		Node nextPos = colony.getStrategy().selectNextMove(map, this);
 		//translateTo(nextPos);
 		moveTo(nextPos);
 		setCoordinate(nextPos);
+		path.addNode(nextPos);
 	}
 
 	public void moveTo(Coord position){
@@ -92,6 +97,7 @@ public class Bot extends Entity{
 
 	public void leaved(){
 		System.out.println("Sono uscito dal labirinto YEAHHH");
+		colony.getStrategy().offlineUpdate(map, path);
 		colony.hasLeft(this);
 		this.remove();
 	}

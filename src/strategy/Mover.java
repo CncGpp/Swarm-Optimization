@@ -2,8 +2,8 @@ package strategy;
 
 import model.entity.Bot;
 import model.map.Map;
-import util.Coord;
+import util.Node;
 
 public interface Mover {
-	public Coord selectNextMove(final Map map, final Bot bot);
+	public Node selectNextMove(final Map map, final Bot bot);
 }

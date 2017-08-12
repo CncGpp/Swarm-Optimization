@@ -1,12 +1,10 @@
 package strategy;
 
-import java.util.ArrayList;
-
 import model.entity.Bot;
 import model.map.Map;
-import util.Node;
+import util.Path;
 
 public interface PheromoneUpdater {
 	public void onlineUpdate(final Map map, final Bot bot);
-	public void offlineUpdate(final Map map, ArrayList<Node> path);
+	public void offlineUpdate(final Map map, final Path path);
 }

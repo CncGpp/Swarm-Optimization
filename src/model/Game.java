@@ -73,6 +73,11 @@ public class Game implements Observer{
 		Timer.pause();
 	}
 
+	public void endGame(){
+		pauseGame();
+		gameStatus = GameStatus.ENDED;
+	}
+
 
 	// METODI GETTER & SETTER
 	public GameStatus getStatus(){ return gameStatus;}
@@ -116,7 +121,7 @@ public class Game implements Observer{
 
 		@SuppressWarnings("unchecked")
 		ArrayList<Bot> bots = (ArrayList<Bot>)arg;
-		if(bots.isEmpty()) this.pauseGame();
+		if(bots.isEmpty()) this.endGame();
 	}
 }
 
