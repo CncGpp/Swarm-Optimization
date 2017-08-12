@@ -22,7 +22,8 @@ public class Map {
 	// COSTRUTTORI
 	public Map(final Game game) {
 		this.game = game;
-		loadMap(R.STAGE_LIST.get(0));
+		loadTileMap(R.STAGE_LIST.get(0));
+		pheromoneLayer = new PheromoneLayer(this);
 	}
 
 	// METODI GETTER & SETTER
@@ -30,7 +31,7 @@ public class Map {
 	public int getCols(){ return cols; }
 	public double getTileSize(){ return tileSize; }
 
-	public void setDimensions(final int rows, final int cols, final double tileSize){
+	private void setDimensions(final int rows, final int cols, final double tileSize){
 		//TODO: aggiungere controlli
 		this.rows = rows;
 		this.cols = cols;
@@ -54,15 +55,14 @@ public class Map {
 	public void remove(){ tileLayer.remove(); pheromoneLayer.remove(); }
 
 
-	public void loadMap(String stagePath){
+	public void loadTileMap(String stagePath){
 		Scanner s = new Scanner(R.CLASSLOADER.getResourceAsStream(stagePath));
 
 		// Leggo le dimensioni della mappa
 		setDimensions(s.nextInt(), s.nextInt(), s.nextDouble());
 
-		// Creo la mappa dei tile e la mappa del feromone
+		// Creo la mappa dei tile
 		tileLayer = new TileLayer(this);
-		pheromoneLayer = new PheromoneLayer(this);
 
 		// Leggo dunque la mappa posizione per posizione
 		TileType tt;

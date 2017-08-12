@@ -20,7 +20,9 @@ public class PheromoneLayer {
 		for(int i = 0; i < map.getRows(); i++)
 			for(int j = 0; j < map.getCols(); j++){
 				layer[i][j] = new Pheromone(tileSize);
-				//TODO: if map.getTileAt(i,j) == muro continue;
+
+				if(map.getTileTypeAt(i, j) == TileType.WALL) continue;	//Non rappresento il ferormone sui muri!
+
 				layer[i][j].relocate(j * tileSize, i * tileSize);
 				group.getChildren().add(layer[i][j]);
 			}
