@@ -37,8 +37,14 @@ public class Bot extends Entity{
 		colony.getStrategy().onlineUpdate(map, this);
 
 		Coord nextPos = colony.getStrategy().selectNextMove(map, this);
-		translateTo(nextPos);
+		//translateTo(nextPos);
+		moveTo(nextPos);
 		setCoordinate(nextPos);
+	}
+
+	public void moveTo(Coord position){
+		setCoordinate(position);
+		this.draw();
 	}
 
 	private void translateTo(final Coord coordinate){

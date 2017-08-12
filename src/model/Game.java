@@ -2,10 +2,13 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Observable;
+import java.util.Observer;
 
 import javafx.application.Platform;
+import model.entity.Bot;
 import model.entity.Colony;
 import model.entity.End;
+import model.entity.Manhole;
 import model.entity.Start;
 import model.map.Map;
 import util.Memento;
@@ -13,11 +16,12 @@ import util.Timer;
 import util.Gloabal.Controllers;
 import util.Gloabal.Settings;
 
-public class Game {
+public class Game implements Observer{
 
 	private GameStatus gameStatus = GameStatus.NOTREADY;
 
 	private Start start;
+	private ArrayList<Manhole> manholes = new ArrayList<>();
 	private ArrayList<End> ends = new ArrayList<>();
 	private Colony colony;
 
@@ -27,10 +31,16 @@ public class Game {
 
 	/// METODI CHE GESTISCONO LO STATO DELLA PARTITA
 	public void createNewGame(){
+		manholes.clear();
 		ends.clear();
 		map = new Map(this);
 		colony = new Colony(map, 20, start);
+
+		//AGGIUNGO GLI OBSERVER!
 		for(End e : ends) colony.addObserver(e);
+		for(Manhole m : manholes) colony.addObserver(m);
+		colony.addObserver(this);
+
 		Timer.reset();
 		gameStatus = GameStatus.READY;
 	}
@@ -68,6 +78,7 @@ public class Game {
 	public GameStatus getStatus(){ return gameStatus;}
 	public void setStart(final Start start){this.start = start;}
 	public void addEnd(final End end){this.ends.add(end);}
+	public void addManhole(final Manhole manhole){this.manholes.add(manhole);}
 
 
 	public void add(){
@@ -98,6 +109,15 @@ public class Game {
 	}
 	public Memento getMemento(){return new GameMemento();}
 	///////////////////////////
+
+	@Override
+	public void update(Observable o, Object arg) {
+		if(!(o instanceof Colony)) return;
+
+		@SuppressWarnings("unchecked")
+		ArrayList<Bot> bots = (ArrayList<Bot>)arg;
+		if(bots.isEmpty()) this.pauseGame();
+	}
 }
 
 

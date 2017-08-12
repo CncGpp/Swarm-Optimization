@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import model.Game;
 import model.entity.End;
+import model.entity.Manhole;
 import model.entity.Start;
 import util.Gloabal.Controllers;
 import util.Gloabal.R;
@@ -70,7 +71,9 @@ public class Map {
 				switch (s.nextInt()) {
 				case 0: tt = TileType.FREE; break;
 				case 1: tt = TileType.WALL; break;
-				case 2: tt = TileType.MANHOLE; break;
+				case 2: tt = TileType.MANHOLE;
+						game.addManhole(new Manhole(this, i, j));
+						break;
 				case 3: tt = TileType.START;
 						game.setStart(new Start(this, i, j));
 						break;
@@ -84,6 +87,8 @@ public class Map {
 		s.close();
 		//QUESTO SEZONDO ME VA NELLA FUNZIONE DI DRAW!
 		Controllers.tileMap.setSize(rows*tileSize, cols*tileSize);
+		Controllers.pheromoneMap.setSize(rows*tileSize, cols*tileSize);
+		Controllers.entityMap.setSize(rows*tileSize, cols*tileSize);
 	}
 
 }
