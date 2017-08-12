@@ -11,6 +11,7 @@ import model.map.Map;
 import model.map.TileType;
 import util.Coord;
 import util.Gloabal.Controllers;
+import util.Node;
 
 public class Manhole extends Entity implements Observer{
 
@@ -32,7 +33,7 @@ public class Manhole extends Entity implements Observer{
 			final int _row = r.nextInt(map.getRows());
 			final int _col = r.nextInt(map.getCols());
 			if(map.getTileTypeAt(_row, _col) != TileType.WALL) {
-				b.moveTo( new Coord(_row,_col) );
+				b.moveTo( new Node(_row,_col, 0) );
 				return true;
 			}
 		}

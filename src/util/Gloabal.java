@@ -11,7 +11,7 @@ import view.map.TileMapController;
 public abstract class Gloabal {
 
 	public abstract static class Settings{
-		public final static int UPDATE_DELAY = 25;
+		public final static int UPDATE_DELAY = 100;
 	}
 
 	public abstract static class R{

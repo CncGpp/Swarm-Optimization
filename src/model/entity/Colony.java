@@ -11,7 +11,7 @@ public class Colony extends Observable{
 	private Map map;
 	private ArrayList<Bot> bots;
 	private ArrayList<Bot> toRemove = new ArrayList<>();
-	private ColonyStrategy strategy = new RandomSystem();
+	private ColonyStrategy strategy = new AS();
 
 	public Colony(final Map map, final int botCount, final Start start) {
 		this.map = map;
@@ -21,6 +21,7 @@ public class Colony extends Observable{
 			Bot b = new Bot(this, start.getRow(), start.getCol());
 			bots.add(b);
 		}
+		strategy.initialize(map);
 	}
 
 	// METODI GETTER & SETTER
