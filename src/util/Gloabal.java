@@ -33,6 +33,14 @@ public abstract class Gloabal {
 	public abstract static class R{
 		public final static ClassLoader CLASSLOADER = Gloabal.class.getClassLoader();
 
+		/* RISORSE - FONT */
+		public final static String BOLD_FONT_URI = CLASSLOADER.getResource("font/Quicksand-Bold.ttf").toExternalForm();
+		public final static String MEDIUM_FONT_URI = CLASSLOADER.getResource("font/Quicksand-Medium.ttf").toExternalForm();
+		public final static String REGULAR_FONT_URI = CLASSLOADER.getResource("font/Quicksand-Regular.ttf").toExternalForm();
+		public final static String LIGHT_FONT_URI = CLASSLOADER.getResource("font/Quicksand-Light.ttf").toExternalForm();
+		public final static String MONOSPACE_FONT_URI = CLASSLOADER.getResource("font/Quicksand-Bold.ttf").toExternalForm();
+
+		/* RISORSE - ICONE */
 		public final static String APP_ICON_URI = CLASSLOADER.getResource("icon/icon.png").toExternalForm();
 		public final static String START_ICON_URI = CLASSLOADER.getResource("icon/start.png").toExternalForm();
 		public final static String PAUSE_ICON_URI = CLASSLOADER.getResource("icon/pause.png").toExternalForm();
@@ -48,6 +56,7 @@ public abstract class Gloabal {
 		public final static String SECOND_ICON_URI = CLASSLOADER.getResource("icon/2nd.png").toExternalForm();
 		public final static String THIRD_ICON_URI = CLASSLOADER.getResource("icon/3rd.png").toExternalForm();
 
+		/* RISORSE - FILE*/
 		public final static String RANK_URI = "rank.txt";
 		public final static List<String> STAGE_LIST = Arrays.asList( "file/1.txt",
 																	 "file/2.txt",

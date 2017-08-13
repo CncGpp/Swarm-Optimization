@@ -1,8 +1,5 @@
 package view.gui;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -17,11 +14,6 @@ public class RankController {
 
 	private Rank ranks;
 
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private AnchorPane pane_rank;
@@ -34,6 +26,7 @@ public class RankController {
     void initialize() {
         assert pane_rank != null : "fx:id=\"pane_rank\" was not injected: check your FXML file 'RankView.fxml'.";
         assert listView_rank != null : "fx:id=\"listView_rank\" was not injected: check your FXML file 'RankView.fxml'.";
+
         Controllers.rankController = this;
         this.hide();
 
@@ -64,10 +57,5 @@ public class RankController {
     	if(playerScore != null)
     		ranks.submitScore(playerScore);
     }
+
 }
-
-
-
-
-
-

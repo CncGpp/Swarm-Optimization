@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
@@ -13,24 +14,29 @@
 
 <AnchorPane fx:id="pane_rank" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.gui.InfoController">
    <children>
-      <VBox alignment="TOP_CENTER" maxWidth="400.0" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox alignment="TOP_CENTER" maxWidth="400.0" spacing="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Informazioni">
+            <Label styleClass="titleLabel" stylesheets="@gui.css" text="Informazioni">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
+            <Separator prefWidth="200.0">
+               <padding>
+                  <Insets left="5.0" right="5.0" />
+               </padding>
+            </Separator>
             <HBox alignment="CENTER_LEFT" spacing="10.0">
                <children>
                   <Circle fx:id="bot_figure" fill="#909090" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
                   <VBox alignment="CENTER_LEFT">
                      <children>
-                        <Label text="Microbot">
+                        <Label styleClass="labelBoldInfo" stylesheets="@gui.css" text="Microbot">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label text="Rappresentano i microbot che seguendo il feromone dovranno uscire dal labirinto" wrapText="true">
+                        <Label styleClass="labelRegularInfo" stylesheets="@gui.css" text="Rappresentano i microbot che seguendo il feromone dovranno uscire dal labirinto" wrapText="true">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -53,12 +59,12 @@
                   </Rectangle>
                   <VBox alignment="CENTER_LEFT">
                      <children>
-                        <Label text="Ferormone">
+                        <Label styleClass="labelBoldInfo" stylesheets="@gui.css" text="Ferormone">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label text="Rappresenta la quantità di feromone presente su quella cella, la quantità e proporzionale all'intensità del colore" wrapText="true">
+                        <Label styleClass="labelRegularInfo" stylesheets="@gui.css" text="Rappresenta la quantità di feromone presente su quella cella, la quantità e proporzionale all'intensità del colore" wrapText="true">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -72,12 +78,12 @@
                   <Rectangle fx:id="start_figure" arcHeight="5.0" arcWidth="5.0" fill="#973200" height="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
                   <VBox alignment="CENTER_LEFT">
                      <children>
-                        <Label text="Entrata">
+                        <Label styleClass="labelBoldInfo" stylesheets="@gui.css" text="Entrata">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label text="Rappresenta il punto di ingresso dei microbot nel labirinto" wrapText="true">
+                        <Label styleClass="labelRegularInfo" stylesheets="@gui.css" text="Rappresenta il punto di ingresso dei microbot nel labirinto" wrapText="true">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -91,12 +97,12 @@
                   <Rectangle fx:id="end_figure" arcHeight="5.0" arcWidth="5.0" fill="#00f500" height="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
                   <VBox alignment="CENTER_LEFT">
                      <children>
-                        <Label text="Uscita">
+                        <Label styleClass="labelBoldInfo" stylesheets="@gui.css" text="Uscita">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label text="appresenta il punto di uscita dei microbot dal labirinto, sono possibili anche più uscite" wrapText="true">
+                        <Label styleClass="labelRegularInfo" stylesheets="@gui.css" text="appresenta il punto di uscita dei microbot dal labirinto, sono possibili anche più uscite" wrapText="true">
                            <font>
                               <Font size="14.0" />
                            </font>
@@ -110,12 +116,12 @@
                   <Rectangle fx:id="manhole_figure" arcHeight="5.0" arcWidth="5.0" fill="#009df5" height="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
                   <VBox alignment="CENTER_LEFT">
                      <children>
-                        <Label text="Botola">
+                        <Label styleClass="labelBoldInfo" stylesheets="@gui.css" text="Botola">
                            <font>
                               <Font name="System Bold" size="18.0" />
                            </font>
                         </Label>
-                        <Label text="I microbot che si muovono su di una botola verranno teletrasportati in una posizione casuale della mappa" wrapText="true">
+                        <Label styleClass="labelRegularInfo" stylesheets="@gui.css" text="I microbot che si muovono su di una botola verranno teletrasportati in una posizione casuale della mappa" wrapText="true">
                            <font>
                               <Font size="14.0" />
                            </font>

@@ -9,35 +9,35 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="anchorPane_id" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="anchorPane_id" maxHeight="30.0" minHeight="30.0" prefHeight="30.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <HBox alignment="CENTER" spacing="10.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <StackPane>
                <children>
-                  <Label fx:id="position" text="1">
+                  <Label fx:id="position" stylesheets="@gui.css" text="1">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                   <ImageView fx:id="img_id" fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../res/icon/1st.png" />
+                        <Image url="@../../../res/icon/1st.png" />
                      </image>
                   </ImageView>
                </children>
             </StackPane>
-            <Label fx:id="cognome_id" minWidth="100.0" prefWidth="100.0" text="Cognome">
+            <Label fx:id="cognome_id" minWidth="100.0" prefWidth="100.0" styleClass="labelMedium" stylesheets="@gui.css" text="Cognome">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="nome_id" layoutX="74.0" layoutY="20.0" minWidth="100.0" prefWidth="100.0" text="Nome">
+            <Label fx:id="nome_id" layoutX="74.0" layoutY="20.0" minWidth="100.0" prefWidth="100.0" styleClass="labelRegular" stylesheets="@gui.css" text="Nome">
                <font>
                   <Font size="18.0" />
                </font>
             </Label>
-            <Label fx:id="time_id" layoutX="171.0" layoutY="20.0" text="00:12.812">
+            <Label fx:id="time_id" layoutX="171.0" layoutY="20.0" styleClass="labelMonospace" stylesheets="@gui.css" text="00:12.812">
                <font>
                   <Font size="18.0" />
                </font>

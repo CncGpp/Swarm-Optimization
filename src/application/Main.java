@@ -5,6 +5,7 @@ import java.io.IOException;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import model.Game;
+import util.Gloabal;
 import view.BottomViewController;
 import view.RootViewController;
 import view.map.EntityMapController;
@@ -12,6 +13,7 @@ import view.map.PheromoneMapController;
 import view.map.TileMapController;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.text.Font;
 import javafx.fxml.FXMLLoader;
 
 
@@ -22,14 +24,15 @@ public class Main extends Application {
 	public void start(Stage primaryStage) {
 		stage = primaryStage;
 		BottomViewController bottomViewController = null;
+
 		try {
-/*
-			BorderPane root = (BorderPane)FXMLLoader.load(getClass().getResource("BorderPane.fxml"));
-			Scene scene = new Scene(root);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
-			primaryStage.setScene(scene);
-			primaryStage.show();
-*/
+			Font.loadFont(Gloabal.R.BOLD_FONT_URI, 24);
+			Font.loadFont(Gloabal.R.MEDIUM_FONT_URI, 14);
+			Font.loadFont(Gloabal.R.REGULAR_FONT_URI, 14);
+			Font.loadFont(Gloabal.R.LIGHT_FONT_URI, 18);
+			Font.loadFont(Gloabal.R.MONOSPACE_FONT_URI, 18);
+
+
 	        FXMLLoader rootLoader = new FXMLLoader(getClass().getResource("/view/RootView.fxml"));
 	        BorderPane root = (BorderPane) rootLoader.load();
 	        RootViewController rootController = rootLoader.getController();
@@ -53,7 +56,7 @@ public class Main extends Application {
 		}
 
 
-		/*****      QUI CI STA LA MIA APP    ******/
+		//*****      QUI CI STA LA MIA APP    ******
 		Game g = new Game();
 		g.newGame();
 		//g.add();

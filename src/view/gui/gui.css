@@ -1,0 +1,79 @@
+/*
+ *  Colori:
+ * 			Flat Midnight blue = #2c3e50;
+ * 			Flat clouds = #ecf0f1;
+ *
+ */
+
+.background {
+    -fx-background-color: FFFFFF;
+}
+
+/********************************* */
+.labelRegular{
+	-fx-text-fill: #000000;
+	-fx-font-family: "Quicksand Regular";
+	-fx-font-size: 14pt;
+}
+
+.labelBold{
+	-fx-text-fill: #000000;
+	-fx-font-family: "Quicksand Bold";
+	-fx-font-size: 14pt;
+}
+
+.labelMedium{
+	-fx-text-fill: #000000;
+	-fx-font-family: "Quicksand Medium";
+	-fx-font-size: 14pt;
+}
+.labelLight{
+	-fx-text-fill: #000000;
+	-fx-font-family: "Quicksand Light";
+	-fx-font-size: 14pt;
+}
+
+.labelMonospace{
+	-fx-text-fill: #000000;
+	-fx-font-family: "Consolas";
+		-fx-font-size: 14pt;
+}
+/****************************************************************** */
+.labelRegularInfo{
+	-fx-text-fill: #000000;
+	-fx-font-family: "Quicksand Regular";
+	-fx-font-size: 11pt;
+}
+
+.labelBoldInfo{
+	-fx-text-fill: #000000;
+	-fx-font-family: "Quicksand Medium";
+	-fx-font-size: 13.5pt;
+}
+
+/****************************************************************** */
+
+.titleLabel{
+	-fx-text-fill: #000000;
+	-fx-font-family: "Quicksand Medium";
+	-fx-font-size: 22pt;
+}
+
+.categoryTitle{
+	-fx-text-fill: #000000;
+}
+
+.list-view {
+  -fx-background-insets: 0;
+  -fx-padding: 0;
+}
+
+.list-view .list-cell:even {
+-fx-background-color: #F5F5F5;
+}
+.list-view .list-cell:odd {
+-fx-background-color: #FEFEFE;
+}
+
+
+
