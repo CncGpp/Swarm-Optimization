@@ -40,7 +40,6 @@ public class Chronometer {
 		startTime = 0;
 		totalTime = time;
 		_totalTime.set(time);
-		isPaused = false;
 	}
 
 	public static void pause(){									//Mette in pausa il timer, salvano il tempo ottenuto fino ad ora

@@ -52,7 +52,14 @@ public class Map {
 	//MODIFICATORI DEI TILE
 	public TileType getTileTypeAt(int row, int col) { return tileLayer.getTileAt(row, col).getTileType();}
 
-	public void add(){ tileLayer.add(); pheromoneLayer.add();}
+	public void add(){
+		tileLayer.add();
+		pheromoneLayer.add();
+
+		Controllers.tileMap.setSize(rows*tileSize, cols*tileSize);
+		Controllers.pheromoneMap.setSize(rows*tileSize, cols*tileSize);
+		Controllers.entityMap.setSize(rows*tileSize, cols*tileSize);
+	}
 	public void remove(){ tileLayer.remove(); pheromoneLayer.remove(); }
 
 
@@ -86,10 +93,6 @@ public class Map {
 				tileLayer.setTileAt(i, j, new Tile(tileSize, tt));
 		}
 		s.close();
-		//QUESTO SEZONDO ME VA NELLA FUNZIONE DI DRAW!
-		Controllers.tileMap.setSize(rows*tileSize, cols*tileSize);
-		Controllers.pheromoneMap.setSize(rows*tileSize, cols*tileSize);
-		Controllers.entityMap.setSize(rows*tileSize, cols*tileSize);
 	}
 
 }

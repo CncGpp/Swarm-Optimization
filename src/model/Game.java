@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import application.Main;
 import javafx.application.Platform;
 import model.entity.Bot;
 import model.entity.Colony;
@@ -97,30 +98,39 @@ public class Game implements Observer{
 
 	public void add(){
 		if(gameStatus == GameStatus.NOTREADY) return;	//Significa che non è istanziato un cazzo
-		map.add();
-		start.add();
+		if(map != null) map.add();
+		if(start != null) start.add();
 		for(Manhole m : manholes) m.add();
 		for(End e : ends) e.add();
-		colony.add();
+		if(colony != null) colony.add();
+		Main.stage.sizeToScene();
 	}
 
 	public void remove(){
 		if(gameStatus == GameStatus.NOTREADY) return;
-		map.remove();
-		start.remove();
+		if(map != null) map.remove();
+		if(start != null) start.remove();
 		for(Manhole m : manholes) m.remove();
 		for(End e : ends) e.remove();
-		colony.remove();
+		if(colony != null) colony.remove();
 	}
 
 	///////////////////////////
 	public class GameMemento implements Memento{
-		Map _map = map;
-		Colony _colony = colony;
+		private Map _map = map;
+		private Colony _colony = colony;
+		private Start _start;
+		private ArrayList<Manhole> _manholes = manholes;
+		private ArrayList<End> _ends = ends;
 		long currTime = Chronometer.getElapsedTime();
 		@Override public void restoreMemento(){
+			Game.this.remove();
 			map = _map;
 			colony = _colony;
+			start = _start;
+			manholes = _manholes;
+			ends = _ends;
+			Game.this.add();
 			Chronometer.set(currTime);
 		}
 	}

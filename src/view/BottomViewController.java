@@ -91,15 +91,11 @@ public class BottomViewController {
     		m = g.getMemento();
     		g.pauseGame();
     		//Get time
-    		g.remove();
     		g.newGame();
-    		g.add();
     	}
     	else {
-    		g.pauseGame();
-    		g.remove();
     		m.restoreMemento();
-    		g.add();
+    		g.pauseGame();
     		//RestoreTime
     	}
     }
