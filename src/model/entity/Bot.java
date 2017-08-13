@@ -100,7 +100,7 @@ public class Bot extends Entity{
 	}
 
 	public void leaved(){
-		System.out.println("Sono uscito dal labirinto YEAHHH");
+		//System.out.println("Sono uscito dal labirinto YEAHHH");
 		colony.getStrategy().offlineUpdate(map, path);
 		colony.hasLeft(this);
 		this.remove();
