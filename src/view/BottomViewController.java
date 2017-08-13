@@ -7,8 +7,8 @@ import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import model.Game;
-import model.GameStatus;
 import util.Gloabal.Controllers;
+import util.Chronometer;
 import util.Memento;
 
 public class BottomViewController {
@@ -29,10 +29,33 @@ public class BottomViewController {
     @FXML
     private Label chronometer;
 
+
+    /// METODI
+
     @FXML
     void startButtonHandle(MouseEvent event) {
     	System.out.println("Hai premuto start");
-    	if(g.getStatus() == GameStatus.PAUSED) g.startGame(); else g.pauseGame();
+
+    	switch (g.getStatus()) {
+			case NOTREADY:
+				 Chronometer.set(0);
+				 g.createNewGame();
+				 break;
+			case READY:
+				 Chronometer.start();
+				 g.startGame();
+				 break;
+			case RUNNING:
+				 Chronometer.pause();
+				 g.pauseGame();
+				 break;
+			case PAUSED:
+				 Chronometer.start();
+				 g.startGame();
+				 break;
+			case ENDED: System.out.println("Il gioco è terminato!"); break;
+			default: break;
+		}
     }
 
     @FXML
@@ -41,6 +64,7 @@ public class BottomViewController {
     	if(m == null) {
     		m = g.getMemento();
     		g.pauseGame();
+    		//Get time
     		g.remove();
     		g.createNewGame();
     		g.add();
@@ -50,6 +74,7 @@ public class BottomViewController {
     		g.remove();
     		m.restoreMemento();
     		g.add();
+    		//RestoreTime
     	}
     }
 
@@ -61,12 +86,4 @@ public class BottomViewController {
 
     public void setGame(Game game){ this.g = game;}
 
-    @Deprecated
-    public void updateTimer(final long milliseconds){
-        	int s = (int) ((milliseconds / 1000) % 60);
-        	int m = (int) ((milliseconds / 1000) / 60);
-        	int ms = (int) (milliseconds % 1000);
-
-        	chronometer.setText(String.format("+%02d:%02d.%03d", m,s,ms));
-    }
 }

@@ -12,8 +12,7 @@ import model.entity.Manhole;
 import model.entity.Start;
 import model.map.Map;
 import util.Memento;
-import util.Timer;
-import util.Gloabal.Controllers;
+import util.Chronometer;
 import util.Gloabal.Settings;
 
 public class Game implements Observer{
@@ -41,7 +40,6 @@ public class Game implements Observer{
 		for(Manhole m : manholes) colony.addObserver(m);
 		colony.addObserver(this);
 
-		Timer.reset();
 		gameStatus = GameStatus.READY;
 	}
 
@@ -50,18 +48,15 @@ public class Game implements Observer{
 		if(gameStatus != GameStatus.READY && gameStatus != GameStatus.PAUSED) return;
 		gameStatus = GameStatus.RUNNING;
 
-		Timer.start();
 	   ( new Thread() { public void run() {
 
 		   	while(gameStatus == GameStatus.RUNNING){
 		   		Platform.runLater( () -> { colony.update(); });	//Tutti gli aggiornamenti dell'UI di fx vanno fatti in un thread di FX
-		   		Platform.runLater( () -> { Controllers.bottomViewController.updateTimer(Timer.getElapsedTime());});
 		   		try { Thread.sleep(Settings.UPDATE_DELAY); } catch (InterruptedException e) {}
 		   	}
 
 		   	if(gameStatus == GameStatus.ENDED){
-		   		//SUBMIT SCORE
-		   		//Controllers.bottomViewController.updateTimer(Timer.getElapsedTime());
+		   		System.out.println("Il labirinto è stato completato.");
 		   	}
 
 		} } ).start();
@@ -70,7 +65,7 @@ public class Game implements Observer{
 
 	public void pauseGame(){
 		gameStatus = GameStatus.PAUSED;
-		Timer.pause();
+		Chronometer.pause();
 	}
 
 	public void endGame(){
@@ -106,12 +101,11 @@ public class Game implements Observer{
 	public class GameMemento implements Memento{
 		Map _map = map;
 		Colony _colony = colony;
-		long currTime = Timer.getElapsedTime();
+		long currTime = Chronometer.getElapsedTime();
 		@Override public void restoreMemento(){
 			map = _map;
 			colony = _colony;
-			Timer.set(currTime);
-			Controllers.bottomViewController.updateTimer(currTime);
+			Chronometer.set(currTime);
 		}
 	}
 	public Memento getMemento(){return new GameMemento();}

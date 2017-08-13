@@ -57,7 +57,7 @@ public class Main extends Application {
 		Game g = new Game();
 		g.createNewGame();
 		g.add();
-		g.startGame();
+
 		if(bottomViewController != null)
 		bottomViewController.setGame(g);
 
