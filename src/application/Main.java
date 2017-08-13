@@ -55,7 +55,7 @@ public class Main extends Application {
 
 		/*****      QUI CI STA LA MIA APP    ******/
 		Game g = new Game();
-		g.createNewGame();
+		g.newGame();
 		g.add();
 
 		if(bottomViewController != null)

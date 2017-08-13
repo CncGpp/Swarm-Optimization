@@ -39,7 +39,7 @@ public class BottomViewController {
     	switch (g.getStatus()) {
 			case NOTREADY:
 				 Chronometer.set(0);
-				 g.createNewGame();
+				 g.newGame();
 				 break;
 			case READY:
 				 Chronometer.start();
@@ -66,7 +66,7 @@ public class BottomViewController {
     		g.pauseGame();
     		//Get time
     		g.remove();
-    		g.createNewGame();
+    		g.newGame();
     		g.add();
     	}
     	else {

@@ -29,7 +29,7 @@ public class Game implements Observer{
 	public Game(){}
 
 	/// METODI CHE GESTISCONO LO STATO DELLA PARTITA
-	public void createNewGame(){
+	public void newGame(){
 		manholes.clear();
 		ends.clear();
 		map = new Map(this);
