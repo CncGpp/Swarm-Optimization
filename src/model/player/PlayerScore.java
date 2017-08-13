@@ -20,4 +20,10 @@ public class PlayerScore{
 	public long getTime() { return time.get(); }
 
 	public void setTime(final long time){ this.time.set(time);}
+
+	public boolean equals(final PlayerScore playerScore){
+		if(this.getName().equals(playerScore.getName())
+			&& this.getSurname().equals(playerScore.getSurname())) return true;
+		else return false;
+	}
 }

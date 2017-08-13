@@ -25,7 +25,7 @@
             <HBox alignment="CENTER">
                <children>
                   <fx:include source="gui/ChronometerView.fxml" />
-                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#rankButtonHandler" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#saveGame" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../res/icon/time.png" />
                      </image>
@@ -39,7 +39,7 @@
       </HBox>
       <HBox spacing="12.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="2.0">
          <children>
-            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="settingButton" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../res/icon/setting.png" />
                </image>
@@ -58,7 +58,7 @@
       </HBox>
       <HBox spacing="12.0" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="2.0">
          <children>
-            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="loginButton" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#loginButtonHandler" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../res/icon/noLogin.png" />
                </image>

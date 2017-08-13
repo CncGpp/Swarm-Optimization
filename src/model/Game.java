@@ -34,6 +34,7 @@ public class Game implements Observer{
 	public void newGame(){ newGame(new Stage()); }
 
 	public void newGame(final Stage stage){
+		this.remove();
 		// Inizializzo di nuovo gli elementi del gioco
 		start = null;
 		manholes.clear();
@@ -52,6 +53,7 @@ public class Game implements Observer{
 
 		// Il gioco è pronto per partire!
 		gameStatus = GameStatus.READY;
+		this.add();
 	}
 
 
@@ -94,6 +96,7 @@ public class Game implements Observer{
 
 
 	public void add(){
+		if(gameStatus == GameStatus.NOTREADY) return;	//Significa che non è istanziato un cazzo
 		map.add();
 		start.add();
 		for(Manhole m : manholes) m.add();
@@ -102,6 +105,7 @@ public class Game implements Observer{
 	}
 
 	public void remove(){
+		if(gameStatus == GameStatus.NOTREADY) return;
 		map.remove();
 		start.remove();
 		for(Manhole m : manholes) m.remove();
