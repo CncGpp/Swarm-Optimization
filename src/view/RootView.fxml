@@ -17,6 +17,11 @@
                         <fx:include source="gui/RankView.fxml" />
                      </children>
                   </Pane>
+                  <Pane AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="60.0">
+                     <children>
+                        <fx:include source="gui/InfoView.fxml" />
+                     </children>
+                  </Pane>
                </children>
             </AnchorPane>
          </children>

@@ -47,7 +47,14 @@ public class BottomViewController {
 
     @FXML
     void rankButtonHandler(MouseEvent event) {
+    	Controllers.infoController.hide();
     	Controllers.rankController.toggle();
+    }
+
+    @FXML
+    void infoButtonHandler(MouseEvent event){
+    	Controllers.rankController.hide();
+    	Controllers.infoController.toggle();
     }
 
     @FXML
@@ -78,6 +85,10 @@ public class BottomViewController {
 
     ////////// METODI DI CLASSE ////////////////
     public void setGame(Game game){ this.g = game;}
+    public void cloaseAll(){
+    	Controllers.rankController.hide();
+    	Controllers.infoController.toggle();
+	}
 
     public void stageEnded(){
     	//if gli stage sono finiti  -> submist score

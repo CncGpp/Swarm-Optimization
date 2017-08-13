@@ -44,7 +44,7 @@
                   <Image url="@../../res/icon/setting.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#infoButtonHandler" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../res/icon/info.png" />
                </image>
