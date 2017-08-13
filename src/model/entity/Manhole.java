@@ -5,11 +5,11 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Random;
 
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import model.map.Map;
 import model.map.TileType;
 import util.Coord;
+import util.Gloabal.C;
 import util.Gloabal.Controllers;
 import util.Node;
 
@@ -20,7 +20,7 @@ public class Manhole extends Entity implements Observer{
 	public Manhole(final Map map, final int row, final int col) {
 		super(new Coord(row, col));
 		r = new Rectangle(map.getTileSize(),map.getTileSize());
-		r.setFill(Color.DODGERBLUE);
+		r.setFill(C.MANHOLE_COLOR);
 		r.relocate(getCol() * map.getTileSize(),  getRow() * map.getTileSize());
 	}
 

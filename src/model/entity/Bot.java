@@ -1,15 +1,13 @@
 package model.entity;
 
 import java.util.ArrayList;
-import javafx.animation.TranslateTransition;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import javafx.util.Duration;
 import model.map.Map;
 import model.map.TileType;
 import util.Coord;
+import util.Gloabal.C;
 import util.Gloabal.Controllers;
-import util.Gloabal.Settings;
 import util.Node;
 import util.Path;
 
@@ -35,8 +33,8 @@ public class Bot extends Entity{
 		visited = new boolean[map.getRows()][map.getCols()];
 
 		c = new Circle(map.getTileSize()/2);
-		c.setFill(Color.DARKGREY);
-		c.setStrokeWidth(1);
+		c.setFill(C.MICROBOT_COLOR);
+		c.setStrokeWidth(0.3);
 		c.setStroke(Color.BLACK);
 		draw();
 	}
@@ -59,13 +57,14 @@ public class Bot extends Entity{
 		this.draw();
 	}
 
+	/*
 	private void translateTo(final Coord coordinate){
 		TranslateTransition translation = new TranslateTransition(Duration.millis(Settings.UPDATE_DELAY/2), c);
 		translation.setByX((coordinate.getCol() - this.getCoordinate().getCol()) * map.getTileSize());
 		translation.setByY((coordinate.getRow() - this.getCoordinate().getRow()) * map.getTileSize());
 		translation.play();
 	}
-
+*/
 
 	/**
 	 * La funzione permette di ottenere le possibili che si trovano in un 8-connesso.

@@ -3,8 +3,10 @@ package util;
 import java.util.Arrays;
 import java.util.List;
 
+import javafx.scene.paint.Color;
 import view.BottomViewController;
 import view.gui.ChronometerController;
+import view.gui.InfoController;
 import view.gui.RankController;
 import view.map.EntityMapController;
 import view.map.PheromoneMapController;
@@ -15,6 +17,17 @@ public abstract class Gloabal {
 	public abstract static class Settings{
 		public final static int UPDATE_DELAY = 25;
 		public final static int BOT_NUMBER = 50;
+	}
+
+	public static class C{	//Colori
+		public final static Color PHEROMONE_COLOR = Color.RED;
+		public final static Color MICROBOT_COLOR = Color.SLATEGREY;
+		public final static Color START_COLOR = Color.DARKRED;
+		public final static Color END_COLOR = Color.LIMEGREEN;
+		public final static Color MANHOLE_COLOR = Color.DODGERBLUE;
+
+		public final static Color WALL_COLOR = Color.BLACK;
+		public final static Color FREE_COLOR = Color.WHITE;
 	}
 
 	public abstract static class R{
@@ -49,6 +62,7 @@ public abstract class Gloabal {
 
 		public static ChronometerController chronometerController;
 		public static RankController rankController;
+		public static InfoController infoController;
 	}
 
 }

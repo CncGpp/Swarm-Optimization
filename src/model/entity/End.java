@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import model.map.Map;
 import util.Coord;
+import util.Gloabal.C;
 import util.Gloabal.Controllers;
 
 public class End extends Entity implements Observer{
@@ -17,7 +17,7 @@ public class End extends Entity implements Observer{
 	public End(final Map map, final int row, final int col) {
 		super(new Coord(row, col));
 		r = new Rectangle(map.getTileSize(),map.getTileSize());
-		r.setFill(Color.LIMEGREEN);
+		r.setFill(C.END_COLOR);
 		r.relocate(getCol() * map.getTileSize(),  getRow() * map.getTileSize());
 	}
 

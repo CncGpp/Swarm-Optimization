@@ -1,9 +1,9 @@
 package model.entity;
 
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import model.map.Map;
 import util.Coord;
+import util.Gloabal.C;
 import util.Gloabal.Controllers;
 
 public class Start extends Entity{
@@ -13,7 +13,7 @@ public class Start extends Entity{
 	public Start(final Map map, final int row, final int col) {
 		super(new Coord(row, col));
 		r = new Rectangle(map.getTileSize(),map.getTileSize());
-		r.setFill(Color.BROWN);
+		r.setFill(C.START_COLOR);
 		r.relocate(getCol() * map.getTileSize(),  getRow() * map.getTileSize());
 	}
 
