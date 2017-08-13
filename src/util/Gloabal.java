@@ -50,7 +50,8 @@ public abstract class Gloabal {
 
 		public final static String RANK_URI = "rank.txt";
 		public final static List<String> STAGE_LIST = Arrays.asList( "file/1.txt",
-																	 "file/2.txt"
+																	 "file/2.txt",
+																	 "file/3.txt"
 																	);
 	}
 
