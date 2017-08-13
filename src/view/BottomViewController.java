@@ -4,6 +4,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import model.Game;
+import model.player.PlayerScore;
 import util.Gloabal.Controllers;
 import util.Chronometer;
 import util.Memento;
@@ -95,6 +96,7 @@ public class BottomViewController {
     	// else crea un gioco con il prossimo stage ----<>>> Stesso il gioco dovrebbe andare al prossimo stage?
     	if(!stage.nextStage()){
     		System.out.println("Il gioco è finito");
+    		Controllers.rankController.submitScore(new PlayerScore("Giuseppe", "Cianci", Chronometer.getTotalTime()));
     	} else {
     		g.remove();
     		g.newGame(stage);

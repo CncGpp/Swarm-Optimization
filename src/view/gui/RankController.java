@@ -60,4 +60,14 @@ public class RankController {
     	pane_rank.setDisable(!pane_rank.isDisabled());
     }
 
+    public void submitScore(final PlayerScore playerScore){
+    	if(playerScore != null)
+    		ranks.submitScore(playerScore);
+    }
 }
+
+
+
+
+
+

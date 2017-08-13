@@ -53,7 +53,11 @@ public class Chronometer {
 		return System.currentTimeMillis() - startTime;
 	}
 
-	public static long getElapsedTime(){
+	public static long getElapsedTime(){						//Prende il tempo e continua
 		return time() + totalTime;
+	}
+
+	public static long getTotalTime(){							//Prende solo il tempo
+		return totalTime;
 	}
 }
