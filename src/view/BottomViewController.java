@@ -94,8 +94,10 @@ public class BottomViewController {
     		g.newGame();
     	}
     	else {
+    		g.remove();
     		m.restoreMemento();
     		g.pauseGame();
+    		m = null;
     		//RestoreTime
     	}
     }

@@ -97,7 +97,6 @@ public class Game implements Observer{
 
 
 	public void add(){
-		if(gameStatus == GameStatus.NOTREADY) return;	//Significa che non è istanziato un cazzo
 		if(map != null) map.add();
 		if(start != null) start.add();
 		for(Manhole m : manholes) m.add();
@@ -107,7 +106,6 @@ public class Game implements Observer{
 	}
 
 	public void remove(){
-		if(gameStatus == GameStatus.NOTREADY) return;
 		if(map != null) map.remove();
 		if(start != null) start.remove();
 		for(Manhole m : manholes) m.remove();
