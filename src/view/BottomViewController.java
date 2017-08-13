@@ -89,18 +89,16 @@ public class BottomViewController {
     	System.out.println("Hai premuto memento");
     	if(m == null) {
     		m = g.getMemento();
+    		playerData.getCurrentPlayer().setTime(Chronometer.getElapsedTime());
     		g.pauseGame();
-    		//Get time
     		g.newGame();
+    		Chronometer.set(0);
     	}
     	else {
-    		Controllers.tileMap.clear();
-    		Controllers.entityMap.clear();
-    		Controllers.pheromoneMap.clear();
     		m.restoreMemento();
+    		Chronometer.set(playerData.getCurrentPlayer().getTime());
     		g.pauseGame();
     		m = null;
-    		//RestoreTime
     	}
     }
 
