@@ -3,19 +3,19 @@ package view;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import model.Game;
 import util.Gloabal.Controllers;
 import util.Chronometer;
 import util.Memento;
+import util.Stage;
 
 public class BottomViewController {
 
-
 	private Game g;
 	private Memento m = null;
+	private Stage stage = new Stage();
 
     @FXML
     private ResourceBundle resources;
@@ -26,12 +26,8 @@ public class BottomViewController {
     @FXML
     private ImageView startButton;
 
-    @FXML
-    private Label chronometer;
-
 
     /// METODI
-
     @FXML
     void startButtonHandle(MouseEvent event) {
     	System.out.println("Hai premuto start");
@@ -39,7 +35,7 @@ public class BottomViewController {
     	switch (g.getStatus()) {
 			case NOTREADY:
 				 Chronometer.set(0);
-				 g.newGame();
+				 g.newGame(stage);
 				 break;
 			case READY:
 				 Chronometer.start();
@@ -84,6 +80,19 @@ public class BottomViewController {
         Controllers.bottomViewController = this;
     }
 
+    ////////// METODI DI CLASSE ////////////////
     public void setGame(Game game){ this.g = game;}
+    public void stageEnded(){
+    	//if gli stage sono finiti  -> submist score
+    	// else crea un gioco con il prossimo stage ----<>>> Stesso il gioco dovrebbe andare al prossimo stage?
+    	if(!stage.nextStage()){
+    		System.out.println("Il gioco è finito");
+    	} else {
+    		g.remove();
+    		g.newGame(stage);
+    		g.add();
+    	}
+    }
+
 
 }

@@ -19,8 +19,7 @@ public abstract class Gloabal {
 	public abstract static class R{
 		public final static ClassLoader CLASSLOADER = Gloabal.class.getClassLoader();
 		public final static List<String> STAGE_LIST = Arrays.asList( "file/1.txt",
-																	 "file/2.txt",
-																	 "file/3.txt"
+																	 "file/2.txt"
 																	);
 	}
 

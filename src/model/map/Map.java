@@ -8,6 +8,7 @@ import model.entity.Manhole;
 import model.entity.Start;
 import util.Gloabal.Controllers;
 import util.Gloabal.R;
+import util.Stage;
 
 public class Map {
 	private int rows;
@@ -20,9 +21,9 @@ public class Map {
 	private TileLayer tileLayer;
 
 	// COSTRUTTORI
-	public Map(final Game game) {
+	public Map(final Game game, final Stage stage) {
 		this.game = game;
-		loadTileMap(R.STAGE_LIST.get(0));
+		loadTileMap(stage.getStagePath());
 		pheromoneLayer = new PheromoneLayer(this);
 	}
 

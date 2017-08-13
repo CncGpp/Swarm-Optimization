@@ -12,7 +12,9 @@ import model.entity.Manhole;
 import model.entity.Start;
 import model.map.Map;
 import util.Memento;
+import util.Stage;
 import util.Chronometer;
+import util.Gloabal.Controllers;
 import util.Gloabal.Settings;
 
 public class Game implements Observer{
@@ -22,17 +24,25 @@ public class Game implements Observer{
 	private Start start;
 	private ArrayList<Manhole> manholes = new ArrayList<>();
 	private ArrayList<End> ends = new ArrayList<>();
-	private Colony colony;
 
+	private Colony colony;
 	private Map map;
 
 	public Game(){}
 
 	/// METODI CHE GESTISCONO LO STATO DELLA PARTITA
-	public void newGame(){
+	public void newGame(){ newGame(new Stage()); }
+
+	public void newGame(final Stage stage){
+		// Inizializzo di nuovo gli elementi del gioco
+		start = null;
 		manholes.clear();
 		ends.clear();
-		map = new Map(this);
+
+		//Carico la mappa
+		map = new Map(this, stage);
+
+		//Creo la colonia sulla mappa
 		colony = new Colony(map, Settings.BOT_NUMBER, start);
 
 		//AGGIUNGO GLI OBSERVER!
@@ -40,6 +50,7 @@ public class Game implements Observer{
 		for(Manhole m : manholes) colony.addObserver(m);
 		colony.addObserver(this);
 
+		// Il gioco è pronto per partire!
 		gameStatus = GameStatus.READY;
 	}
 
@@ -71,6 +82,7 @@ public class Game implements Observer{
 	public void endGame(){
 		pauseGame();
 		gameStatus = GameStatus.ENDED;
+		Controllers.bottomViewController.stageEnded();
 	}
 
 
