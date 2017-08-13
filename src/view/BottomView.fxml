@@ -10,25 +10,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BottomViewController">
    <children>
-      <HBox spacing="12.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="2.0">
-         <children>
-            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../res/icon/setting.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../res/icon/info.png" />
-               </image>
-            </ImageView>
-            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="50.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../res/icon/rank.png" />
-               </image>
-            </ImageView>
-         </children>
-      </HBox>
       <HBox alignment="CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Label text="Stage">
@@ -44,7 +25,7 @@
             <HBox alignment="CENTER">
                <children>
                   <fx:include source="gui/ChronometerView.fxml" />
-                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#saveGame" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#rankButtonHandler" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../res/icon/time.png" />
                      </image>
@@ -54,6 +35,25 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </HBox>
+         </children>
+      </HBox>
+      <HBox spacing="12.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="2.0">
+         <children>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../res/icon/setting.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../res/icon/info.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="40.0" fitWidth="40.0" onMouseClicked="#rankButtonHandler" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../res/icon/rank.png" />
+               </image>
+            </ImageView>
          </children>
       </HBox>
       <HBox spacing="12.0" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="2.0">

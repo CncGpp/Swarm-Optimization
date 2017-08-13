@@ -1,7 +1,5 @@
 package view;
 
-import java.net.URL;
-import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -18,14 +16,7 @@ public class BottomViewController {
 	private Stage stage = new Stage();
 
     @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
-    @FXML
     private ImageView startButton;
-
 
     /// METODI
     @FXML
@@ -52,6 +43,11 @@ public class BottomViewController {
 			case ENDED: System.out.println("Il gioco è terminato!"); break;
 			default: break;
 		}
+    }
+
+    @FXML
+    void rankButtonHandler(MouseEvent event) {
+    	Controllers.rankController.toggle();
     }
 
     @FXML
@@ -82,6 +78,7 @@ public class BottomViewController {
 
     ////////// METODI DI CLASSE ////////////////
     public void setGame(Game game){ this.g = game;}
+
     public void stageEnded(){
     	//if gli stage sono finiti  -> submist score
     	// else crea un gioco con il prossimo stage ----<>>> Stesso il gioco dovrebbe andare al prossimo stage?

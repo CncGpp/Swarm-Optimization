@@ -5,6 +5,7 @@ import java.util.List;
 
 import view.BottomViewController;
 import view.gui.ChronometerController;
+import view.gui.RankController;
 import view.map.EntityMapController;
 import view.map.PheromoneMapController;
 import view.map.TileMapController;
@@ -30,6 +31,7 @@ public abstract class Gloabal {
 		public static BottomViewController bottomViewController;
 
 		public static ChronometerController chronometerController;
+		public static RankController rankController;
 	}
 
 }

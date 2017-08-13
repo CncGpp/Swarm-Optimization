@@ -18,6 +18,7 @@ public class RootViewController {
 
     @FXML
     private BorderPane borderPane_rootView;
+
     @FXML
     private StackPane stackPane_layers;
 
