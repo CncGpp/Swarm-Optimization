@@ -22,9 +22,12 @@ public class PlayerData {
 
 		//Se già c'è nella lista lo sostituisco con il nuovo
 		for (PlayerMemento playerMemento : playerMementos) {
-			if(playerMemento.getPlayerScore().equals(currentPlayer)) playerMemento.setMemento(memento);
-			return;
+			if(playerMemento.getPlayerScore().equals(currentPlayer)){
+				playerMementos.remove(playerMemento);
+				break;
+			}
 		}
+
 		//Altrimenti lo aggiungo
 		playerMementos.add(new PlayerMemento(memento, currentPlayer));
 	}
@@ -32,9 +35,12 @@ public class PlayerData {
 	private void restoreCurrentMemento(){
 		if(currentPlayer == null) return;
 		for (PlayerMemento playerMemento : playerMementos) {
-			if(playerMemento.getPlayerScore().equals(currentPlayer)) playerMemento.getMemento().restoreMemento();
-			playerMementos.remove(playerMemento);
-			return;
+			if(playerMemento.getPlayerScore().equals(currentPlayer)) {
+				currentPlayer = playerMemento.getPlayerScore();
+				playerMemento.getMemento().restoreMemento();
+				playerMementos.remove(playerMemento);
+				return;
+			}
 		}
 	}
 

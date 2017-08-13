@@ -43,8 +43,8 @@ public class BottomViewController {
 
     	switch (g.getStatus()) {
 			case NOTREADY:
-				 Chronometer.set(0);
-				 g.newGame(stage);
+				 //Chronometer.set(0);
+				 //g.newGame(stage);
 				 break;
 			case READY:
 				 Chronometer.start();
@@ -89,15 +89,15 @@ public class BottomViewController {
     	System.out.println("Hai premuto memento");
     	if(m == null) {
     		m = g.getMemento();
-    		playerData.getCurrentPlayer().setTime(Chronometer.getElapsedTime());
     		g.pauseGame();
+    		playerData.getCurrentPlayer().setTime(Chronometer.getTotalTime());
     		g.newGame();
     		Chronometer.set(0);
     	}
     	else {
     		m.restoreMemento();
-    		Chronometer.set(playerData.getCurrentPlayer().getTime());
     		g.pauseGame();
+    		Chronometer.set(playerData.getCurrentPlayer().getTime());
     		m = null;
     	}
     }
@@ -111,6 +111,7 @@ public class BottomViewController {
         ColorAdjust grayscale = new ColorAdjust();
         grayscale.setSaturation(-1);
         settingButton.setEffect(grayscale);
+
     }
 
     ////////// METODI DI CLASSE ////////////////
@@ -136,17 +137,19 @@ public class BottomViewController {
 		Alert al = new Alert(AlertType.CONFIRMATION);						//Creo un alert di conferma
 		al.setTitle("Cambio giocatore");
 		al.setHeaderText("Vuoi realmente cambiare giocatore?");
-		al.setContentText("La partita attuale verrà resettata");
+		al.setContentText("La partita attuale verrà salvatae potrà essere ripristinata al prossimo login");
 		al.setGraphic(new ImageView(Gloabal.R.CHANGE_ICON_URI));
 
 		Optional<ButtonType> result = al.showAndWait();						//Verifico la scelta
 		if(result.get() == ButtonType.CANCEL) return true;					//Se non si vuole proseguire con il cambio ritorno
 
-		Chronometer.set(0);
-		stage = new Stage(0);
+		playerData.getCurrentPlayer().setTime(Chronometer.getTotalTime());
+		playerData.addMemento(g.getMemento());
+
 		g.pauseGame();
-		g.remove();
+		stage = new Stage(0);
 		g.newGame(stage);
+		Chronometer.set(0);
 
 		startButton.setImage(new Image(Gloabal.R.START_ICON_URI));
 
@@ -161,6 +164,7 @@ public class BottomViewController {
 
     	if (player.isPresent() ){
     		playerData.loginPlayer( player.get() );
+    		Chronometer.set(playerData.getCurrentPlayer().getTime());
     		loginButton.setImage(new Image(Gloabal.R.CHANGE_ICON_URI));
     		return true;
     	}

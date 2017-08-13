@@ -120,7 +120,6 @@ public class Game implements Observer{
 		private Start _start;
 		private ArrayList<Manhole> _manholes = manholes;
 		private ArrayList<End> _ends = ends;
-		long currTime = Chronometer.getElapsedTime();
 		@Override public void restoreMemento(){
 			Game.this.remove();
 			map = _map;
@@ -129,7 +128,6 @@ public class Game implements Observer{
 			manholes = _manholes;
 			ends = _ends;
 			Game.this.add();
-			Chronometer.set(currTime);
 		}
 	}
 	public Memento getMemento(){return new GameMemento();}
