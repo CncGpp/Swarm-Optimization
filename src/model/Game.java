@@ -38,8 +38,8 @@ public class Game implements Observer{
 		this.remove();
 		// Inizializzo di nuovo gli elementi del gioco
 		start = null;
-		manholes.clear();
-		ends.clear();
+		manholes = new ArrayList<>();
+		ends = new ArrayList<>();
 
 		//Carico la mappa
 		map = new Map(this, stage);

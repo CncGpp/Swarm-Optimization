@@ -25,4 +25,5 @@ public class PheromoneMapController {
     /** METODI DI MANIPOLAZIONE DELLA UI **/
     public void add(final Node node){ drawingPane.getChildren().add(node); }
     public void remove(final Node node){ drawingPane.getChildren().remove(node); }
+    public void clear(){drawingPane.getChildren().clear();}
 }

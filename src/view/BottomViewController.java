@@ -94,7 +94,9 @@ public class BottomViewController {
     		g.newGame();
     	}
     	else {
-    		g.remove();
+    		Controllers.tileMap.clear();
+    		Controllers.entityMap.clear();
+    		Controllers.pheromoneMap.clear();
     		m.restoreMemento();
     		g.pauseGame();
     		m = null;
