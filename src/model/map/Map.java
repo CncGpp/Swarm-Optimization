@@ -1,6 +1,6 @@
 package model.map;
 
-import java.util.InputMismatchException;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import model.Game;
@@ -98,7 +98,7 @@ public class Map {
 					}
 					tileLayer.setTileAt(i, j, new Tile(tileSize, tt));
 			}
-		} catch(InputMismatchException e){
+		} catch(NoSuchElementException e){
 			System.err.println("Errore durante la lettura della mappa: '" +  stagePath + "'");
 			System.err.println("E' presente un errore nella struttura del file.");
 			e.printStackTrace();
