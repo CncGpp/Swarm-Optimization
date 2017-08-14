@@ -1,5 +1,6 @@
 package model.map;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import model.Game;
@@ -15,15 +16,12 @@ public class Map {
 	private int cols;
 	private double tileSize;
 
-	private final Game game;
-
 	private PheromoneLayer pheromoneLayer;
 	private TileLayer tileLayer;
 
 	// COSTRUTTORI
-	public Map(final Game game, final Stage stage) {
-		this.game = game;
-		loadTileMap(stage.getStagePath());
+	public Map(final Game game, final Stage stage) {;
+		loadTileMap(game, stage.getStagePath());
 		pheromoneLayer = new PheromoneLayer(this);
 	}
 
@@ -33,10 +31,19 @@ public class Map {
 	public double getTileSize(){ return tileSize; }
 
 	private void setDimensions(final int rows, final int cols, final double tileSize){
-		//TODO: aggiungere controlli
-		this.rows = rows;
-		this.cols = cols;
-		this.tileSize = tileSize;
+		try{
+			if(rows <= 0) throw new IllegalArgumentException("Il numero di righe della mappa deve essere > 0. \t rows: "+ rows);
+			if(cols <= 0) throw new IllegalArgumentException("Il numero di colonne della mappa deve essere > 0. \t cols: "+ cols);
+			if(tileSize <= 0) throw new IllegalArgumentException("La dimensione del tile della mappa deve essere > 0. \t tileSize: "+ tileSize);
+
+			this.rows = rows;
+			this.cols = cols;
+			this.tileSize = tileSize;
+
+		} catch(IllegalArgumentException e){
+			e.printStackTrace();
+			System.exit(-3);
+		}
 	}
 
 	//MODIFICATORI DEL FERORMONE
@@ -63,37 +70,47 @@ public class Map {
 	public void remove(){ tileLayer.remove(); pheromoneLayer.remove(); }
 
 
-	public void loadTileMap(String stagePath){
-		Scanner s = new Scanner(R.CLASSLOADER.getResourceAsStream(stagePath));
+	public void loadTileMap(final Game game, String stagePath){
+		try(Scanner s = new Scanner(R.CLASSLOADER.getResourceAsStream(stagePath))){
+			// Leggo le dimensioni della mappa
+			setDimensions(s.nextInt(), s.nextInt(), s.nextDouble());
 
-		// Leggo le dimensioni della mappa
-		setDimensions(s.nextInt(), s.nextInt(), s.nextDouble());
+			// Creo la mappa dei tile
+			tileLayer = new TileLayer(this);
 
-		// Creo la mappa dei tile
-		tileLayer = new TileLayer(this);
-
-		// Leggo dunque la mappa posizione per posizione
-		TileType tt;
-		for(int i = 0; i < rows; i++)
-			for(int j = 0; j < cols; j++){
-				switch (s.nextInt()) {
-				case 0: tt = TileType.FREE; break;
-				case 1: tt = TileType.WALL; break;
-				case 2: tt = TileType.MANHOLE;
-						game.addManhole(new Manhole(this, i, j));
-						break;
-				case 3: tt = TileType.START;
-						game.setStart(new Start(this, i, j));
-						break;
-				case 4: tt = TileType.END;
-						game.addEnd(new End(this, i, j));
-						break;
-				default: tt = TileType.WALL; break;
-				}
-				tileLayer.setTileAt(i, j, new Tile(tileSize, tt));
+			// Leggo dunque la mappa posizione per posizione
+			TileType tt;
+			for(int i = 0; i < rows; i++)
+				for(int j = 0; j < cols; j++){
+					switch (s.nextInt()) {
+					case 0: tt = TileType.FREE; break;
+					case 1: tt = TileType.WALL; break;
+					case 2: tt = TileType.MANHOLE;
+							game.addManhole(new Manhole(this, i, j));
+							break;
+					case 3: tt = TileType.START;
+							game.setStart(new Start(this, i, j));
+							break;
+					case 4: tt = TileType.END;
+							game.addEnd(new End(this, i, j));
+							break;
+					default: tt = TileType.WALL; break;
+					}
+					tileLayer.setTileAt(i, j, new Tile(tileSize, tt));
+			}
+		} catch(InputMismatchException e){
+			System.err.println("Errore durante la lettura della mappa: '" +  stagePath + "'");
+			System.err.println("E' presente un errore nella struttura del file.");
+			e.printStackTrace();
+			System.exit(-1);
+		} catch (NullPointerException e) {
+			System.err.println("Errore durante l'apertura della mappa: '" +  stagePath + "'");
+			System.err.println("La risorsa '" +  stagePath + "' non è stata trovata.");
+			e.printStackTrace();
+			System.exit(-2);
 		}
-		s.close();
 	}
+
 
 }
 
