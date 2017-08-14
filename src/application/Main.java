@@ -40,7 +40,6 @@ public class Main extends Application {
 	        //CARICO LA UI DELL'APP
 	        bottomViewController = loadBottomView(root);
 
-
 	        //CARICO LA UI DEL GIOCO
 	        loadTileMap(rootController);
 	        loadPheromoneMap(rootController);
@@ -48,22 +47,21 @@ public class Main extends Application {
 
 	        Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
-			primaryStage.show();
+			primaryStage.setResizable(false);
+			primaryStage.setTitle("Swarm Optimization - Progetto programmazione III   [Giuseppe Cianci Pio]");
+			//primaryStage.show();
 
-
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
+		} catch(Exception e) { e.printStackTrace(); }
 
 
 		//*****      QUI CI STA LA MIA APP    ******
 		Game g = new Game();
 		g.newGame();
-		//g.add();
 
-		if(bottomViewController != null)
-		bottomViewController.setGame(g);
+		if(bottomViewController != null) bottomViewController.setGame(g);
 
+		//Una volta caricata tutta l'app mostro lo stage.
+		stage.show();
 	}
 
 	private TileMapController loadTileMap(RootViewController rvc) throws IOException{
