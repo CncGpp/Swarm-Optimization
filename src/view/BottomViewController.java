@@ -130,7 +130,7 @@ public class BottomViewController {
 		Alert al = new Alert(AlertType.CONFIRMATION);						//Creo un alert di conferma
 		al.setTitle("Cambio giocatore");
 		al.setHeaderText("Vuoi realmente cambiare giocatore?");
-		al.setContentText("La partita attuale verrà salvatae potrà essere ripristinata al prossimo login");
+		al.setContentText("La partita attuale verrà salvatae potrà essere ripristinata al prossimo login.");
 		al.setGraphic(new ImageView(Gloabal.R.CHANGE_ICON_URI));
 
 		Optional<ButtonType> result = al.showAndWait();						//Verifico la scelta
@@ -154,11 +154,27 @@ public class BottomViewController {
 
     	if (player.isPresent() ){
     		playerData.loginPlayer( player.get() );
-    		Chronometer.set(playerData.getCurrentPlayer().getTime());
+    		if(playerData.thereIsAMemento()) restoreMementoScene();
+
     		loginButton.setImage(new Image(Gloabal.R.CHANGE_ICON_URI));
     		return true;
     	}
     	return false;
+    }
+
+    private void restoreMementoScene(){
+		Alert al = new Alert(AlertType.CONFIRMATION);						//Creo un alert di conferma
+		al.setTitle("Ripristino partita");
+		al.setHeaderText("Bentornato " + playerData.getCurrentPlayer().getName() + "!");
+		al.setContentText("Vuoi ripristinare lo stato dell'ultima partita?");
+		al.setGraphic(new ImageView(Gloabal.R.CHANGE_ICON_URI));
+
+		Optional<ButtonType> result = al.showAndWait();						//Verifico la scelta
+		if(result.get() == ButtonType.CANCEL) return ;						//Se non si vuole proseguire con il ripristino ritorno
+
+
+    	playerData.restoreCurrentMemento();									//Altrimenti procedo al ripristino
+ 		Chronometer.set(playerData.getCurrentPlayer().getTime());
     }
 
 }
