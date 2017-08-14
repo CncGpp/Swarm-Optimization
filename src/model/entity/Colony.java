@@ -11,7 +11,7 @@ public class Colony extends Observable{
 	private Map map;
 	private ArrayList<Bot> bots;
 	private ArrayList<Bot> toRemove = new ArrayList<>();
-	private ColonyStrategy strategy = new DPAS();
+	private ColonyStrategy strategy = new LDPAS();
 
 	public Colony(final Map map, final int botCount, final Start start) {
 		this.map = map;
