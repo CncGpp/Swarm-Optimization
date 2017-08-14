@@ -90,7 +90,7 @@ public class Game implements Observer{
 
 
 	// METODI GETTER & SETTER
-	public GameStatus getStatus(){ return gameStatus;}
+	public GameStatus getStatus(){ return gameStatus; }
 	public void setStart(final Start start){this.start = start;}
 	public void addEnd(final End end){this.ends.add(end);}
 	public void addManhole(final Manhole manhole){this.manholes.add(manhole);}
