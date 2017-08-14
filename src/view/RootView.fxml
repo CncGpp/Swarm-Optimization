@@ -12,12 +12,12 @@
             <StackPane fx:id="stackPane_layers" />
             <AnchorPane>
                <children>
-                  <Pane AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="115.0">
+                  <Pane AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="112.0">
                      <children>
                         <fx:include source="gui/RankView.fxml" />
                      </children>
                   </Pane>
-                  <Pane AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="60.0">
+                  <Pane AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="59.0">
                      <children>
                         <fx:include source="gui/InfoView.fxml" />
                      </children>

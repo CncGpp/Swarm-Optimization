@@ -10,6 +10,7 @@ import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
 import model.Game;
 import model.player.PlayerData;
 import model.player.PlayerScore;
@@ -24,6 +25,9 @@ public class BottomViewController {
 	private Game g;
 	PlayerData playerData = new PlayerData();
 	private Stage stage = new Stage();
+
+    @FXML
+    private Pane rankSelection, infoSelection, settingSelection;
 
     @FXML
     private ImageView startButton;
@@ -55,13 +59,17 @@ public class BottomViewController {
     @FXML
     void rankButtonHandler(MouseEvent event) {
     	Controllers.infoController.hide();
+    	infoSelection.setVisible(false);
     	Controllers.rankController.toggle();
+    	rankSelection.setVisible(!rankSelection.isVisible());
     }
 
     @FXML
     void infoButtonHandler(MouseEvent event){
     	Controllers.rankController.hide();
+    	rankSelection.setVisible(false);
     	Controllers.infoController.toggle();
+    	infoSelection.setVisible(!infoSelection.isVisible());
     }
 
     @FXML

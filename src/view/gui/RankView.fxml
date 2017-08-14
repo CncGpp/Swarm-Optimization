@@ -23,7 +23,7 @@
                   <Insets left="5.0" right="5.0" />
                </padding>
             </Separator>
-            <ListView fx:id="listView_rank" minHeight="350.0" minWidth="400.0" stylesheets="@gui.css" />
+            <ListView fx:id="listView_rank" minHeight="385.0" minWidth="400.0" prefHeight="385.0" stylesheets="@gui.css" />
          </children>
          <padding>
             <Insets bottom="5.0" left="2.0" right="5.0" top="5.0" />

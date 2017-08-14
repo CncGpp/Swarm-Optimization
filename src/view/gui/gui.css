@@ -10,7 +10,7 @@
 }
 
 .panePanel{
-    -fx-background-radius: 3;
+    -fx-background-radius: 2;
     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
     }
 
