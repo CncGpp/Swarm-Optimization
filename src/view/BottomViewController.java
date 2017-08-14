@@ -1,11 +1,11 @@
 package view;
 
 import java.util.Optional;
-
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -16,7 +16,6 @@ import model.player.PlayerScore;
 import util.Gloabal.Controllers;
 import util.Chronometer;
 import util.Gloabal;
-import util.Memento;
 import util.Stage;
 import view.gui.PlayerLoginDialog;
 
@@ -24,7 +23,6 @@ public class BottomViewController {
 
 	private Game g;
 	PlayerData playerData = new PlayerData();
-	private Memento m = null;
 	private Stage stage = new Stage();
 
     @FXML
@@ -36,29 +34,20 @@ public class BottomViewController {
     @FXML
     private ImageView settingButton;
 
+    @FXML
+    private Label stageLabel;
+
     /// METODI
     @FXML
     void startButtonHandle(MouseEvent event) {
     	if(!playerData.isLogged() && !loginButtonHandler()) return;
 
     	switch (g.getStatus()) {
-			case NOTREADY:
-				 //Chronometer.set(0);
-				 //g.newGame(stage);
-				 break;
-			case READY:
-				 Chronometer.start();
-				 g.startGame();
-				 break;
-			case RUNNING:
-				 Chronometer.pause();
-				 g.pauseGame();
-				 break;
-			case PAUSED:
-				 Chronometer.start();
-				 g.startGame();
-				 break;
-			case ENDED: System.out.println("Il gioco è terminato!"); break;
+			case NOTREADY:	initializeNewGame(); break;
+			case READY: 	startGame(); break;
+			case RUNNING:	pauseGame(); break;
+			case PAUSED:	startGame(); break;
+			case ENDED: 	initializeNewGame(); break;
 			default: break;
 		}
     }
@@ -85,24 +74,6 @@ public class BottomViewController {
 
 
     @FXML
-    void saveGame(MouseEvent event){
-    	System.out.println("Hai premuto memento");
-    	if(m == null) {
-    		m = g.getMemento();
-    		g.pauseGame();
-    		playerData.getCurrentPlayer().setTime(Chronometer.getTotalTime());
-    		g.newGame();
-    		Chronometer.set(0);
-    	}
-    	else {
-    		m.restoreMemento();
-    		g.pauseGame();
-    		Chronometer.set(playerData.getCurrentPlayer().getTime());
-    		m = null;
-    	}
-    }
-
-    @FXML
     void initialize() {
         assert startButton != null : "fx:id=\"startButton\" was not injected: check your FXML file 'BottomView.fxml'.";
         Controllers.bottomViewController = this;
@@ -121,15 +92,37 @@ public class BottomViewController {
     	Controllers.infoController.toggle();
 	}
 
+    private void initializeNewGame(){
+    	this.pauseGame();
+		this.stage = new Stage(0);
+		g.newGame(this.stage);
+		Chronometer.set(0);
+		stageLabel.setText( 1 + stage.getStageNumber() + "");
+    }
+    private void initializeGameStage(){
+		this.pauseGame();
+		g.newGame(this.stage);
+		stageLabel.setText( 1 + this.stage.getStageNumber() + "");
+    }
+    private void startGame(){
+		 Chronometer.start();
+		 g.startGame();
+		 startButton.setImage(new Image(Gloabal.R.PAUSE_ICON_URI));
+    }
+    private void pauseGame(){
+		 Chronometer.pause();
+		 g.pauseGame();
+		 startButton.setImage(new Image(Gloabal.R.START_ICON_URI));
+    }
+
     public void stageEnded(){
-    	//if gli stage sono finiti  -> submist score
-    	// else crea un gioco con il prossimo stage ----<>>> Stesso il gioco dovrebbe andare al prossimo stage?
     	if(!stage.nextStage()){
     		System.out.println("Il gioco è finito");
     		playerData.getCurrentPlayer().setTime(Chronometer.getTotalTime());
     		Controllers.rankController.submitScore(playerData.getCurrentPlayer());
+    		startButton.setImage(new Image(Gloabal.R.RESTART_ICON_URI));
     	} else {
-    		g.newGame(stage);
+    		initializeGameStage();
     	}
     }
 
@@ -146,10 +139,7 @@ public class BottomViewController {
 		playerData.getCurrentPlayer().setTime(Chronometer.getTotalTime());
 		playerData.addMemento(g.getMemento());
 
-		g.pauseGame();
-		stage = new Stage(0);
-		g.newGame(stage);
-		Chronometer.set(0);
+		this.initializeNewGame();
 
 		startButton.setImage(new Image(Gloabal.R.START_ICON_URI));
 

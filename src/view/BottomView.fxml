@@ -17,7 +17,7 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label text="1">
+            <Label fx:id="stageLabel" text="1">
                <font>
                   <Font size="24.0" />
                </font>
@@ -25,7 +25,7 @@
             <HBox alignment="CENTER">
                <children>
                   <fx:include source="gui/ChronometerView.fxml" />
-                  <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#saveGame" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../res/icon/time.png" />
                      </image>
