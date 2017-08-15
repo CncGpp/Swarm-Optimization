@@ -53,11 +53,11 @@ public class AS extends ColonyStrategy{
 		if(totalPheromone == 0){ return directions.get(r.nextInt(directions.size())); }
 
 		//CASO 2: Scelgo in maniera probabilistica la prossima posizione
-		int i = 0;
 		double max = totalPheromone*r.nextDouble();
+		int i = 0;
 		double sum = 0;
 
-		while(sum < max){
+		while(sum <= max){
 			if(i == directions.size()) break;
 			Node node = directions.get(i);
 			sum+=nodeGoodness(map, node);
