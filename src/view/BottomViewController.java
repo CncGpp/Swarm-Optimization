@@ -85,12 +85,10 @@ public class BottomViewController {
     void initialize() {
         assert startButton != null : "fx:id=\"startButton\" was not injected: check your FXML file 'BottomView.fxml'.";
         Controllers.bottomViewController = this;
-
         //TODO: PER ORA L'HO DISABILITATO...
         ColorAdjust grayscale = new ColorAdjust();
         grayscale.setSaturation(-1);
         settingButton.setEffect(grayscale);
-
     }
 
     ////////// METODI DI CLASSE ////////////////

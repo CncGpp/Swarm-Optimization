@@ -38,11 +38,14 @@
             </HBox>
          </children>
       </HBox>
-      <HBox layoutX="18.0" layoutY="12.0" spacing="11.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="1.0">
+      <HBox layoutX="18.0" layoutY="12.0" spacing="8.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="1.0">
          <children>
-            <Pane fx:id="settingSelection" maxHeight="40.0" maxWidth="40.0" minHeight="43.0" minWidth="40.0" styleClass="selected" stylesheets="@theme.css" visible="false" />
-            <Pane fx:id="infoSelection" layoutX="10.0" layoutY="10.0" maxHeight="40.0" maxWidth="40.0" minHeight="43.0" minWidth="42.0" styleClass="selected" stylesheets="@theme.css" visible="false" />
-            <Pane fx:id="rankSelection" layoutX="61.0" layoutY="10.0" maxHeight="40.0" maxWidth="40.0" minHeight="43.0" minWidth="41.0" styleClass="selected" stylesheets="@theme.css" visible="false" />
+            <Pane fx:id="settingSelection" maxHeight="40.0" maxWidth="40.0" minHeight="43.0" minWidth="44.0" styleClass="selected" stylesheets="@theme.css" visible="false" />
+            <Pane fx:id="infoSelection" layoutX="10.0" layoutY="10.0" maxHeight="40.0" maxWidth="40.0" minHeight="43.0" minWidth="44.0" styleClass="selected" stylesheets="@theme.css" visible="false" />
+            <Pane fx:id="rankSelection" layoutX="61.0" layoutY="10.0" maxHeight="40.0" maxWidth="40.0" minHeight="43.0" minWidth="44.0" styleClass="selected" stylesheets="@theme.css" visible="false">
+               <HBox.margin>
+                  <Insets />
+               </HBox.margin></Pane>
          </children>
       </HBox>
       <HBox spacing="12.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="2.0">

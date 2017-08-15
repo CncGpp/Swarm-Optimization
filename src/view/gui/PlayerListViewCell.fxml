@@ -27,12 +27,12 @@
                   </ImageView>
                </children>
             </StackPane>
-            <Label fx:id="cognome_id" minWidth="90.0" prefWidth="90.0" styleClass="labelMedium" stylesheets="@gui.css" text="Cognome">
+            <Label fx:id="cognome_id" minWidth="100.0" prefWidth="100.0" styleClass="labelMedium" stylesheets="@gui.css" text="Cognome">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="nome_id" layoutX="74.0" layoutY="20.0" minWidth="90.0" prefWidth="90.0" styleClass="labelRegular" stylesheets="@gui.css" text="Nome">
+            <Label fx:id="nome_id" layoutX="74.0" layoutY="20.0" minWidth="85.0" prefWidth="85.0" styleClass="labelRegular" stylesheets="@gui.css" text="Nome">
                <font>
                   <Font size="18.0" />
                </font>
@@ -46,9 +46,6 @@
                </HBox.margin>
             </Label>
          </children>
-         <padding>
-            <Insets left="5.0" right="5.0" />
-         </padding>
       </HBox>
    </children>
 </AnchorPane>
