@@ -12,11 +12,11 @@ public class AS extends ColonyStrategy{
 
 	private Random r = new Random();
 
-	protected double alpha = 6;
+	protected double alpha = 8;
 	protected double beta = 2;
 
-	protected double phi = 0.9;
-	protected double rho = 0.75;
+	protected double phi = 0.95;
+	protected double rho = 0.10;
 
 	protected double tau = .2;
 
@@ -57,13 +57,14 @@ public class AS extends ColonyStrategy{
 		int i = 0;
 		double sum = 0;
 
-		while(sum <= max){
+		while(sum < max){
 			if(i == directions.size()) break;
 			Node node = directions.get(i);
 			sum+=nodeGoodness(map, node);
 			i++;
 		}
-
+		//FIXME: Porcodio perchè non funziona? chi lo sa...
+		if(i == 0) return directions.get(0);
 		return directions.get(i-1);
 	}
 
@@ -74,7 +75,8 @@ public class AS extends ColonyStrategy{
 
 	@Override
 	public void offlineUpdate(Map map, Path path) {
-		map.evaporatePheromone(rho);
+		map.evaporatePheromone(1.0d - rho);
+		map.dropPheromone(tau*rho);
 
 		for(Node n : path.getPath()){
 			map.dropPheromoneAt(n.getRow(), n.getCol(), mapDiameter(map)/path.getLenght());
