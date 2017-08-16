@@ -1,7 +1,7 @@
 package strategy;
 
-import model.entity.Bot;
-import model.map.Map;
+import model.entity.ABot;
+import model.map.AMap;
 import util.Vertex;
 import util.Path;
 
@@ -18,12 +18,12 @@ public class DPAS extends AS{
 	//@Override public ColonyStartType getColonyStartType() { return ColonyStartType.MULTIPLE; }
 
 	@Override
-	public void onlineUpdate(Map map, Bot bot) {
+	public void onlineUpdate(AMap map, ABot bot) {
 		map.evaporatePheromoneAt(bot.getRow(), bot.getCol(), 1-rho);
 	}
 
 	@Override
-	public void offlineUpdate(Map map, Path path) {
+	public void offlineUpdate(AMap map, Path path) {
 		map.evaporatePheromone(1 - phi);
 
 		double sum = 0;
@@ -34,10 +34,10 @@ public class DPAS extends AS{
 	}
 
 	@Override
-	public void initialize(Map map) {
+	public void initialize(AMap map) {
 		Q = Math.log10(mapDiameter(map))*(alpha+beta);
 		map.setPheromone(tau);
 	}
 
-	protected double mapDiameter(final Map map){ return Math.sqrt(map.getRows()*map.getRows() + map.getCols()*map.getCols());}
+	protected double mapDiameter(final AMap map){ return Math.sqrt(map.getRows()*map.getRows() + map.getCols()*map.getCols());}
 }

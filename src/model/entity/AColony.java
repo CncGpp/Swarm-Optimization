@@ -5,19 +5,19 @@ import java.util.Observable;
 
 import javafx.scene.Node;
 import model.Drawable;
-import model.map.Map;
+import model.map.AMap;
 import strategy.AtanAS;
 import strategy.ColonyStrategy;
 import util.Coord;
 
 public abstract class AColony extends Observable implements Drawable{
 
-	private Map map;
+	private AMap map;
 	private ArrayList<ABot> bots;
 	private ArrayList<ABot> toRemove = new ArrayList<>();
 	private ColonyStrategy strategy = new AtanAS();
 
-	public AColony(final Map map, final int botCount, final AStart start) {
+	public AColony(final AMap map, final int botCount, final AStart start) {
 		this.setMap(map);
 
 		bots =  new ArrayList<>();
@@ -50,8 +50,8 @@ public abstract class AColony extends Observable implements Drawable{
 
 
 	// METODI GETTER & SETTER
-	public Map getMap() {return map;}
-	protected void setMap(final Map map) {
+	public AMap getMap() {return map;}
+	protected void setMap(final AMap map) {
 		if(map == null) throw new IllegalArgumentException("La mappa della colonia non può essere 'null");
 		else this.map = map;
 	}

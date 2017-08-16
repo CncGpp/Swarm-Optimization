@@ -3,8 +3,8 @@ package strategy;
 import java.util.ArrayList;
 import java.util.Random;
 
-import model.entity.Bot;
-import model.map.Map;
+import model.entity.ABot;
+import model.map.AMap;
 import util.Vertex;
 import util.Path;
 
@@ -21,22 +21,22 @@ public class AS extends ColonyStrategy{
 	protected double tau = .2;
 
 
-	private double totalNeighborsGoodness(Map map, ArrayList<Vertex> directions){
+	private double totalNeighborsGoodness(AMap map, ArrayList<Vertex> directions){
 		double totalGoodness = 0;				//feromone TOTALE presente sui nodi considerati.
 		for (Vertex n : directions)
 			totalGoodness+=nodeGoodness(map, n);
 		return totalGoodness;
 	}
 
-	private double nodeGoodness(final Map map, final Vertex node){
+	private double nodeGoodness(final AMap map, final Vertex node){
 		return Math.pow(map.getPheromoneAt(node.getRow(), node.getCol()) , alpha) * Math.pow( (1.0d)/node.getWeight(), beta);
 	}
 
-	private double mapDiameter(final Map map){ return Math.sqrt(map.getRows()*map.getRows() + map.getCols()*map.getCols());}
+	private double mapDiameter(final AMap map){ return Math.sqrt(map.getRows()*map.getRows() + map.getCols()*map.getCols());}
 
 
 	@Override
-	public Vertex selectNextMove(final Map map, final Bot bot) {
+	public Vertex selectNextMove(final AMap map, final ABot bot) {
 
 		ArrayList<Vertex> newDirections = new ArrayList<>();		//Array di nodi nell'intorno 3x3 DA VISITARE
 		ArrayList<Vertex> oldDirections = new ArrayList<>();		//Array di nodi nell'intorno 3x3 GIA' VISITATI
@@ -69,12 +69,12 @@ public class AS extends ColonyStrategy{
 	}
 
 	@Override
-	public void onlineUpdate(Map map, Bot bot) {
+	public void onlineUpdate(AMap map, ABot bot) {
 		map.evaporatePheromoneAt(bot.getRow(), bot.getCol(), phi);
 	}
 
 	@Override
-	public void offlineUpdate(Map map, Path path) {
+	public void offlineUpdate(AMap map, Path path) {
 		map.evaporatePheromone(1.0d - rho);
 		map.dropPheromone(tau*rho);
 
@@ -83,7 +83,7 @@ public class AS extends ColonyStrategy{
 		}
 	}
 	@Override
-	public void initialize(Map map) {
+	public void initialize(AMap map) {
 		map.setPheromone(tau);
 	}
 

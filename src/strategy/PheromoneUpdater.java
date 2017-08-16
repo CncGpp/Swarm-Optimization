@@ -1,10 +1,10 @@
 package strategy;
 
-import model.entity.Bot;
-import model.map.Map;
+import model.entity.ABot;
+import model.map.AMap;
 import util.Path;
 
 public interface PheromoneUpdater {
-	public void onlineUpdate(final Map map, final Bot bot);
-	public void offlineUpdate(final Map map, final Path path);
+	public void onlineUpdate(final AMap map, final ABot bot);
+	public void offlineUpdate(final AMap map, final Path path);
 }

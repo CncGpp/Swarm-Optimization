@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
-import model.map.Map;
+import model.map.AMap;
 import model.map.TileType;
 import util.Coord;
 import util.Gloabal.C;
@@ -29,7 +29,7 @@ public class Bot extends ABot{
 	}
 
 	@Override
-	protected Node makeNode(Map map) {
+	protected Node makeNode(AMap map) {
 		final Circle c = new Circle(map.getTileSize()/2);
 		c.setFill(C.MICROBOT_COLOR);
 		c.setStrokeWidth(0.3);
@@ -69,7 +69,7 @@ public class Bot extends ABot{
 	 */
 	@Override
 	public void getNeighbors(ArrayList<Vertex> newDirections, ArrayList<Vertex> oldDirections){
-		final Map map = colony.getMap();
+		final AMap map = colony.getMap();
 		//Il bot può muoversi secondo un intorno 8-connesso di dimensione 3x3
 		for(int i = 0; i < 3; i++){
 			for(int j = 0; j < 3; j++){
@@ -102,7 +102,7 @@ public class Bot extends ABot{
 	}
 
 	private void draw(){
-		final Map map = colony.getMap();
+		final AMap map = colony.getMap();
 		this.getNode().relocate(getCol() * map.getTileSize(),  getRow() * map.getTileSize());
 	}
 

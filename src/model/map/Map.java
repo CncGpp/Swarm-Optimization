@@ -3,72 +3,55 @@ package model.map;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
+import javafx.scene.Node;
 import model.Game;
+import model.Stage;
 import model.entity.End;
 import model.entity.Manhole;
 import model.entity.Start;
 import util.Gloabal.Controllers;
 import util.Gloabal.R;
-import util.Stage;
 
-public class Map {
-	private int rows;
-	private int cols;
-	private double tileSize;
+public class Map extends AMap{
 
 	private PheromoneLayer pheromoneLayer;
 	private TileLayer tileLayer;
 
 	// COSTRUTTORI
-	public Map(final Game game, final Stage stage) {;
+	public Map(final Game game, final Stage stage) {
+		super(game, stage);
+	}
+
+	@Override
+	protected void loadMap(final Game game, final Stage stage){
 		loadTileMap(game, stage.getStagePath());
 		pheromoneLayer = new PheromoneLayer(this);
 	}
 
-	// METODI GETTER & SETTER
-	public int getRows(){ return rows; }
-	public int getCols(){ return cols; }
-	public double getTileSize(){ return tileSize; }
-
-	private void setDimensions(final int rows, final int cols, final double tileSize){
-		try{
-			if(rows <= 0) throw new IllegalArgumentException("Il numero di righe della mappa deve essere > 0. \t rows: "+ rows);
-			if(cols <= 0) throw new IllegalArgumentException("Il numero di colonne della mappa deve essere > 0. \t cols: "+ cols);
-			if(tileSize <= 0) throw new IllegalArgumentException("La dimensione del tile della mappa deve essere > 0. \t tileSize: "+ tileSize);
-
-			this.rows = rows;
-			this.cols = cols;
-			this.tileSize = tileSize;
-
-		} catch(IllegalArgumentException e){
-			e.printStackTrace();
-			System.exit(-3);
-		}
-	}
 
 	//MODIFICATORI DEL FERORMONE
+	@Override
 	public double getPheromoneAt(final int row, final int col){ return pheromoneLayer.getPheromoneAt(row, col);}
+	@Override
 	public void setPheromoneAt(final int row, final int col, final double value){ pheromoneLayer.setPheromoneAt(row, col, value); }
+	@Override
 	public void evaporatePheromoneAt(final int row, final int col, final double scalar){ pheromoneLayer.evaporatePheromoneAt(row, col, scalar);}
+	@Override
 	public void dropPheromoneAt(final int row, final int col, final double amount){pheromoneLayer.dropPheromoneAt(row, col, amount);}
 
+	@Override
 	public void setPheromone(final double value){ pheromoneLayer.setPheromone(value); }
+	@Override
 	public void evaporatePheromone(final double scalar){ pheromoneLayer.evaporatePheromone(scalar); }
+	@Override
 	public void dropPheromone(final double amount){ pheromoneLayer.dropPheromone(amount); }
 
 	//MODIFICATORI DEI TILE
+	@Override
 	public TileType getTileTypeAt(int row, int col) { return tileLayer.getTileAt(row, col).getTileType();}
 
-	public void add(){
-		tileLayer.addNode();
-		pheromoneLayer.addNode();
 
-		Controllers.rootView.setSize(rows*tileSize, cols*tileSize);
-	}
-	public void remove(){ tileLayer.removeNode(); pheromoneLayer.removeNode(); }
-
-
-	public void loadTileMap(final Game game, String stagePath){
+	private void loadTileMap(final Game game, String stagePath){
 		try(Scanner s = new Scanner(R.CLASSLOADER.getResourceAsStream(stagePath))){
 			// Leggo le dimensioni della mappa
 			setDimensions(s.nextInt(), s.nextInt(), s.nextDouble());
@@ -78,8 +61,8 @@ public class Map {
 
 			// Leggo dunque la mappa posizione per posizione
 			TileType tt;
-			for(int i = 0; i < rows; i++)
-				for(int j = 0; j < cols; j++){
+			for(int i = 0; i < getRows(); i++)
+				for(int j = 0; j < getCols(); j++){
 					switch (s.nextInt()) {
 					case 0: tt = TileType.FREE; break;
 					case 1: tt = TileType.WALL; break;
@@ -94,7 +77,7 @@ public class Map {
 							break;
 					default: tt = TileType.WALL; break;
 					}
-					tileLayer.setTileAt(i, j, new Tile(tileSize, tt));
+					tileLayer.setTileAt(i, j, new Tile(getTileSize(), tt));
 			}
 		} catch(NoSuchElementException e){
 			System.err.println("Errore durante la lettura della mappa: '" +  stagePath + "'");
@@ -109,7 +92,17 @@ public class Map {
 		}
 	}
 
+	@Override
+	public Node getNode() { return null; }
 
+	@Override
+	public void addNode(){
+		tileLayer.addNode();
+		pheromoneLayer.addNode();
+		Controllers.rootView.setSize(getRows()*getTileSize(), getCols()*getTileSize());
+	}
+	@Override
+	public void removeNode(){ tileLayer.removeNode(); pheromoneLayer.removeNode(); }
 }
 
 

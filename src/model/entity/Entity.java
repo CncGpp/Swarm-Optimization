@@ -2,7 +2,7 @@ package model.entity;
 
 import javafx.scene.Node;
 import model.Drawable;
-import model.map.Map;
+import model.map.AMap;
 import util.Coord;
 import util.Gloabal.Controllers;
 
@@ -12,7 +12,7 @@ public abstract class Entity implements Drawable{
 	private Coord coordinate = new Coord(-1, -1);
 
 	// COSTRUTTORI
-	public Entity(final Map map, final Coord coordinate) {
+	public Entity(final AMap map, final Coord coordinate) {
 		this.setCoordinate(coordinate);
 		node = makeNode(map);
 	}
@@ -34,7 +34,7 @@ public abstract class Entity implements Drawable{
 		return this.getRow() == e.getRow() && this.getCol() == e.getCol();
 	}
 
-	protected abstract Node makeNode(final Map map);
+	protected abstract Node makeNode(final AMap map);
 
 	@Override
 	public Node getNode() {return node; }

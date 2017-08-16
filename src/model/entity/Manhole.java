@@ -2,6 +2,7 @@ package model.entity;
 
 import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
+import model.map.AMap;
 import model.map.Map;
 import util.Coord;
 import util.Gloabal.C;
@@ -13,7 +14,7 @@ public class Manhole extends AManhole{
 	}
 
 	@Override
-	protected Node makeNode(Map map) {
+	protected Node makeNode(AMap map) {
 		final Rectangle r = new Rectangle(map.getTileSize(),map.getTileSize());
 		r.setFill(C.MANHOLE_COLOR);
 		r.relocate(getCol() * map.getTileSize(),  getRow() * map.getTileSize());

@@ -12,12 +12,12 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import model.Game;
+import model.Stage;
 import model.player.PlayerData;
 import model.player.PlayerScore;
 import util.Gloabal.Controllers;
 import util.Chronometer;
 import util.Gloabal;
-import util.Stage;
 import view.gui.PlayerLoginDialog;
 
 public class BottomViewController {

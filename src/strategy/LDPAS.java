@@ -1,7 +1,7 @@
 package strategy;
 
-import model.entity.Bot;
-import model.map.Map;
+import model.entity.ABot;
+import model.map.AMap;
 import util.Vertex;
 import util.Path;
 
@@ -16,12 +16,12 @@ public class LDPAS extends DPAS{
 	}
 
 	@Override
-	public void onlineUpdate(Map map, Bot bot) {
+	public void onlineUpdate(AMap map, ABot bot) {
 		super.onlineUpdate(map, bot);
 	}
 
 	@Override
-	public void offlineUpdate(Map map, final Path path) {
+	public void offlineUpdate(AMap map, final Path path) {
 		map.evaporatePheromone(1 - phi);
 
 		double sum = 0;
@@ -32,7 +32,7 @@ public class LDPAS extends DPAS{
 	}
 
 	@Override
-	public void initialize(Map map) {
+	public void initialize(AMap map) {
 		Q = mapDiameter(map)/(alpha+beta);
 		phi = alpha/mapDiameter(map);
 		map.setPheromone(tau);

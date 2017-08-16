@@ -2,6 +2,7 @@ package model.entity;
 
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
+import model.map.AMap;
 import model.map.Map;
 import util.Coord;
 import util.Gloabal.C;
@@ -17,7 +18,7 @@ public class End extends AEnd{
 	}
 
 	@Override
-	protected Shape makeNode(final Map map) {
+	protected Shape makeNode(final AMap map) {
 		Shape s = new Rectangle(map.getTileSize(),map.getTileSize());
 		s.setFill(C.END_COLOR);
 		s.relocate(getCol() * map.getTileSize(),  getRow() * map.getTileSize());

@@ -12,9 +12,9 @@ import model.entity.AManhole;
 import model.entity.AStart;
 import model.entity.Bot;
 import model.entity.Colony;
+import model.map.AMap;
 import model.map.Map;
 import util.Memento;
-import util.Stage;
 import util.Chronometer;
 import util.Gloabal.Controllers;
 import util.Gloabal.Settings;
@@ -28,7 +28,7 @@ public class Game implements Observer{
 	private ArrayList<AEnd> ends = new ArrayList<>();
 
 	private AColony colony;
-	private Map map;
+	private AMap map;
 
 	public Game(){}
 
@@ -98,7 +98,7 @@ public class Game implements Observer{
 
 
 	public void add(){
-		if(map != null) map.add();
+		if(map != null) map.addNode();
 		if(start != null) start.addNode();
 		for(AManhole m : manholes) m.addNode();
 		for(AEnd e : ends) e.addNode();
@@ -107,7 +107,7 @@ public class Game implements Observer{
 	}
 
 	public void remove(){
-		if(map != null) map.remove();
+		if(map != null) map.removeNode();
 		if(start != null) start.removeNode();
 		for(AManhole m : manholes) m.removeNode();
 		for(AEnd e : ends) e.removeNode();
@@ -125,7 +125,7 @@ public class Game implements Observer{
 
 	///////////////////////////
 	public class GameMemento implements Memento{
-		private Map _map = map;
+		private AMap _map = map;
 		private AColony _colony = colony;
 		private AStart _start;
 		private ArrayList<AManhole> _manholes = manholes;

@@ -1,7 +1,7 @@
 package strategy;
 
-import model.entity.Bot;
-import model.map.Map;
+import model.entity.ABot;
+import model.map.AMap;
 import util.Coord;
 import util.Vertex;
 import util.Path;
@@ -25,14 +25,14 @@ public class AtanAS extends AS{
 	}
 
 	@Override
-	public void onlineUpdate(Map map, Bot bot) {
+	public void onlineUpdate(AMap map, ABot bot) {
 		final Coord pos = bot.getCoordinate();
 		double pLevel = map.getPheromoneAt(pos.getRow(), pos.getCol());
 		map.setPheromoneAt(pos.getRow(), pos.getCol(), func(pLevel, lambda));
 	}
 
 	@Override
-	public void offlineUpdate(Map map, Path path) {
+	public void offlineUpdate(AMap map, Path path) {
 
 		double sum = 0;
 		for (Vertex n : path.getPath()) {
@@ -50,7 +50,7 @@ public class AtanAS extends AS{
 	}
 
 	@Override
-	public void initialize(Map map) {
+	public void initialize(AMap map) {
 		super.initialize(map);
 	}
 

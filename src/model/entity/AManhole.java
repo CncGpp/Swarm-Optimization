@@ -4,22 +4,21 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Random;
-
-import model.map.Map;
+import model.map.AMap;
 import model.map.TileType;
 import util.Coord;
 import util.Vertex;
 
 public abstract class AManhole extends Entity implements Observer{
 
-	public AManhole(final Map map, final Coord coordinate) {
+	public AManhole(final AMap map, final Coord coordinate) {
 		super(map, coordinate);
 	}
-	public AManhole(final Map map, final int row, final int col) {
+	public AManhole(final AMap map, final int row, final int col) {
 		this(map, new Coord(row, col));
 	}
 
-	public boolean teleport(final Map map, final ABot b){
+	public boolean teleport(final AMap map, final ABot b){
 		final Random r = new Random();
 
 		//Ho 20 possibilita' di trovare una cella libera per il teletrasporto.

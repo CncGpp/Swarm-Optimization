@@ -3,8 +3,8 @@ package strategy;
 import java.util.ArrayList;
 import java.util.Random;
 
-import model.entity.Bot;
-import model.map.Map;
+import model.entity.ABot;
+import model.map.AMap;
 import util.Vertex;
 import util.Path;
 
@@ -14,7 +14,7 @@ public class TRAS extends ColonyStrategy{
 	protected Random r =  new Random();
 
 	@Override
-	public Vertex selectNextMove(Map map, Bot bot) {
+	public Vertex selectNextMove(AMap map, ABot bot) {
 		ArrayList<Vertex> newDirections = new ArrayList<>();		//Array di nodi nell'intorno 3x3 DA VISITARE
 		ArrayList<Vertex> oldDirections = new ArrayList<>();		//Array di nodi nell'intorno 3x3 GIA' VISITATI
 		bot.getNeighbors(newDirections, oldDirections);
@@ -28,10 +28,10 @@ public class TRAS extends ColonyStrategy{
 	}
 
 	@Override
-	public void onlineUpdate(Map map, Bot bot) {}
+	public void onlineUpdate(AMap map, ABot bot) {}
 	@Override
-	public void offlineUpdate(Map map, Path path) {}
+	public void offlineUpdate(AMap map, Path path) {}
 	@Override
-	public void initialize(Map map) { map.setPheromone(0); }
+	public void initialize(AMap map) { map.setPheromone(0); }
 
 }
