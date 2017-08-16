@@ -34,7 +34,7 @@ public class Bot extends Entity{
 		c.setFill(C.MICROBOT_COLOR);
 		c.setStrokeWidth(0.3);
 		c.setStroke(Color.BLACK);
-		draw();
+		this.draw();
 	}
 
 	public void move(){
@@ -51,15 +51,6 @@ public class Bot extends Entity{
 		setCoordinate(coord);
 		this.draw();
 	}
-
-	/*
-	private void translateTo(final Coord coordinate){
-		TranslateTransition translation = new TranslateTransition(Duration.millis(Settings.UPDATE_DELAY/2), c);
-		translation.setByX((coordinate.getCol() - this.getCoordinate().getCol()) * map.getTileSize());
-		translation.setByY((coordinate.getRow() - this.getCoordinate().getRow()) * map.getTileSize());
-		translation.play();
-	}
-*/
 
 	/**
 	 * La funzione permette di ottenere le possibili che si trovano in un 8-connesso.
@@ -103,7 +94,7 @@ public class Bot extends Entity{
 	}
 
 
-	public void draw(){
+	private void draw(){
 		final Map map = colony.getMap();
 		c.relocate(getCol() * map.getTileSize(),  getRow() * map.getTileSize());
 	}
