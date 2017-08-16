@@ -38,4 +38,18 @@ public class LDPAS extends DPAS{
 		map.setPheromone(tau);
 	}
 
+	@Override
+	public String getStrategyName() {
+		return "Linear Decreasing Path Ant-System";
+	}
+
+	@Override
+	public String getStrategyDescriprion() {
+		return  "nmncmn sfdlhsd,fsd fl jshdfjshdfj jsdhf sdjhf sj dhfhjjh jsoipoi poie opadpo asdj "
+			  + "Non so cosa scrivere blabla poi si vede jsodfho sjdhfksdh lhflsdjhfs lore ipsum";
+	}
+
+	@Override
+	public ColonyStrategy makeStrategy() { return new LDPAS(); }
+
 }

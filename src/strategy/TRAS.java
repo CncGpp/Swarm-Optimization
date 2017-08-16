@@ -34,4 +34,19 @@ public class TRAS extends ColonyStrategy{
 	@Override
 	public void initialize(AMap map) { map.setPheromone(0); }
 
+	@Override
+	public String getStrategyName() {
+		return "True Random";
+	}
+
+	@Override
+	public String getStrategyDescriprion() {
+		return  "In questa strategia non viene applicato nessun algoritmo basato sulle formiche "
+			  + "i movimenti dei microbot sono pseudocasuali e non dipendenti dal feromone. "
+			  + "Questa strategia piò essere utilizzata come base di paragone.";
+	}
+
+	@Override
+	public ColonyStrategy makeStrategy() { return new TRAS(); }
+
 }

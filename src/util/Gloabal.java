@@ -4,17 +4,21 @@ import java.util.Arrays;
 import java.util.List;
 
 import javafx.scene.paint.Color;
+import strategy.AtanAS;
+import strategy.ColonyStrategy;
 import view.BottomViewController;
 import view.RootViewController;
 import view.gui.ChronometerController;
 import view.gui.InfoController;
 import view.gui.RankController;
+import view.gui.SettingController;
 
 public abstract class Gloabal {
 
 	public abstract static class Settings{
 		public final static int UPDATE_DELAY = 25;
 		public final static int BOT_NUMBER = 50;
+		public static ColonyStrategy COLONY_STRATEGY = new AtanAS();
 	}
 
 	public static class C{	//Colori
@@ -69,6 +73,7 @@ public abstract class Gloabal {
 		public static ChronometerController chronometerController;
 		public static RankController rankController;
 		public static InfoController infoController;
+		public static SettingController settingController;
 	}
 
 }

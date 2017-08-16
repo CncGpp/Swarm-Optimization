@@ -14,12 +14,9 @@ public class AS extends ColonyStrategy{
 
 	protected double alpha = 8;
 	protected double beta = 2;
-
 	protected double phi = 0.95;
 	protected double rho = 0.10;
-
 	protected double tau = .2;
-
 
 	private double totalNeighborsGoodness(AMap map, ArrayList<Vertex> directions){
 		double totalGoodness = 0;				//feromone TOTALE presente sui nodi considerati.
@@ -86,5 +83,19 @@ public class AS extends ColonyStrategy{
 	public void initialize(AMap map) {
 		map.setPheromone(tau);
 	}
+
+	@Override
+	public String getStrategyName() {
+		return "Ant-System";
+	}
+
+	@Override
+	public String getStrategyDescriprion() {
+		return  "Si tratta del primo algoritmo proposto basato sul comportamento delle formiche. "
+			  + "Non so cosa scrivere blabla poi si vede jsodfho sjdhfksdh lhflsdjhfs lore ipsum";
+	}
+
+	@Override
+	public ColonyStrategy makeStrategy() { return new AS(); }
 
 }

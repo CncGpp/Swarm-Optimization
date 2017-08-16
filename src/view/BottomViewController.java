@@ -6,7 +6,6 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
-import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -57,9 +56,23 @@ public class BottomViewController {
     }
 
     @FXML
+    void settingButtonHandler(MouseEvent event){
+    	Controllers.rankController.hide();
+    	rankSelection.setVisible(false);
+    	Controllers.infoController.hide();
+    	infoSelection.setVisible(false);
+
+    	Controllers.settingController.toggle();
+    	settingSelection.setVisible(!settingSelection.isVisible());
+    }
+
+    @FXML
     void rankButtonHandler(MouseEvent event) {
     	Controllers.infoController.hide();
     	infoSelection.setVisible(false);
+    	Controllers.settingController.hide();
+    	settingSelection.setVisible(false);
+
     	Controllers.rankController.toggle();
     	rankSelection.setVisible(!rankSelection.isVisible());
     }
@@ -68,6 +81,9 @@ public class BottomViewController {
     void infoButtonHandler(MouseEvent event){
     	Controllers.rankController.hide();
     	rankSelection.setVisible(false);
+    	Controllers.settingController.hide();
+    	settingSelection.setVisible(false);
+
     	Controllers.infoController.toggle();
     	infoSelection.setVisible(!infoSelection.isVisible());
     }
@@ -85,20 +101,26 @@ public class BottomViewController {
     void initialize() {
         assert startButton != null : "fx:id=\"startButton\" was not injected: check your FXML file 'BottomView.fxml'.";
         Controllers.bottomViewController = this;
+        /*
         //TODO: PER ORA L'HO DISABILITATO...
         ColorAdjust grayscale = new ColorAdjust();
         grayscale.setSaturation(-1);
         settingButton.setEffect(grayscale);
+        */
     }
 
     ////////// METODI DI CLASSE ////////////////
     public void setGame(Game game){ this.g = game;}
     public void cloaseAll(){
     	Controllers.rankController.hide();
-    	Controllers.infoController.toggle();
+    	Controllers.infoController.hide();
+    	Controllers.settingController.hide();
+    	rankSelection.setVisible(false);
+    	infoSelection.setVisible(false);
+    	settingSelection.setVisible(false);
 	}
 
-    private void initializeNewGame(){
+    public void initializeNewGame(){
     	this.pauseGame();
 		this.stage = new Stage(0);
 		g.newGame(this.stage);

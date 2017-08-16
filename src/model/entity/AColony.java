@@ -6,19 +6,20 @@ import java.util.Observable;
 import javafx.scene.Node;
 import model.Drawable;
 import model.map.AMap;
-import strategy.AtanAS;
 import strategy.ColonyStrategy;
 import util.Coord;
+import util.Gloabal.Settings;
 
 public abstract class AColony extends Observable implements Drawable{
 
 	private AMap map;
 	private ArrayList<ABot> bots;
 	private ArrayList<ABot> toRemove = new ArrayList<>();
-	private ColonyStrategy strategy = new AtanAS();
+	private ColonyStrategy strategy;
 
 	public AColony(final AMap map, final int botCount, final AStart start) {
 		this.setMap(map);
+		this.setStrategy(Settings.COLONY_STRATEGY.makeStrategy());
 
 		bots =  new ArrayList<>();
 		for(int i = 0; i < botCount; i++){

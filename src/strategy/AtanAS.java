@@ -40,18 +40,36 @@ public class AtanAS extends AS{
 			sum+=n.getWeight();
 		}
 
-		for(int i = 0; i < map.getRows(); i++){
+		for(int i = 0; i < map.getRows(); i++)
 			for(int j = 0; j < map.getCols(); j++){
 				double pLevel = map.getPheromoneAt(i, j);
 				map.setPheromoneAt(i, j, func(pLevel, omega));
 			}
-		}
-
 	}
 
 	@Override
 	public void initialize(AMap map) {
 		super.initialize(map);
 	}
+
+
+	@Override
+	public String getStrategyName() {
+		return "Arctan Ant-System";
+	}
+
+	@Override
+	public String getStrategyDescriprion() {
+		return  "Un'evoluzione dell'Ant-System particolarmente efficace. Ogni volta che una soluzione è stata trovata Il "
+			  + "ferormone viene distribuito descrescentemente e linearmente a retroso sul percorso effettuato dalla "
+			  + "formica. Le fasi di aggiornamento, online e offline sono effettuate utilizzando la funzione arcotangente "
+			  + "essa permette di ridurre in maniera maggiore i valori bassi di feromone e in maniera minore i valori alti "
+			  + "In questo modo si favorisce il concetramento del feromone intorno all'uscita che si riduce man mano che "
+			  + "ci si allontana portando i microbot 'risalire' il feromone fino all'uscita.";
+	}
+
+	@Override
+	public ColonyStrategy makeStrategy() { return new AtanAS(); }
+
 
 }

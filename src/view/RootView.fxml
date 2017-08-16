@@ -27,6 +27,11 @@
                         <fx:include source="gui/InfoView.fxml" />
                      </children>
                   </Pane>
+                  <Pane AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="5.0">
+                     <children>
+                        <fx:include source="gui/SettingView.fxml" />
+                     </children>
+                  </Pane>
                </children>
             </AnchorPane>
          </children>

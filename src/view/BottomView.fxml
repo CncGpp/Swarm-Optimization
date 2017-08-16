@@ -50,7 +50,7 @@
       </HBox>
       <HBox spacing="12.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="2.0">
          <children>
-            <ImageView fx:id="settingButton" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="settingButton" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#settingButtonHandler" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../res/icon/setting.png" />
                </image>
