@@ -12,44 +12,50 @@ import util.Gloabal.C;
 import util.Vertex;
 import util.Path;
 
-public class Bot extends Entity{
+public class Bot extends ABot{
 
-	private Circle c;
-
-	private Colony colony;
 	boolean visited[][];
 	private Path path = new Path();
 
-	public Bot(final Colony colony) {
-		this(colony, -1, -1);
+	public Bot(final AColony colony) {
+		this(colony, new Coord(-1,-1));
 	}
 
-	public Bot(final Colony colony, final int row, final int col){
-		super(new Coord(row,col));
+	public Bot(final AColony colony, final Coord coordinate){
+		super(colony, coordinate);
 		this.colony = colony;
 
 		visited = new boolean[colony.getMap().getRows()][colony.getMap().getCols()];
+	}
 
-		c = new Circle(colony.getMap().getTileSize()/2);
+	@Override
+	protected Node makeNode(Map map) {
+		final Circle c = new Circle(map.getTileSize()/2);
 		c.setFill(C.MICROBOT_COLOR);
 		c.setStrokeWidth(0.3);
 		c.setStroke(Color.BLACK);
-		this.draw();
+		c.relocate(getCol() * map.getTileSize(),  getRow() * map.getTileSize());
+		return c;
 	}
 
-	public void move(){
+	@Override
+	public boolean move(){
 		colony.getStrategy().onlineUpdate(colony.getMap(), this);
 		Vertex nextPos = colony.getStrategy().selectNextMove(colony.getMap(), this);
-		moveTo(nextPos);
+		return moveTo(nextPos);
 	}
 
-	public void moveTo(Vertex coord){
+	@Override
+	public boolean moveTo(final Vertex coord){
+		if(colony.getMap().getTileTypeAt(getRow(), getCol()) == TileType.WALL) return false;
+
 		if(!visited[coord.getRow()][coord.getCol()]){
 			path.addNode(coord);
 			visited[coord.getRow()][coord.getCol()] = true;
 		}
 		setCoordinate(coord);
 		this.draw();
+		return true;
 	}
 
 	/**
@@ -61,6 +67,7 @@ public class Bot extends Entity{
 	 * @param oldDirections è un parametro di <code>in/out</code> dove verranno ritornate le vecchie direzioni, ovvero
 	 * quelle che nell'intorno sono state già visitate dal bot.
 	 */
+	@Override
 	public void getNeighbors(ArrayList<Vertex> newDirections, ArrayList<Vertex> oldDirections){
 		final Map map = colony.getMap();
 		//Il bot può muoversi secondo un intorno 8-connesso di dimensione 3x3
@@ -86,19 +93,17 @@ public class Bot extends Entity{
 		}
 	}
 
+	@Override
 	public void leaved(){
 		//System.out.println("Sono uscito dal labirinto YEAHHH");
 		colony.getStrategy().offlineUpdate(colony.getMap(), path);
-		colony.hasLeft(this);
+		colony.removeBot(this);
 		this.removeNode();
 	}
 
-
 	private void draw(){
 		final Map map = colony.getMap();
-		c.relocate(getCol() * map.getTileSize(),  getRow() * map.getTileSize());
+		this.getNode().relocate(getCol() * map.getTileSize(),  getRow() * map.getTileSize());
 	}
 
-	@Override
-	public Node getNode(){ return c; }
 }

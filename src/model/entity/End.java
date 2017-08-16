@@ -1,35 +1,27 @@
 package model.entity;
 
-import java.util.ArrayList;
-import java.util.Observable;
-import java.util.Observer;
-
-import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.shape.Shape;
 import model.map.Map;
 import util.Coord;
 import util.Gloabal.C;
 
-public class End extends Entity implements Observer{
+public class End extends AEnd{
 
-	Rectangle r;
+	public End(final Map map, final Coord coordinate) {
+		super(map,coordinate);
+	}
 
-	public End(final Map map, final int row, final int col) {
-		super(new Coord(row, col));
-		r = new Rectangle(map.getTileSize(),map.getTileSize());
-		r.setFill(C.END_COLOR);
-		r.relocate(getCol() * map.getTileSize(),  getRow() * map.getTileSize());
+	public End(final Map map, final int row, final int col){
+		this(map, new Coord(row,col));
 	}
 
 	@Override
-	public Node getNode(){ return r;}
-
-	@Override
-	public void update(Observable o, Object arg) {
-		if(!(o instanceof Colony)) return;
-
-		@SuppressWarnings("unchecked")
-		ArrayList<Bot> bots = (ArrayList<Bot>)arg;
-		for(Bot b : bots) if(this.isIntersect(b)) { b.leaved(); }
+	protected Shape makeNode(final Map map) {
+		Shape s = new Rectangle(map.getTileSize(),map.getTileSize());
+		s.setFill(C.END_COLOR);
+		s.relocate(getCol() * map.getTileSize(),  getRow() * map.getTileSize());
+		return s;
 	}
+
 }

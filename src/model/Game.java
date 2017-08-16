@@ -6,11 +6,12 @@ import java.util.Observer;
 
 import application.Main;
 import javafx.application.Platform;
+import model.entity.AColony;
+import model.entity.AEnd;
+import model.entity.AManhole;
+import model.entity.AStart;
 import model.entity.Bot;
 import model.entity.Colony;
-import model.entity.End;
-import model.entity.Manhole;
-import model.entity.Start;
 import model.map.Map;
 import util.Memento;
 import util.Stage;
@@ -22,11 +23,11 @@ public class Game implements Observer{
 
 	private GameStatus gameStatus = GameStatus.NOTREADY;
 
-	private Start start;
-	private ArrayList<Manhole> manholes = new ArrayList<>();
-	private ArrayList<End> ends = new ArrayList<>();
+	private AStart start;
+	private ArrayList<AManhole> manholes = new ArrayList<>();
+	private ArrayList<AEnd> ends = new ArrayList<>();
 
-	private Colony colony;
+	private AColony colony;
 	private Map map;
 
 	public Game(){}
@@ -48,8 +49,8 @@ public class Game implements Observer{
 		colony = new Colony(map, Settings.BOT_NUMBER, start);
 
 		//AGGIUNGO GLI OBSERVER!
-		for(End e : ends) colony.addObserver(e);
-		for(Manhole m : manholes) colony.addObserver(m);
+		for(AEnd e : ends) colony.addObserver(e);
+		for(AManhole m : manholes) colony.addObserver(m);
 		colony.addObserver(this);
 
 		// Il gioco è pronto per partire!
@@ -91,26 +92,26 @@ public class Game implements Observer{
 
 	// METODI GETTER & SETTER
 	public GameStatus getStatus(){ return gameStatus; }
-	public void setStart(final Start start){this.start = start;}
-	public void addEnd(final End end){this.ends.add(end);}
-	public void addManhole(final Manhole manhole){this.manholes.add(manhole);}
+	public void setStart(final AStart start){this.start = start;}
+	public void addEnd(final AEnd end){this.ends.add(end);}
+	public void addManhole(final AManhole manhole){this.manholes.add(manhole);}
 
 
 	public void add(){
 		if(map != null) map.add();
 		if(start != null) start.addNode();
-		for(Manhole m : manholes) m.addNode();
-		for(End e : ends) e.addNode();
-		if(colony != null) colony.add();
+		for(AManhole m : manholes) m.addNode();
+		for(AEnd e : ends) e.addNode();
+		if(colony != null) colony.addNode();
 		Main.stage.sizeToScene();
 	}
 
 	public void remove(){
 		if(map != null) map.remove();
 		if(start != null) start.removeNode();
-		for(Manhole m : manholes) m.removeNode();
-		for(End e : ends) e.removeNode();
-		if(colony != null) colony.remove();
+		for(AManhole m : manholes) m.removeNode();
+		for(AEnd e : ends) e.removeNode();
+		if(colony != null) colony.removeNode();
 	}
 
 	@Override
@@ -125,10 +126,10 @@ public class Game implements Observer{
 	///////////////////////////
 	public class GameMemento implements Memento{
 		private Map _map = map;
-		private Colony _colony = colony;
-		private Start _start;
-		private ArrayList<Manhole> _manholes = manholes;
-		private ArrayList<End> _ends = ends;
+		private AColony _colony = colony;
+		private AStart _start;
+		private ArrayList<AManhole> _manholes = manholes;
+		private ArrayList<AEnd> _ends = ends;
 		@Override public void restoreMemento(){
 			Game.this.remove();
 			map = _map;

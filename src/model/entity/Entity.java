@@ -1,16 +1,21 @@
 package model.entity;
 
+import javafx.scene.Node;
 import model.Drawable;
+import model.map.Map;
 import util.Coord;
 import util.Gloabal.Controllers;
 
 public abstract class Entity implements Drawable{
 
+	protected Node node;
 	private Coord coordinate = new Coord(-1, -1);
 
 	// COSTRUTTORI
-	public Entity() {}
-	public Entity(final Coord coordinate) {this.setCoordinate(coordinate);}
+	public Entity(final Map map, final Coord coordinate) {
+		this.setCoordinate(coordinate);
+		node = makeNode(map);
+	}
 
 	// METODI GETTER & SETTER
 	public Coord getCoordinate(){ return coordinate; }
@@ -28,6 +33,11 @@ public abstract class Entity implements Drawable{
 	public boolean isIntersect(final Entity e){
 		return this.getRow() == e.getRow() && this.getCol() == e.getCol();
 	}
+
+	protected abstract Node makeNode(final Map map);
+
+	@Override
+	public Node getNode() {return node; }
 
 	@Override
 	public void addNode(){ Controllers.rootView.addNode(this); }
