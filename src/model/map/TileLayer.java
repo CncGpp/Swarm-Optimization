@@ -1,9 +1,11 @@
 package model.map;
 
 import javafx.scene.Group;
+import javafx.scene.Node;
+import model.Drawable;
 import util.Gloabal.Controllers;
 
-public class TileLayer {
+public class TileLayer implements Drawable{
 	private Group group;
 	private Tile[][] layer;
 	private double tileSize;
@@ -22,6 +24,10 @@ public class TileLayer {
 	}
 	public Tile getTileAt(final int row, final int col){ return layer[row][col];}
 
-	public void add(){ Controllers.tileMap.add(group);}
-	public void remove(){ Controllers.tileMap.remove(group); }
+	@Override
+	public Node getNode() {return group;}
+	@Override
+	public void addNode(){ Controllers.rootView.addNode(this);}
+	@Override
+	public void removeNode(){ Controllers.rootView.removeNode(this); }
 }

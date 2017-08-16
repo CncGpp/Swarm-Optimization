@@ -42,6 +42,6 @@ public class Colony extends Observable{
 		toRemove.add(b);
 	}
 
-	public void add(){ for(Bot b : bots) b.add(); }
-	public void remove(){ for(Bot b : bots) b.remove();}
+	public void add(){ for(Bot b : bots) b.addNode(); }
+	public void remove(){ for(Bot b : bots) b.removeNode();}
 }

@@ -4,7 +4,6 @@ import application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.layout.AnchorPane;
-import util.Gloabal.Controllers;
 
 public class EntityMapController {
 
@@ -18,9 +17,7 @@ public class EntityMapController {
     }
 
     @FXML
-    void initialize(){
-    	Controllers.entityMap = this;
-    }
+    void initialize(){}
 
     /** METODI DI MANIPOLAZIONE DELLA UI **/
     public void add(final Node node){ drawingPane.getChildren().add(node); }

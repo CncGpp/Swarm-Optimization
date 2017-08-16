@@ -1,9 +1,11 @@
 package model.map;
 
 import javafx.scene.Group;
+import javafx.scene.Node;
+import model.Drawable;
 import util.Gloabal.Controllers;
 
-public class PheromoneLayer {
+public class PheromoneLayer implements Drawable{
 	private Group group;
 	private Pheromone[][] layer;
 	private double tileSize;
@@ -44,7 +46,11 @@ public class PheromoneLayer {
 		for(Pheromone[] uu : layer) for(Pheromone u : uu) u.dropPheromone(amount);
 	}
 
-	public void add(){ Controllers.pheromoneMap.add(group);}
-	public void remove(){ Controllers.pheromoneMap.remove(group); }
+	@Override
+	public Node getNode() {return group;}
+	@Override
+	public void addNode(){ Controllers.rootView.addNode(this);}
+	@Override
+	public void removeNode(){ Controllers.rootView.removeNode(this); }
 
 }

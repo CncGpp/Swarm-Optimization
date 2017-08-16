@@ -1,8 +1,10 @@
 package model.entity;
 
+import model.Drawable;
 import util.Coord;
+import util.Gloabal.Controllers;
 
-public abstract class Entity {
+public abstract class Entity implements Drawable{
 
 	private Coord coordinate = new Coord(-1, -1);
 
@@ -27,6 +29,9 @@ public abstract class Entity {
 		return this.getRow() == e.getRow() && this.getCol() == e.getCol();
 	}
 
-	public abstract void add();
-	public abstract void remove();
+	@Override
+	public void addNode(){ Controllers.rootView.addNode(this); }
+
+	@Override
+	public void removeNode(){ Controllers.rootView.removeNode(this);}
 }

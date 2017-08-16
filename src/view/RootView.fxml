@@ -9,7 +9,12 @@
    <center>
       <StackPane prefHeight="400.0" prefWidth="550.0" BorderPane.alignment="CENTER">
          <children>
-            <StackPane fx:id="stackPane_layers" />
+            <StackPane fx:id="stackPane_layers">
+               <children>
+                  <fx:include fx:id="tileMap" source="map/TileMap.fxml" />
+                  <fx:include fx:id="pheromoneMap" source="map/PheromoneMap.fxml" />
+                  <fx:include fx:id="entityMap" source="map/EntityMap.fxml" />
+               </children></StackPane>
             <AnchorPane>
                <children>
                   <Pane AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="112.0">

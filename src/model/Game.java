@@ -98,19 +98,28 @@ public class Game implements Observer{
 
 	public void add(){
 		if(map != null) map.add();
-		if(start != null) start.add();
-		for(Manhole m : manholes) m.add();
-		for(End e : ends) e.add();
+		if(start != null) start.addNode();
+		for(Manhole m : manholes) m.addNode();
+		for(End e : ends) e.addNode();
 		if(colony != null) colony.add();
 		Main.stage.sizeToScene();
 	}
 
 	public void remove(){
 		if(map != null) map.remove();
-		if(start != null) start.remove();
-		for(Manhole m : manholes) m.remove();
-		for(End e : ends) e.remove();
+		if(start != null) start.removeNode();
+		for(Manhole m : manholes) m.removeNode();
+		for(End e : ends) e.removeNode();
 		if(colony != null) colony.remove();
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		if(!(o instanceof Colony)) return;
+
+		@SuppressWarnings("unchecked")
+		ArrayList<Bot> bots = (ArrayList<Bot>)arg;
+		if(bots.isEmpty()) this.endGame();
 	}
 
 	///////////////////////////
@@ -133,14 +142,7 @@ public class Game implements Observer{
 	public Memento getMemento(){return new GameMemento();}
 	///////////////////////////
 
-	@Override
-	public void update(Observable o, Object arg) {
-		if(!(o instanceof Colony)) return;
 
-		@SuppressWarnings("unchecked")
-		ArrayList<Bot> bots = (ArrayList<Bot>)arg;
-		if(bots.isEmpty()) this.endGame();
-	}
 }
 
 

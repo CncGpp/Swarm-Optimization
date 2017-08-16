@@ -1,10 +1,10 @@
 package model.entity;
 
+import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
 import model.map.Map;
 import util.Coord;
 import util.Gloabal.C;
-import util.Gloabal.Controllers;
 
 public class Start extends Entity{
 
@@ -18,8 +18,5 @@ public class Start extends Entity{
 	}
 
 	@Override
-	public void add() { Controllers.entityMap.add(r); }
-
-	@Override
-	public void remove() { Controllers.entityMap.remove(r); }
+	public Node getNode(){ return r; }
 }

@@ -60,14 +60,12 @@ public class Map {
 	public TileType getTileTypeAt(int row, int col) { return tileLayer.getTileAt(row, col).getTileType();}
 
 	public void add(){
-		tileLayer.add();
-		pheromoneLayer.add();
+		tileLayer.addNode();
+		pheromoneLayer.addNode();
 
-		Controllers.tileMap.setSize(rows*tileSize, cols*tileSize);
-		Controllers.pheromoneMap.setSize(rows*tileSize, cols*tileSize);
-		Controllers.entityMap.setSize(rows*tileSize, cols*tileSize);
+		Controllers.rootView.setSize(rows*tileSize, cols*tileSize);
 	}
-	public void remove(){ tileLayer.remove(); pheromoneLayer.remove(); }
+	public void remove(){ tileLayer.removeNode(); pheromoneLayer.removeNode(); }
 
 
 	public void loadTileMap(final Game game, String stagePath){

@@ -3,12 +3,12 @@ package strategy;
 import model.entity.Bot;
 import model.map.Map;
 import util.Coord;
-import util.Node;
+import util.Vertex;
 import util.Path;
 
 public class AtanAS extends AS{
 
-	protected double lambda = 2.0d;
+	protected double lambda = 3.0d;
 	protected double omega = 1.5d;
 
 	public AtanAS() {
@@ -35,7 +35,7 @@ public class AtanAS extends AS{
 	public void offlineUpdate(Map map, Path path) {
 
 		double sum = 0;
-		for (Node n : path.getPath()) {
+		for (Vertex n : path.getPath()) {
 			map.dropPheromoneAt(n.getRow(), n.getCol(), sum/path.getLenght());
 			sum+=n.getWeight();
 		}

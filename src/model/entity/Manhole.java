@@ -5,13 +5,13 @@ import java.util.Observable;
 import java.util.Observer;
 import java.util.Random;
 
+import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
 import model.map.Map;
 import model.map.TileType;
 import util.Coord;
 import util.Gloabal.C;
-import util.Gloabal.Controllers;
-import util.Node;
+import util.Vertex;
 
 public class Manhole extends Entity implements Observer{
 
@@ -33,19 +33,15 @@ public class Manhole extends Entity implements Observer{
 			final int _row = r.nextInt(map.getRows());
 			final int _col = r.nextInt(map.getCols());
 			if(map.getTileTypeAt(_row, _col) != TileType.WALL) {
-				b.moveTo( new Node(_row,_col, 0) );
+				b.moveTo( new Vertex(_row,_col, 0) );
 				return true;
 			}
 		}
 		return false;
 	}
 
-
 	@Override
-	public void add() { Controllers.entityMap.add(r); }
-
-	@Override
-	public void remove() { Controllers.entityMap.remove(r); }
+	public Node getNode(){ return r;}
 
 	@Override
 	public void update(Observable o, Object arg) {

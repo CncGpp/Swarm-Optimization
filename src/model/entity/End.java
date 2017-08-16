@@ -4,11 +4,11 @@ import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
 
+import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
 import model.map.Map;
 import util.Coord;
 import util.Gloabal.C;
-import util.Gloabal.Controllers;
 
 public class End extends Entity implements Observer{
 
@@ -22,10 +22,7 @@ public class End extends Entity implements Observer{
 	}
 
 	@Override
-	public void add() { Controllers.entityMap.add(r); }
-
-	@Override
-	public void remove() { Controllers.entityMap.remove(r); }
+	public Node getNode(){ return r;}
 
 	@Override
 	public void update(Observable o, Object arg) {

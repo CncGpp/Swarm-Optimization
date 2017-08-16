@@ -5,7 +5,7 @@ import java.util.Random;
 
 import model.entity.Bot;
 import model.map.Map;
-import util.Node;
+import util.Vertex;
 import util.Path;
 
 public class AS extends ColonyStrategy{
@@ -21,14 +21,14 @@ public class AS extends ColonyStrategy{
 	protected double tau = .2;
 
 
-	private double totalNeighborsGoodness(Map map, ArrayList<Node> directions){
+	private double totalNeighborsGoodness(Map map, ArrayList<Vertex> directions){
 		double totalGoodness = 0;				//feromone TOTALE presente sui nodi considerati.
-		for (Node n : directions)
+		for (Vertex n : directions)
 			totalGoodness+=nodeGoodness(map, n);
 		return totalGoodness;
 	}
 
-	private double nodeGoodness(final Map map, final Node node){
+	private double nodeGoodness(final Map map, final Vertex node){
 		return Math.pow(map.getPheromoneAt(node.getRow(), node.getCol()) , alpha) * Math.pow( (1.0d)/node.getWeight(), beta);
 	}
 
@@ -36,13 +36,13 @@ public class AS extends ColonyStrategy{
 
 
 	@Override
-	public Node selectNextMove(final Map map, final Bot bot) {
+	public Vertex selectNextMove(final Map map, final Bot bot) {
 
-		ArrayList<Node> newDirections = new ArrayList<>();		//Array di nodi nell'intorno 3x3 DA VISITARE
-		ArrayList<Node> oldDirections = new ArrayList<>();		//Array di nodi nell'intorno 3x3 GIA' VISITATI
+		ArrayList<Vertex> newDirections = new ArrayList<>();		//Array di nodi nell'intorno 3x3 DA VISITARE
+		ArrayList<Vertex> oldDirections = new ArrayList<>();		//Array di nodi nell'intorno 3x3 GIA' VISITATI
 		bot.getNeighbors(newDirections, oldDirections);
 
-		ArrayList<Node> directions = newDirections;				//Inizialmente, i nodi da considerare sono quelli "nuovi" ma se ho
+		ArrayList<Vertex> directions = newDirections;				//Inizialmente, i nodi da considerare sono quelli "nuovi" ma se ho
 		if(newDirections.isEmpty()) directions = oldDirections; //Già visitato tutto l'intorno allora scelgo la direzione fra quelle visitate
 
 		if(directions.isEmpty()) return null;				//Se non ci sono direzioni possibili allora ritorno.
@@ -59,7 +59,7 @@ public class AS extends ColonyStrategy{
 
 		while(sum < max){
 			if(i == directions.size()) break;
-			Node node = directions.get(i);
+			Vertex node = directions.get(i);
 			sum+=nodeGoodness(map, node);
 			i++;
 		}
@@ -78,7 +78,7 @@ public class AS extends ColonyStrategy{
 		map.evaporatePheromone(1.0d - rho);
 		map.dropPheromone(tau*rho);
 
-		for(Node n : path.getPath()){
+		for(Vertex n : path.getPath()){
 			map.dropPheromoneAt(n.getRow(), n.getCol(), mapDiameter(map)/path.getLenght());
 		}
 	}

@@ -5,12 +5,10 @@ import java.util.List;
 
 import javafx.scene.paint.Color;
 import view.BottomViewController;
+import view.RootViewController;
 import view.gui.ChronometerController;
 import view.gui.InfoController;
 import view.gui.RankController;
-import view.map.EntityMapController;
-import view.map.PheromoneMapController;
-import view.map.TileMapController;
 
 public abstract class Gloabal {
 
@@ -65,9 +63,7 @@ public abstract class Gloabal {
 	}
 
 	public abstract static class Controllers{
-		public static TileMapController tileMap;
-		public static PheromoneMapController pheromoneMap;
-		public static EntityMapController entityMap;
+		public static RootViewController rootView;
 		public static BottomViewController bottomViewController;
 
 		public static ChronometerController chronometerController;

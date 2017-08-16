@@ -2,7 +2,7 @@ package strategy;
 
 import model.entity.Bot;
 import model.map.Map;
-import util.Node;
+import util.Vertex;
 import util.Path;
 
 
@@ -25,7 +25,7 @@ public class LDPAS extends DPAS{
 		map.evaporatePheromone(1 - phi);
 
 		double sum = 0;
-		for (Node node : path.getPath()) {
+		for (Vertex node : path.getPath()) {
 			map.dropPheromoneAt(node.getRow(), node.getCol(), sum/(Q * path.getLenght()));
 			sum+=node.getWeight();
 		}
