@@ -6,6 +6,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -120,6 +121,20 @@ public class BottomViewController {
     	settingSelection.setVisible(false);
 	}
 
+    private void toggleSettingStatus(){
+
+    	if(settingButton.isDisabled()){
+    		settingButton.setDisable(false);
+    		settingButton.setEffect(null);
+    		return;
+    	}
+
+        ColorAdjust grayscale = new ColorAdjust();
+        grayscale.setSaturation(-1);
+        settingButton.setEffect(grayscale);
+        settingButton.setDisable(true);
+    }
+
     public void initializeNewGame(){
     	this.pauseGame();
 		this.stage = new Stage(0);
@@ -133,6 +148,7 @@ public class BottomViewController {
 		stageLabel.setText( 1 + this.stage.getStageNumber() + "");
     }
     private void startGame(){
+    	 toggleSettingStatus();
 		 Chronometer.start();
 		 g.startGame();
 		 startButton.setImage(new Image(Gloabal.R.PAUSE_ICON_URI));
@@ -144,6 +160,7 @@ public class BottomViewController {
     }
 
     public void stageEnded(){
+    	toggleSettingStatus();
     	if(!stage.nextStage()){
     		System.out.println("Il gioco è finito");
     		playerData.getCurrentPlayer().setTime(Chronometer.getTotalTime());
