@@ -51,7 +51,6 @@ public abstract class Gloabal {
 		public final static String INFO_ICON_URI = CLASSLOADER.getResource("icon/info.png").toExternalForm();
 
 		public final static String USER_ICON_URI = CLASSLOADER.getResource("icon/user.png").toExternalForm();
-		public final static String NOLOGIN_ICON_URI = CLASSLOADER.getResource("icon/noLogin.png").toExternalForm();
 		public final static String CHANGE_ICON_URI = CLASSLOADER.getResource("icon/change.png").toExternalForm();
 
 		public final static String FIRST_ICON_URI =  CLASSLOADER.getResource("icon/1st.png").toExternalForm();

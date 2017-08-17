@@ -72,6 +72,7 @@ public class Main extends Application {
 		stage.setScene(loginScene);
 		stage.setResizable(false);
 		stage.setTitle("Login utente");
+		stage.centerOnScreen();
 		stage.show();
 	}
 
@@ -79,6 +80,7 @@ public class Main extends Application {
 		stage.setScene(gameScene);
 		stage.setResizable(false);
 		stage.setTitle("Swarm Optimization - Progetto programmazione III   [Giuseppe Cianci Pio]");
+		stage.centerOnScreen();
 		stage.show();
 	}
 

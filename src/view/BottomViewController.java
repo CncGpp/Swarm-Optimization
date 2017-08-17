@@ -192,7 +192,6 @@ public class BottomViewController {
 		startButton.setImage(new Image(Gloabal.R.START_ICON_URI));
 
 		playerData.logoutPlayer();											//Altrimenti effettuo il "logout"
-		loginButton.setImage(new Image(Gloabal.R.NOLOGIN_ICON_URI));
 		this.application.setLoginView();
 		return false;
     }
