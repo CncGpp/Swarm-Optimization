@@ -6,7 +6,10 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import model.Game;
 import util.Gloabal;
+import util.Gloabal.Controllers;
 import view.BottomViewController;
+import view.LoginController;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.text.Font;
@@ -15,11 +18,14 @@ import javafx.fxml.FXMLLoader;
 
 public class Main extends Application {
 	public static Stage stage;
+	private static Game game;
+
+	private Scene loginScene;
+	private Scene gameScene;
 
 	@Override
 	public void start(Stage primaryStage) {
 		stage = primaryStage;
-		BottomViewController bottomViewController = null;
 
 		try {
 			Font.loadFont(Gloabal.R.BOLD_FONT_URI, 24);
@@ -27,31 +33,32 @@ public class Main extends Application {
 			Font.loadFont(Gloabal.R.REGULAR_FONT_URI, 14);
 			Font.loadFont(Gloabal.R.LIGHT_FONT_URI, 18);
 			Font.loadFont(Gloabal.R.MONOSPACE_FONT_URI, 18);
+			//setGameView();
+			//setLoginView();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/RootView.fxml"));
+			BorderPane root = (BorderPane) loader.load();
+			gameScene = new Scene(root);
+			loadBottomView(root).setApplication(this);
 
-
-	        FXMLLoader rootLoader = new FXMLLoader(getClass().getResource("/view/RootView.fxml"));
-	        BorderPane root = (BorderPane) rootLoader.load();
-
-	        //CARICO LA UI DELL'APP
-	        bottomViewController = loadBottomView(root);
-
-	        Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
-			primaryStage.setResizable(false);
-			primaryStage.setTitle("Swarm Optimization - Progetto programmazione III   [Giuseppe Cianci Pio]");
-			//primaryStage.show();
+			loader = new FXMLLoader(getClass().getResource("/view/LoginView.fxml"));
+			Parent parent = loader.load();
+			((LoginController) loader.getController()).setApplication(this);
+			loginScene = new Scene(parent);
 
 		} catch(Exception e) { e.printStackTrace(); }
 
+		gameInitializer();
+		setLoginView();
+	}
 
-		//*****      QUI CI STA LA MIA APP    ******
-		Game g = new Game();
-		g.newGame();
-
-		if(bottomViewController != null) bottomViewController.setGame(g);
-
-		//Una volta caricata tutta l'app mostro lo stage.
-		stage.show();
+	private void gameInitializer(){
+		if(game == null) {
+			game = new Game();
+			game.newGame();
+		}
+		game.newGame();
+		if(Controllers.bottomViewController == null) throw new IllegalStateException("La view non è stata inizializzata!");
+			Controllers.bottomViewController.setGame(game);
 	}
 
 	private BottomViewController loadBottomView(BorderPane root) throws IOException{
@@ -59,6 +66,22 @@ public class Main extends Application {
         root.setBottom(loader.load());
         return loader.getController();
 	}
+
+
+	public void setLoginView() {
+		stage.setScene(loginScene);
+		stage.setResizable(false);
+		stage.setTitle("Login utente");
+		stage.show();
+	}
+
+	public void setGameView(){
+		stage.setScene(gameScene);
+		stage.setResizable(false);
+		stage.setTitle("Swarm Optimization - Progetto programmazione III   [Giuseppe Cianci Pio]");
+		stage.show();
+	}
+
 
 	public static void main(String[] args) {
 		launch(args);

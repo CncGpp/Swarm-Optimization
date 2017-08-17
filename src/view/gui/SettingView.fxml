@@ -19,7 +19,14 @@
    <children>
       <VBox prefWidth="350.0" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label styleClass="titleLabel" stylesheets="@gui.css" text="Impostazioni di gioco" />
+            <Label styleClass="titleLabel" stylesheets="@gui.css" text="Impostazioni di gioco">
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../res/icon/setting2.png" />
+                     </image>
+                  </ImageView>
+               </graphic></Label>
             <Separator prefWidth="200.0" />
             <VBox spacing="4.0">
                <children>

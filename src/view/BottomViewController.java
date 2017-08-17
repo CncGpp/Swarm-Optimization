@@ -1,6 +1,8 @@
 package view;
 
 import java.util.Optional;
+
+import application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -14,13 +16,14 @@ import javafx.scene.layout.Pane;
 import model.Game;
 import model.Stage;
 import model.player.PlayerData;
-import model.player.PlayerScore;
 import util.Gloabal.Controllers;
 import util.Chronometer;
 import util.Gloabal;
-import view.gui.PlayerLoginDialog;
 
 public class BottomViewController {
+
+	private Main application;
+	public void setApplication(final Main application){this.application = application;}
 
 	private Game g;
 	PlayerData playerData = new PlayerData();
@@ -44,7 +47,7 @@ public class BottomViewController {
     /// METODI
     @FXML
     void startButtonHandle(MouseEvent event) {
-    	if(!playerData.isLogged() && !loginButtonHandler()) return;
+    	if(!playerData.isLogged()) return;
 
     	switch (g.getStatus()) {
 			case NOTREADY:	initializeNewGame(); break;
@@ -90,11 +93,8 @@ public class BottomViewController {
     }
 
     @FXML
-    private boolean loginButtonHandler(){
-    	if(!playerData.isLogged())		//Se nessun player è loggato effettuo il login;
-    		return loginScene();
-    	 else							//Altrimenti il logout
-    		return logoutScene();
+    private void loginButtonHandler(){
+    	if(!this.logoutScene()) g.pauseGame();
     }
 
 
@@ -141,6 +141,7 @@ public class BottomViewController {
 		g.newGame(this.stage);
 		Chronometer.set(0);
 		stageLabel.setText( 1 + stage.getStageNumber() + "");
+		//toggleSettingStatus();
     }
     private void initializeGameStage(){
 		this.pauseGame();
@@ -148,6 +149,7 @@ public class BottomViewController {
 		stageLabel.setText( 1 + this.stage.getStageNumber() + "");
     }
     private void startGame(){
+    	 cloaseAll();
     	 toggleSettingStatus();
 		 Chronometer.start();
 		 g.startGame();
@@ -168,6 +170,7 @@ public class BottomViewController {
     		startButton.setImage(new Image(Gloabal.R.RESTART_ICON_URI));
     	} else {
     		initializeGameStage();
+    		this.startGame();
     	}
     }
 
@@ -190,36 +193,8 @@ public class BottomViewController {
 
 		playerData.logoutPlayer();											//Altrimenti effettuo il "logout"
 		loginButton.setImage(new Image(Gloabal.R.NOLOGIN_ICON_URI));
+		this.application.setLoginView();
 		return false;
-    }
-
-    private boolean loginScene(){
-    	PlayerLoginDialog pid = new PlayerLoginDialog();
-    	Optional<PlayerScore> player = pid.showAndWait();
-
-    	if (player.isPresent() ){
-    		playerData.loginPlayer( player.get() );
-    		if(playerData.thereIsAMemento()) restoreMementoScene();
-
-    		loginButton.setImage(new Image(Gloabal.R.CHANGE_ICON_URI));
-    		return true;
-    	}
-    	return false;
-    }
-
-    private void restoreMementoScene(){
-		Alert al = new Alert(AlertType.CONFIRMATION);						//Creo un alert di conferma
-		al.setTitle("Ripristino partita");
-		al.setHeaderText("Bentornato " + playerData.getCurrentPlayer().getName() + "!");
-		al.setContentText("Vuoi ripristinare lo stato dell'ultima partita?");
-		al.setGraphic(new ImageView(Gloabal.R.CHANGE_ICON_URI));
-
-		Optional<ButtonType> result = al.showAndWait();						//Verifico la scelta
-		if(result.get() == ButtonType.CANCEL) return ;						//Se non si vuole proseguire con il ripristino ritorno
-
-
-    	playerData.restoreCurrentMemento();									//Altrimenti procedo al ripristino
- 		Chronometer.set(playerData.getCurrentPlayer().getTime());
     }
 
 }
