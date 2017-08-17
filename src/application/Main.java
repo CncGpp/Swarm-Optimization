@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import model.Game;
 import util.Gloabal;
 import util.Gloabal.Controllers;
@@ -12,12 +13,14 @@ import view.LoginController;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.fxml.FXMLLoader;
 
 
 public class Main extends Application {
 	public static Stage stage;
+	private static Stage loginStage;
 	private static Game game;
 
 	private Scene loginScene;
@@ -26,6 +29,10 @@ public class Main extends Application {
 	@Override
 	public void start(Stage primaryStage) {
 		stage = primaryStage;
+		loginStage = new Stage();
+		loginStage.initStyle(StageStyle.TRANSPARENT);
+		loginStage.initStyle(StageStyle.TRANSPARENT);
+
 
 		try {
 			Font.loadFont(Gloabal.R.BOLD_FONT_URI, 24);
@@ -44,6 +51,7 @@ public class Main extends Application {
 			Parent parent = loader.load();
 			((LoginController) loader.getController()).setApplication(this);
 			loginScene = new Scene(parent);
+			loginScene.setFill(Color.TRANSPARENT);
 
 		} catch(Exception e) { e.printStackTrace(); }
 
@@ -69,14 +77,16 @@ public class Main extends Application {
 
 
 	public void setLoginView() {
-		stage.setScene(loginScene);
-		stage.setResizable(false);
-		stage.setTitle("Login utente");
-		stage.centerOnScreen();
-		stage.show();
+		stage.hide();
+
+		loginStage.setScene(loginScene);
+		loginStage.centerOnScreen();
+		loginStage.show();
 	}
 
 	public void setGameView(){
+		loginStage.hide();
+
 		stage.setScene(gameScene);
 		stage.setResizable(false);
 		stage.setTitle("Swarm Optimization - Progetto programmazione III   [Giuseppe Cianci Pio]");

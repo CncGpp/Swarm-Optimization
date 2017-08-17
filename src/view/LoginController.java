@@ -1,8 +1,6 @@
 package view;
 
-import java.net.URL;
 import java.util.Optional;
-import java.util.ResourceBundle;
 
 import application.Main;
 import javafx.fxml.FXML;
@@ -10,8 +8,13 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 import model.player.PlayerData;
 import model.player.PlayerScore;
 import util.Chronometer;
@@ -25,16 +28,21 @@ public class LoginController {
 	private PlayerData playerData =  new PlayerData();
 
     @FXML
-    private ResourceBundle resources;
+    private AnchorPane aboutPane;
+    private double initialSize;
+    private boolean isCollapsed = false;
 
     @FXML
-    private URL location;
+    private AnchorPane loginPane;
 
     @FXML
     private TextField nameField;
 
     @FXML
     private TextField surnameField;
+
+    @FXML
+    private Button loginButton;
 
     @FXML
     private void loginButtonHandler(MouseEvent event) {
@@ -45,9 +53,50 @@ public class LoginController {
     }
 
     @FXML
+    private void aboutButtonHandler(MouseEvent event){
+    	if(!isCollapsed){
+    		HorizontalCollapse hc = new HorizontalCollapse(Duration.millis(800), aboutPane, 0);
+    		hc.play();
+    	} else {
+    		HorizontalCollapse hc = new HorizontalCollapse(Duration.millis(800), aboutPane, initialSize);
+    		hc.play();
+    	}
+		isCollapsed = !isCollapsed;
+    }
+
+    @FXML
     void initialize() {
+
         assert nameField != null : "fx:id=\"nameField\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert surnameField != null : "fx:id=\"surnameField\" was not injected: check your FXML file 'LoginView.fxml'.";
+        loginButton.setDisable(true);
+
+        nameField.textProperty().addListener((obs, oldValue, newValue) ->{
+        	 loginButton.setDisable(!validate());
+        });
+        surnameField.textProperty().addListener((obs, oldValue, newValue) ->{
+       	 loginButton.setDisable(!validate());
+       });
+
+        final Rectangle clipper = new Rectangle();
+        aboutPane.setClip(clipper);
+        aboutPane.layoutBoundsProperty().addListener((ov, oldValue, newValue) -> {
+        	clipper.setWidth(newValue.getWidth());
+        	clipper.setHeight(newValue.getHeight());
+        });
+
+       initialSize = aboutPane.prefWidth(-1);
+       aboutPane.setMaxWidth(0);
+       aboutPane.setPrefWidth(0);
+       aboutPane.setMinWidth(0);
+       isCollapsed = true;
+
+    }
+
+    private boolean validate(){
+    	if(nameField.getText().equals("")) return false;
+    	if(surnameField.getText().equals("")) return false;
+    	return true;
     }
 
     private void restoreMementoScene(){

@@ -3,6 +3,7 @@ package view;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import application.Main;
 import javafx.fxml.FXML;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
@@ -40,10 +41,12 @@ public class RootViewController {
         Controllers.rootView = this;
     }
 
+    //FIXME: Fixare
     public void setSize(final double height, final double width){
     	tileMapController.setSize(height, width);
     	pheromoneMapController.setSize(height, width);
     	entityMapController.setSize(height, width);
+    	Main.stage.centerOnScreen();
     }
 
     public void addNode(final Entity entity){ entityMapController.add(entity.getNode());}

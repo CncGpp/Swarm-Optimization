@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -54,16 +55,25 @@
                <image>
                   <Image url="@../../res/icon/setting.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#infoButtonHandler" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../res/icon/info.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="40.0" onMouseClicked="#rankButtonHandler" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../res/icon/rank.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
          </children>
       </HBox>
@@ -73,11 +83,17 @@
                <image>
                   <Image url="@../../res/icon/change.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             <ImageView fx:id="startButton" fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#startButtonHandle" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../res/icon/start.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
          </children>
       </HBox>
