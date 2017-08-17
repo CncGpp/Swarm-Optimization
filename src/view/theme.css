@@ -3,9 +3,76 @@
 }
 
 .background{
-	-fx-background-color: #FFFFFF;
+	-fx-background-color: #20262d;
 }
 
 .trasparent{
 	-fx-background-color:rgba(0,0,0,0.0);
 }
+
+.labelAboutRegular{
+	-fx-text-fill: #FFFFFF;
+	-fx-font-family: "Quicksand Regular";
+	-fx-font-size: 18pt;
+}
+
+.labelAboutBold{
+	-fx-text-fill: #FFFFFF;
+	-fx-font-family: "Quicksand Bold";
+	-fx-font-size: 20pt;
+}
+
+.labelAboutMedium{
+	-fx-text-fill: #FFFFFF;
+	-fx-font-family: "Quicksand Medium";
+	-fx-font-size: 16pt;
+}
+.labelAboutLight{
+	-fx-text-fill: #FFFFFF;
+	-fx-font-family: "Quicksand Light";
+	-fx-font-size: 14pt;
+}
+
+.labelRegular{
+	-fx-text-fill: #d35400;
+	-fx-font-family: "Quicksand Regular";
+	-fx-font-size: 15pt;
+}
+
+.labelMedium{
+	-fx-text-fill: #d35400;
+	-fx-font-family: "Quicksand Medium";
+	-fx-font-size: 14pt;
+}
+
+.rounded{
+    -fx-background-radius: 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+  }
+
+	.buttonGioca{
+		-fx-text-fill: #FFFFFF;
+		-fx-font-family: "Quicksand Medium";
+		-fx-font-size: 18pt;
+
+		-fx-background-color: #27ae60;
+		-fx-background-radius: 100;
+	}
+
+	.textField{
+		-fx-font-family: "Quicksand Regular";
+		-fx-font-size: 16pt;
+		-fx-text-fill: #FFFFFF;
+		-fx-prompt-text-fill: #7f8c8d;
+
+		-fx-text-box-border: #32E4E6;
+		-fx-focus-color: #32E4E6;
+		/*
+		-fx-faint-focus-color: #32E4E6;
+		*/
+
+		-fx-control-inner-background: #20262d;
+		-fx-background-radius: 100;
+	}
+
+

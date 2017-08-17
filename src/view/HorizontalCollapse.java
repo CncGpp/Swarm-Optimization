@@ -24,7 +24,6 @@ public class HorizontalCollapse extends Transition {
 		 region.setMinWidth( startWidth + ( widthtDiff * frac ) );
 		 region.setPrefWidth( startWidth + ( widthtDiff * frac ) );
 		 region.setMaxWidth( startWidth + ( widthtDiff * frac ) );
-		 System.out.println("" + frac);
 	}
 
 }
