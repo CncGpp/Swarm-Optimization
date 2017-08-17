@@ -71,7 +71,7 @@
          <children>
             <ImageView fx:id="loginButton" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#loginButtonHandler" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../res/icon/noLogin.png" />
+                  <Image url="@../../res/icon/change.png" />
                </image>
             </ImageView>
             <ImageView fx:id="startButton" fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#startButtonHandle" pickOnBounds="true" preserveRatio="true">
