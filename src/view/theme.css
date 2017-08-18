@@ -3,11 +3,7 @@
 }
 
 .background{
-	-fx-background-color: #FFF;
-}
-
-.backgroundDark{
-	-fx-background-color: #BDBDBD;
+	-fx-background-color: rgba(35, 35, 47 , 1); /*rgba(43,43,55,1);*/
 }
 
 .trasparent{
@@ -21,14 +17,14 @@
 }
 
 .windowBorder{
-	/*
-	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
-	*/
-	-fx-background-color: #BDBDBD;
+
+	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 5, 0, 0, 0);
+
+	-fx-background-color: rgba(16, 16, 24 , 1);
 	-fx-border-radius: 7;
     -fx-background-radius: 7;
-	-fx-border-color: rgba(0,0,0,0.5);
-	-fx-border-width: 2px;
+	-fx-border-color: black;
+	-fx-border-width: 1px;
 }
 
 .labelAboutRegular{
@@ -55,13 +51,13 @@
 }
 
 .labelRegular{
-	-fx-text-fill: #2c3e50;
+	-fx-text-fill: #2980b9;
 	-fx-font-family: "Quicksand Regular";
 	-fx-font-size: 13pt;
 }
 
 .labelMedium{
-	-fx-text-fill: #2c3e50;
+	-fx-text-fill: #3498db;
 	-fx-font-family: "Quicksand Medium";
 	-fx-font-size: 14pt;
 }
@@ -94,18 +90,18 @@
 	.textField{
 		-fx-font-family: "Quicksand Regular";
 		-fx-font-size: 15pt;
-		/*-fx-text-fill: #2c3e50;
+		 -fx-text-fill: #ecf0f1;
 		-fx-prompt-text-fill: #34495e;
-		*/
-
 		/*
+		 -fx-text-fill: #2c3e50;
+		-fx-prompt-text-fill: rgba(35, 35, 47 , 1);
 		-fx-text-box-border: #2c3e50;
 		-fx-focus-color: #2c3e50;
 
 		-fx-faint-focus-color: #32E4E6;
-		-fx-control-inner-background: #bdc3c7;
-		*/
 
+		*/
+		-fx-control-inner-background: rgba(35, 35, 47 , 1);
 		-fx-background-radius: 100;
 	}
 

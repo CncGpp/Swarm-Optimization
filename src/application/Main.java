@@ -31,7 +31,7 @@ public class Main extends Application {
 		stage = primaryStage;
 		loginStage = new Stage();
 		loginStage.initStyle(StageStyle.TRANSPARENT);
-		loginStage.initStyle(StageStyle.TRANSPARENT);
+		primaryStage.initStyle(StageStyle.TRANSPARENT);
 
 
 		try {
@@ -40,18 +40,22 @@ public class Main extends Application {
 			Font.loadFont(Gloabal.R.REGULAR_FONT_URI, 14);
 			Font.loadFont(Gloabal.R.LIGHT_FONT_URI, 18);
 			Font.loadFont(Gloabal.R.MONOSPACE_FONT_URI, 18);
-			//setGameView();
-			//setLoginView();
+
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/RootView.fxml"));
 			BorderPane root = (BorderPane) loader.load();
 			gameScene = new Scene(root);
 			loadBottomView(root).setApplication(this);
+			gameScene.setFill(Color.TRANSPARENT);
 
 			loader = new FXMLLoader(getClass().getResource("/view/LoginView.fxml"));
 			Parent parent = loader.load();
 			((LoginController) loader.getController()).setApplication(this);
 			loginScene = new Scene(parent);
 			loginScene.setFill(Color.TRANSPARENT);
+
+
+			new DragWindowManager(loginStage, loginScene);
+			new DragWindowManager(primaryStage, gameScene);
 
 		} catch(Exception e) { e.printStackTrace(); }
 
@@ -93,6 +97,8 @@ public class Main extends Application {
 		stage.centerOnScreen();
 		stage.show();
 	}
+
+
 
 
 	public static void main(String[] args) {

@@ -38,12 +38,17 @@ public class SettingController {
         		));
 
         strategySelector.getSelectionModel().select(1);
+        this.setStrategy(1);
 
         strategySelector.getSelectionModel().selectedIndexProperty().addListener( (observable, oldValue, newValue) -> {
-        	descriptionText.setText(strategyData.get(newValue.intValue()).getStrategyDescriprion());
-        	Settings.COLONY_STRATEGY = strategyData.get(newValue.intValue()).makeStrategy();
+        	this.setStrategy(newValue);
         	Controllers.bottomViewController.initializeNewGame();
         });
+    }
+
+    private void setStrategy(final Number index){
+    	descriptionText.setText(strategyData.get(index.intValue()).getStrategyDescriprion());
+    	Settings.COLONY_STRATEGY = strategyData.get(index.intValue()).makeStrategy();
     }
 
     public SettingController() {

@@ -3,6 +3,8 @@ package view;
 import java.util.Optional;
 
 import application.Main;
+import javafx.animation.ParallelTransition;
+import javafx.animation.RotateTransition;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -13,7 +15,6 @@ import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import model.player.PlayerData;
@@ -27,6 +28,11 @@ public class LoginController {
 	public void setApplication(final Main application){ this.application = application;}
 
 	private PlayerData playerData =  new PlayerData();
+
+	private final int animationDuration = 600;
+
+    @FXML
+    private ImageView aboutButton;
 
     @FXML
     private AnchorPane aboutPane;
@@ -55,13 +61,18 @@ public class LoginController {
 
     @FXML
     private void aboutButtonHandler(MouseEvent event){
+    	RotateTransition rt = new RotateTransition(Duration.millis(animationDuration), aboutButton);
+    	HorizontalCollapse hc;
     	if(!isCollapsed){
-    		HorizontalCollapse hc = new HorizontalCollapse(Duration.millis(800), aboutPane, 0);
-    		hc.play();
+    		rt.setByAngle(-180);
+    		hc = new HorizontalCollapse(Duration.millis(animationDuration), aboutPane, 0);
     	} else {
-    		HorizontalCollapse hc = new HorizontalCollapse(Duration.millis(800), aboutPane, initialSize);
-    		hc.play();
+    		hc = new HorizontalCollapse(Duration.millis(animationDuration), aboutPane, initialSize);
+    		rt.setByAngle(180);
     	}
+
+    	ParallelTransition pt = new ParallelTransition(rt,hc);
+    	pt.play();
 		isCollapsed = !isCollapsed;
     }
 
@@ -72,9 +83,13 @@ public class LoginController {
 
     @FXML
     void initialize() {
-
+        assert aboutPane != null : "fx:id=\"aboutPane\" was not injected: check your FXML file 'LoginView.fxml'.";
+        assert loginPane != null : "fx:id=\"loginPane\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert nameField != null : "fx:id=\"nameField\" was not injected: check your FXML file 'LoginView.fxml'.";
         assert surnameField != null : "fx:id=\"surnameField\" was not injected: check your FXML file 'LoginView.fxml'.";
+        assert loginButton != null : "fx:id=\"loginButton\" was not injected: check your FXML file 'LoginView.fxml'.";
+        assert aboutButton != null : "fx:id=\"aboutButton\" was not injected: check your FXML file 'LoginView.fxml'.";
+
         loginButton.setDisable(true);
 
         nameField.textProperty().addListener((obs, oldValue, newValue) ->{

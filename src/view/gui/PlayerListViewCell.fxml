@@ -15,7 +15,7 @@
          <children>
             <StackPane>
                <children>
-                  <Label fx:id="position" stylesheets="@gui.css" text="1">
+                  <Label fx:id="position" styleClass="labelBold" stylesheets="@gui.css" text="1">
                      <font>
                         <Font size="24.0" />
                      </font>

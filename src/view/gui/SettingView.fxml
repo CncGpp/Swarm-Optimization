@@ -15,81 +15,90 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="pane_setting" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" stylesheets="@gui.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.gui.SettingController">
+<AnchorPane fx:id="pane_setting" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="windowBorder" stylesheets="@gui.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.gui.SettingController">
    <children>
-      <VBox prefWidth="350.0" spacing="12.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <AnchorPane stylesheets="@gui.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label styleClass="titleLabel" stylesheets="@gui.css" text="Impostazioni di gioco">
-               <graphic>
-                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../res/icon/setting2.png" />
-                     </image>
-                  </ImageView>
-               </graphic></Label>
-            <Separator prefWidth="200.0" />
-            <VBox spacing="4.0">
+            <VBox prefWidth="350.0" spacing="12.0">
                <children>
-                  <Label styleClass="labelBoldInfo" stylesheets="@gui.css" text="Numero di microbot:">
+                  <Label styleClass="titleLabel" stylesheets="@gui.css" text="Impostazioni di gioco">
                      <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../res/icon/icon.png" />
+                              <Image url="@../../../res/icon/setting2.png" />
                            </image>
                         </ImageView>
                      </graphic>
                   </Label>
-                  <Label styleClass="labelRegularInfo" stylesheets="@gui.css" text="Specifica il numero di microbot che fanno parte della colonia" wrapText="true" />
-                  <HBox alignment="CENTER" styleClass="labelRegularInfo" stylesheets="@gui.css">
+                  <Separator prefWidth="200.0" />
+                  <VBox spacing="4.0">
                      <children>
-                        <Spinner />
+                        <Label styleClass="labelBoldInfo" stylesheets="@gui.css" text="Numero di microbot:">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../res/icon/icon.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                        <Label styleClass="labelRegularInfo" stylesheets="@gui.css" text="Specifica il numero di microbot che fanno parte della colonia" wrapText="true" />
+                        <HBox alignment="CENTER" styleClass="labelRegularInfo" stylesheets="@gui.css">
+                           <children>
+                              <Spinner />
+                           </children>
+                        </HBox>
                      </children>
-                  </HBox>
-               </children>
-            </VBox>
-            <Separator prefWidth="200.0" />
-            <VBox layoutX="18.0" layoutY="84.0" spacing="4.0">
-               <children>
-                  <Label styleClass="labelBoldInfo" stylesheets="@gui.css" text="Strategia della colonia:">
-                     <graphic>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../../../res/icon/strategy.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </Label>
-                  <Label styleClass="labelRegularInfo" stylesheets="@gui.css" text="Specifica la strategia utilizzata dalla colonia per orientarsi nel labirinto ed individuare l'uscita" wrapText="true" />
-                  <HBox alignment="CENTER" styleClass="labelRegularInfo" stylesheets="@gui.css">
+                  </VBox>
+                  <Separator prefWidth="200.0" />
+                  <VBox layoutX="18.0" layoutY="84.0" spacing="4.0">
                      <children>
-                        <ChoiceBox fx:id="strategySelector" prefWidth="300.0" styleClass="labelBoldInfo" stylesheets="@gui.css" />
+                        <Label styleClass="labelBoldInfo" stylesheets="@gui.css" text="Strategia della colonia:">
+                           <graphic>
+                              <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../../res/icon/strategy.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Label>
+                        <Label styleClass="labelRegularInfo" stylesheets="@gui.css" text="Specifica la strategia utilizzata dalla colonia per orientarsi nel labirinto ed individuare l'uscita" wrapText="true" />
+                        <HBox alignment="CENTER" styleClass="labelRegularInfo" stylesheets="@gui.css">
+                           <children>
+                              <ChoiceBox fx:id="strategySelector" prefWidth="300.0" styleClass="cb" stylesheets="@gui.css" />
+                           </children>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </HBox>
+                        <TitledPane expanded="false" stylesheets="@gui.css" text="Descirzione">
+                          <content>
+                              <ScrollPane fitToWidth="true" hbarPolicy="NEVER" stylesheets="@gui.css">
+                                 <content>
+                                    <TextArea fx:id="descriptionText" editable="false" prefRowCount="7" styleClass="labelRegularInfo" stylesheets="@gui.css" text="Queso è un testo di shgds h dshdg shd saòiwue qwe +asidjasuio jfddjh ajdn as" wrapText="true" />
+                                 </content>
+                              </ScrollPane>
+                          </content>
+                           <VBox.margin>
+                              <Insets top="10.0" />
+                           </VBox.margin>
+                           <styleClass>
+                              <String fx:value="labelRegularInfo" />
+                              <String fx:value="titled-pane" />
+                           </styleClass>
+                        </TitledPane>
                      </children>
-                     <VBox.margin>
-                        <Insets />
-                     </VBox.margin>
-                  </HBox>
-                  <TitledPane expanded="false" styleClass="labelRegularInfo" stylesheets="@gui.css" text="Descirzione">
-                    <content>
-                        <ScrollPane fitToWidth="true" hbarPolicy="NEVER">
-                           <content>
-                              <TextArea fx:id="descriptionText" editable="false" prefRowCount="7" styleClass="labelRegularInfo" stylesheets="@gui.css" text="Queso è un testo di shgds h dshdg shd saòiwue qwe +asidjasuio jfddjh ajdn as" wrapText="true" />
-                           </content>
-                        </ScrollPane>
-                    </content>
-                     <VBox.margin>
-                        <Insets top="10.0" />
-                     </VBox.margin>
-                  </TitledPane>
+                  </VBox>
                </children>
+               <padding>
+                  <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
+               </padding>
             </VBox>
          </children>
-         <padding>
-            <Insets bottom="8.0" left="8.0" right="8.0" top="8.0" />
-         </padding>
-      </VBox>
+         <styleClass>
+            <String fx:value="background" />
+            <String fx:value="roundedBottom" />
+         </styleClass>
+      </AnchorPane>
    </children>
-   <styleClass>
-      <String fx:value="background" />
-      <String fx:value="panePanel" />
-   </styleClass>
 </AnchorPane>

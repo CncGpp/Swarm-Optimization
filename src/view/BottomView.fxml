@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
@@ -10,16 +11,16 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefWidth="600.0" styleClass="background" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BottomViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefWidth="600.0" stylesheets="@theme.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.BottomViewController">
    <children>
       <HBox alignment="CENTER" spacing="5.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Label text="Stage">
+            <Label styleClass="labelAboutMedium" stylesheets="@gui/gui.css" text="Stage">
                <font>
                   <Font size="24.0" />
                </font>
             </Label>
-            <Label fx:id="stageLabel" text="1">
+            <Label fx:id="stageLabel" styleClass="labelAboutBold" stylesheets="@gui/gui.css" text="1">
                <font>
                   <Font size="24.0" />
                </font>
@@ -98,4 +99,8 @@
          </children>
       </HBox>
    </children>
+   <styleClass>
+      <String fx:value="background" />
+      <String fx:value="roundedDown" />
+   </styleClass>
 </AnchorPane>

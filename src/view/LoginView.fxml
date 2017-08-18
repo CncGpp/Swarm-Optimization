@@ -38,7 +38,7 @@
                               </ImageView>
                               <VBox alignment="TOP_CENTER" spacing="50.0">
                                  <children>
-                                    <VBox alignment="CENTER" spacing="5.0">
+                                    <VBox alignment="CENTER" spacing="10.0">
                                        <children>
                                           <Label styleClass="labelAboutRegular" stylesheets="@theme.css" text="Progetto di programmazione III:" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
                                              <font>
@@ -92,14 +92,14 @@
                      <children>
                         <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="512.0" spacing="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
-                              <VBox alignment="TOP_CENTER">
+                              <VBox alignment="TOP_CENTER" spacing="5.0">
                                  <children>
                                     <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@../../res/image/Logo.png" />
                                        </image>
                                     </ImageView>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Ant Colony Optimization" textAlignment="CENTER">
+                                    <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="title" text="Ant Colony Optimization" textAlignment="CENTER">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
@@ -109,7 +109,7 @@
                                     <Insets top="4.0" />
                                  </VBox.margin>
                               </VBox>
-                              <Separator prefWidth="200.0" />
+                              <Separator />
                               <VBox alignment="TOP_CENTER" prefWidth="300.0">
                                  <children>
                                     <Label styleClass="labelMedium" text="Benvenuto!">
@@ -154,7 +154,7 @@
                               <Insets bottom="12.0" left="12.0" right="12.0" top="12.0" />
                            </padding>
                         </VBox>
-                        <ImageView fitHeight="30.0" fitWidth="30.0" onMouseClicked="#aboutButtonHandler" pickOnBounds="true" preserveRatio="true" rotate="-90.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="8.0">
+                        <ImageView fx:id="aboutButton" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#aboutButtonHandler" pickOnBounds="true" preserveRatio="true" rotate="90.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="8.0">
                            <image>
                               <Image url="@../../res/icon/collapse.png" />
                            </image>

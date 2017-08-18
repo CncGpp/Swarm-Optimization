@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
 
-<BorderPane fx:id="borderPane_rootView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RootViewController">
+<BorderPane fx:id="borderPane_rootView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" styleClass="windowBorder" stylesheets="@gui/gui.css" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.RootViewController">
    <center>
-      <StackPane prefHeight="400.0" prefWidth="550.0" BorderPane.alignment="CENTER">
+      <StackPane prefHeight="400.0" prefWidth="550.0" styleClass="background" stylesheets="@gui/gui.css" BorderPane.alignment="CENTER">
          <children>
-            <StackPane fx:id="stackPane_layers">
+            <StackPane fx:id="stackPane_layers" styleClass="rounded" stylesheets="@gui/gui.css">
                <children>
                   <fx:include fx:id="tileMap" source="map/TileMap.fxml" />
                   <fx:include fx:id="pheromoneMap" source="map/PheromoneMap.fxml" />
                   <fx:include fx:id="entityMap" source="map/EntityMap.fxml" />
-               </children></StackPane>
+               </children>
+               <padding>
+                  <Insets left="3.0" right="3.0" />
+               </padding></StackPane>
             <AnchorPane>
                <children>
-                  <Pane AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="112.0">
+                  <Pane AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="112.0">
                      <children>
                         <fx:include source="gui/RankView.fxml" />
                      </children>
@@ -27,7 +37,7 @@
                         <fx:include source="gui/InfoView.fxml" />
                      </children>
                   </Pane>
-                  <Pane AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="5.0">
+                  <Pane AnchorPane.bottomAnchor="4.0" AnchorPane.leftAnchor="5.0">
                      <children>
                         <fx:include source="gui/SettingView.fxml" />
                      </children>
@@ -37,4 +47,30 @@
          </children>
       </StackPane>
    </center>
+   <padding>
+      <Insets bottom="5.0" />
+   </padding>
+   <top>
+      <AnchorPane prefHeight="20.0" stylesheets="@gui/gui.css" BorderPane.alignment="CENTER">
+         <styleClass>
+            <String fx:value="background" />
+            <String fx:value="roundedTop" />
+         </styleClass>
+         <children>
+            <HBox alignment="CENTER" layoutY="2.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
+               <children>
+                  <Label styleClass="title" stylesheets="@gui/gui.css" text="Ant Colony Optimization" />
+               </children>
+            </HBox>
+            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="855.0" layoutY="-65.0" onMouseClicked="#exitButtonHandler" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="2.0">
+               <image>
+                  <Image url="@../../res/icon/exit.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </top>
 </BorderPane>

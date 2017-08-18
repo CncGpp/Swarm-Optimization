@@ -6,27 +6,27 @@
 
 <HBox alignment="BOTTOM_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.gui.ChronometerController">
    <children>
-      <Label fx:id="minutes" text="00">
+      <Label fx:id="minutes" styleClass="chronometerMinutes" stylesheets="@gui.css" text="00">
          <font>
             <Font name="Consolas" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="10.0" layoutY="10.0" text=":">
+      <Label layoutX="10.0" layoutY="10.0" styleClass="chronometer" stylesheets="@gui.css" text=":">
          <font>
             <Font name="Consolas" size="24.0" />
          </font>
       </Label>
-      <Label fx:id="seconds" layoutX="10.0" layoutY="10.0" text="00">
+      <Label fx:id="seconds" layoutX="10.0" layoutY="10.0" styleClass="chronometerSeconds" stylesheets="@gui.css" text="00">
          <font>
             <Font name="Consolas" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="37.0" layoutY="10.0" text=".">
+      <Label layoutX="37.0" layoutY="10.0" styleClass="chronometer" stylesheets="@gui.css" text=".">
          <font>
             <Font name="Consolas" size="20.0" />
          </font>
       </Label>
-      <Label fx:id="milliseconds" layoutX="10.0" layoutY="10.0" text="000">
+      <Label fx:id="milliseconds" layoutX="10.0" layoutY="10.0" styleClass="chronometerMilliseconds" stylesheets="@gui.css" text="000">
          <font>
             <Font name="Consolas" size="20.0" />
          </font>

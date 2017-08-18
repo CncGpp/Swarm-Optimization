@@ -4,7 +4,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import application.Main;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import model.entity.Entity;
@@ -32,6 +34,11 @@ public class RootViewController {
     @FXML private TileMapController tileMapController;
     @FXML private PheromoneMapController pheromoneMapController;
     @FXML private EntityMapController entityMapController;
+
+    @FXML
+    private void exitButtonHandler(MouseEvent event){
+    	Platform.exit();
+    }
 
     @FXML
     void initialize() {
