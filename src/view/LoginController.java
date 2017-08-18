@@ -3,6 +3,7 @@ package view;
 import java.util.Optional;
 
 import application.Main;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -65,6 +66,11 @@ public class LoginController {
     }
 
     @FXML
+    private void exitButtonHandler(MouseEvent event){
+    	Platform.exit();
+    }
+
+    @FXML
     void initialize() {
 
         assert nameField != null : "fx:id=\"nameField\" was not injected: check your FXML file 'LoginView.fxml'.";
@@ -79,6 +85,8 @@ public class LoginController {
        });
 
         final Rectangle clipper = new Rectangle();
+        clipper.setArcHeight(7);
+        clipper.setArcWidth(7);
         aboutPane.setClip(clipper);
         aboutPane.layoutBoundsProperty().addListener((ov, oldValue, newValue) -> {
         	clipper.setWidth(newValue.getWidth());

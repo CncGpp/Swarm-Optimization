@@ -3,11 +3,32 @@
 }
 
 .background{
-	-fx-background-color: #20262d;
+	-fx-background-color: #FFF;
+}
+
+.backgroundDark{
+	-fx-background-color: #BDBDBD;
 }
 
 .trasparent{
 	-fx-background-color:rgba(0,0,0,0.0);
+}
+
+.title{
+	-fx-text-fill: #FFFFFF;
+	-fx-font-family: "Quicksand Bold";
+	-fx-font-size: 19pt;
+}
+
+.windowBorder{
+	/*
+	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);
+	*/
+	-fx-background-color: #BDBDBD;
+	-fx-border-radius: 7;
+    -fx-background-radius: 7;
+	-fx-border-color: rgba(0,0,0,0.5);
+	-fx-border-width: 2px;
 }
 
 .labelAboutRegular{
@@ -34,44 +55,57 @@
 }
 
 .labelRegular{
-	-fx-text-fill: #d35400;
+	-fx-text-fill: #2c3e50;
 	-fx-font-family: "Quicksand Regular";
-	-fx-font-size: 15pt;
+	-fx-font-size: 13pt;
 }
 
 .labelMedium{
-	-fx-text-fill: #d35400;
+	-fx-text-fill: #2c3e50;
 	-fx-font-family: "Quicksand Medium";
 	-fx-font-size: 14pt;
 }
 
 .rounded{
-    -fx-background-radius: 5;
-    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 10, 0, 0, 0);
+	 -fx-border-radius: 7;
+    -fx-background-radius: 7;
   }
+
+ .roundedDown{
+ 	  -fx-border-radius: 0 0 5 5;
+  	  -fx-background-radius: 0 0 5 5;
+ }
+
+ .roundedLeft{
+ 	  -fx-border-radius: 7 0 0 7;
+  	  -fx-background-radius: 7 0 0 7;
+ }
 
 	.buttonGioca{
 		-fx-text-fill: #FFFFFF;
 		-fx-font-family: "Quicksand Medium";
-		-fx-font-size: 18pt;
+		-fx-font-size: 15pt;
 
-		-fx-background-color: #27ae60;
+		-fx-background-color: #3498db;
 		-fx-background-radius: 100;
+		/*-fx-effect: dropshadow(one-pass-box, #2980b9, 3, 1.0, 0, 4); */
 	}
 
 	.textField{
 		-fx-font-family: "Quicksand Regular";
-		-fx-font-size: 16pt;
-		-fx-text-fill: #FFFFFF;
-		-fx-prompt-text-fill: #7f8c8d;
-
-		-fx-text-box-border: #32E4E6;
-		-fx-focus-color: #32E4E6;
-		/*
-		-fx-faint-focus-color: #32E4E6;
+		-fx-font-size: 15pt;
+		/*-fx-text-fill: #2c3e50;
+		-fx-prompt-text-fill: #34495e;
 		*/
 
-		-fx-control-inner-background: #20262d;
+		/*
+		-fx-text-box-border: #2c3e50;
+		-fx-focus-color: #2c3e50;
+
+		-fx-faint-focus-color: #32E4E6;
+		-fx-control-inner-background: #bdc3c7;
+		*/
+
 		-fx-background-radius: 100;
 	}
 
