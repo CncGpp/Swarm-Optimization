@@ -40,7 +40,7 @@
                   </Separator>
                   <HBox alignment="CENTER_LEFT" spacing="10.0">
                      <children>
-                        <Circle fx:id="bot_figure" fill="#909090" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
+                        <Circle fx:id="bot_figure" fill="#909090" radius="25.0" stroke="#c6c6c6" strokeType="INSIDE" />
                         <VBox alignment="CENTER_LEFT">
                            <children>
                               <Label styleClass="labelBoldInfo" stylesheets="@gui.css" text="Microbot">
@@ -59,7 +59,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="55.0" spacing="10.0">
                      <children>
-                        <Rectangle fx:id="pheromone_figure" arcHeight="5.0" arcWidth="5.0" height="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0">
+                        <Rectangle fx:id="pheromone_figure" arcHeight="5.0" arcWidth="5.0" height="50.0" stroke="#c9c9c9" strokeType="INSIDE" width="50.0">
                            <fill>
                               <LinearGradient endY="1.0" startX="1.0">
                                  <stops>
@@ -87,7 +87,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="127.0" spacing="10.0">
                      <children>
-                        <Rectangle fx:id="start_figure" arcHeight="5.0" arcWidth="5.0" fill="#973200" height="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
+                        <Rectangle fx:id="start_figure" arcHeight="5.0" arcWidth="5.0" fill="#973200" height="50.0" stroke="#d7d7d7" strokeType="INSIDE" width="50.0" />
                         <VBox alignment="CENTER_LEFT">
                            <children>
                               <Label styleClass="labelBoldInfo" stylesheets="@gui.css" text="Entrata">
@@ -106,7 +106,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="219.0" spacing="10.0">
                      <children>
-                        <Rectangle fx:id="end_figure" arcHeight="5.0" arcWidth="5.0" fill="#00f500" height="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
+                        <Rectangle fx:id="end_figure" arcHeight="5.0" arcWidth="5.0" fill="#00f500" height="50.0" stroke="#bcbcbc" strokeType="INSIDE" width="50.0" />
                         <VBox alignment="CENTER_LEFT">
                            <children>
                               <Label styleClass="labelBoldInfo" stylesheets="@gui.css" text="Uscita">
@@ -125,7 +125,7 @@
                   </HBox>
                   <HBox alignment="CENTER_LEFT" layoutX="15.0" layoutY="291.0" spacing="10.0">
                      <children>
-                        <Rectangle fx:id="manhole_figure" arcHeight="5.0" arcWidth="5.0" fill="#009df5" height="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
+                        <Rectangle fx:id="manhole_figure" arcHeight="5.0" arcWidth="5.0" fill="#009df5" height="50.0" stroke="#b5b5b5" strokeType="INSIDE" width="50.0" />
                         <VBox alignment="CENTER_LEFT">
                            <children>
                               <Label styleClass="labelBoldInfo" stylesheets="@gui.css" text="Botola">

@@ -34,10 +34,10 @@ public class RankController {
         ranks = new Rank(R.RANK_URI);
         observableList_rank = ranks.getRankList();
 
-
         //IMPOSTO GLI ITEM NELLA LISTA DELLA CLASSIFICA
         listView_rank.setItems(observableList_rank);
         listView_rank.setCellFactory(listView_rank -> new PlayerListViewCell());	//Cell factory
+
     }
 
     public void show(){

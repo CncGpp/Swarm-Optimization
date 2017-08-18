@@ -62,7 +62,7 @@
                   <Label styleClass="title" stylesheets="@gui/gui.css" text="Ant Colony Optimization" />
                </children>
             </HBox>
-            <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="855.0" layoutY="-65.0" onMouseClicked="#exitButtonHandler" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="2.0">
+            <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="855.0" layoutY="-65.0" onMouseClicked="#exitButtonHandler" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="3.0">
                <image>
                   <Image url="@../../res/icon/exit.png" />
                </image>

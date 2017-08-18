@@ -6,18 +6,24 @@ import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Spinner;
+import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.AnchorPane;
 import strategy.*;
 import util.Gloabal.Controllers;
 import util.Gloabal.Settings;
 
+/* FIXME: Mettere un pulsante di conferma nelle impostazioni... così non devo ricgreare il gioco ogni volta*/
+
 public class SettingController {
 
 	private List<ColonyStrategy> strategyData;
-
     @FXML
     private AnchorPane pane_setting;
+
+    @FXML
+    private Spinner<Integer> botCountSpinner;
 
     @FXML
     private ChoiceBox<String> strategySelector;
@@ -43,6 +49,14 @@ public class SettingController {
         strategySelector.getSelectionModel().selectedIndexProperty().addListener( (observable, oldValue, newValue) -> {
         	this.setStrategy(newValue);
         	Controllers.bottomViewController.initializeNewGame();
+        });
+
+        //// Inizializzo lo spinner
+        SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100, Settings.BOT_NUMBER);
+        botCountSpinner.setValueFactory(valueFactory);
+        botCountSpinner.valueProperty().addListener((observer, oldValue, newValue)->{
+        		Settings.BOT_NUMBER = newValue.intValue();
+        		Controllers.bottomViewController.initializeNewGame();
         });
     }
 

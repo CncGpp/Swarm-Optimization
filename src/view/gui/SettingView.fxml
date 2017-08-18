@@ -45,7 +45,7 @@
                         <Label styleClass="labelRegularInfo" stylesheets="@gui.css" text="Specifica il numero di microbot che fanno parte della colonia" wrapText="true" />
                         <HBox alignment="CENTER" styleClass="labelRegularInfo" stylesheets="@gui.css">
                            <children>
-                              <Spinner />
+                              <Spinner fx:id="botCountSpinner" editable="true" />
                            </children>
                         </HBox>
                      </children>

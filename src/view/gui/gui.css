@@ -180,3 +180,33 @@
 	-fx-font-family: "Consolas";
 	-fx-font-size: 16pt;
 }
+
+/* SPINNER STYLE */
+
+.spinner{
+	-fx-control-inner-background: rgba(43,43,55,1);
+}
+
+.spinner .increment-arrow-button,
+.spinner .decrement-arrow-button {
+    -fx-body-color:  rgba(16, 16, 24 , 1);
+}
+
+.spinner .increment-arrow-button .increment-arrow,
+.spinner .decrement-arrow-button .decrement-arrow{
+    -fx-background-color: white;
+}
+
+.spinner .increment-arrow-button:hover,
+.spinner .decrement-arrow-button:hover {
+    -fx-body-color: ladder(#444, rgba(16, 16, 24 , 1) 0%, #3498db 100%);
+}
+
+.spinner .increment-arrow-button:hover:pressed,
+.spinner .decrement-arrow-button:hover:pressed,
+.spinner .increment-arrow-button:pressed,
+.spinner .decrement-arrow-button:pressed {
+    -fx-body-color: ladder(#AAA, rgba(16, 16, 24 , 1) 0%, #3498db 100%);
+}
+
+/************************************************************************ */
