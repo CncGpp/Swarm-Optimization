@@ -1,5 +1,6 @@
 package view.gui;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -52,10 +53,9 @@ public class SettingController {
         this.hide();
 
         ///// Inizializzo la Choice Box
-        strategySelector.setItems( FXCollections.observableArrayList(
-        		"Ant-System", "Ant-Colony-Optimization", "Arctan Ant-System", "Decreasing Path Ant-System",
-        		"Linear Decreasing Path Ant-System", "True Random", "Real Ant-System"
-        		));
+        final ArrayList<String> names = new ArrayList<>();
+        strategyData.forEach( name -> names.add(name.getStrategyName()) );
+        strategySelector.setItems( FXCollections.observableArrayList( names ));
 
         strategySelector.getSelectionModel().select(2);
         this.setStrategy(2);
