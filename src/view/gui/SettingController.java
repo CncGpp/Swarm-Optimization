@@ -54,7 +54,7 @@ public class SettingController {
         ///// Inizializzo la Choice Box
         strategySelector.setItems( FXCollections.observableArrayList(
         		"Ant-System", "Ant-Colony-Optimization", "Arctan Ant-System", "Decreasing Path Ant-System",
-        		"Linear Decreasing Path Ant-System", "True Random"
+        		"Linear Decreasing Path Ant-System", "True Random", "Real Ant-System"
         		));
 
         strategySelector.getSelectionModel().select(2);
@@ -86,7 +86,7 @@ public class SettingController {
     }
 
     public SettingController() {
-    	strategyData = Arrays.asList(new AS(), new ACO(), new AtanAS(), new DPAS(), new LDPAS(), new TRAS());
+    	strategyData = Arrays.asList(new AS(), new ACO(), new AtanAS(), new DPAS(), new LDPAS(), new TRAS(), new RAS());
 	}
 
     public void show(){
