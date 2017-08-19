@@ -102,7 +102,12 @@ public class SettingController {
     	pane_setting.setDisable(!pane_setting.isDisable());
     }
 
-    public void toggleStatus(){
+    public void enableSetting(){
+    	botCountSpinner.setDisable(false);
+    	strategySelector.setDisable(false);
+    }
+
+    public void toggleSetting(){
     	botCountSpinner.setDisable(!botCountSpinner.isDisable());
     	strategySelector.setDisable(!strategySelector.isDisable());
     }

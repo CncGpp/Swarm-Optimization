@@ -115,7 +115,10 @@ public class BottomViewController {
 	}
 
     private void toggleSettingStatus(){
-    	Controllers.settingController.toggleStatus();
+    	Controllers.settingController.toggleSetting();
+    }
+    private void enableSettingStatus(){
+    	Controllers.settingController.enableSetting();
     }
 
     public void initializeNewGame(){
@@ -124,7 +127,7 @@ public class BottomViewController {
 		g.newGame(this.stage);
 		Chronometer.set(0);
 		stageLabel.setText( 1 + stage.getStageNumber() + "");
-		//toggleSettingStatus();
+		enableSettingStatus();
     }
     private void initializeGameStage(){
 		this.pauseGame();
@@ -151,6 +154,7 @@ public class BottomViewController {
     		playerData.getCurrentPlayer().setTime(Chronometer.getTotalTime());
     		Controllers.rankController.submitScore(playerData.getCurrentPlayer());
     		startButton.setImage(new Image(Gloabal.R.RESTART_ICON_URI));
+    		enableSettingStatus();
     	} else {
     		initializeGameStage();
     		this.startGame();
