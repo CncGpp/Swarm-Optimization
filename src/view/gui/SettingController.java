@@ -3,22 +3,26 @@ package view.gui;
 import java.util.Arrays;
 import java.util.List;
 
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import strategy.*;
 import util.Gloabal.Controllers;
 import util.Gloabal.Settings;
 
-/* FIXME: Mettere un pulsante di conferma nelle impostazioni... così non devo ricgreare il gioco ogni volta*/
-
 public class SettingController {
 
+	private BooleanProperty changedSettings = new SimpleBooleanProperty(false);
 	private List<ColonyStrategy> strategyData;
+
     @FXML
     private AnchorPane pane_setting;
 
@@ -30,6 +34,16 @@ public class SettingController {
 
     @FXML
     private TextArea descriptionText;
+
+    @FXML
+    private Button confirmButton;
+
+    @FXML
+    void confirmButtonHandler(MouseEvent event) {
+		Settings.BOT_NUMBER = botCountSpinner.getValue();
+		Controllers.bottomViewController.initializeNewGame();
+		changedSettings.set(false);
+    }
 
     @FXML
     void initialize() {
@@ -48,16 +62,22 @@ public class SettingController {
 
         strategySelector.getSelectionModel().selectedIndexProperty().addListener( (observable, oldValue, newValue) -> {
         	this.setStrategy(newValue);
-        	Controllers.bottomViewController.initializeNewGame();
+        	changedSettings.set(true);
         });
 
         //// Inizializzo lo spinner
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100, Settings.BOT_NUMBER);
         botCountSpinner.setValueFactory(valueFactory);
         botCountSpinner.valueProperty().addListener((observer, oldValue, newValue)->{
-        		Settings.BOT_NUMBER = newValue.intValue();
-        		Controllers.bottomViewController.initializeNewGame();
+        		if(newValue == null) return;
+        		changedSettings.set(true);
         });
+
+        /// Inizializzo il bottone di conferma
+        changedSettings.addListener((obs, oldValue, newValue) ->{
+        	confirmButton.setDisable(!newValue.booleanValue());
+        });
+        confirmButton.setDisable(true);
     }
 
     private void setStrategy(final Number index){
