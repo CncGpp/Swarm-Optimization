@@ -10,12 +10,8 @@ import model.map.TileType;
 import util.Coord;
 import util.Gloabal.C;
 import util.Vertex;
-import util.Path;
 
 public class Bot extends ABot{
-
-	boolean visited[][];
-	private Path path = new Path();
 
 	public Bot(final AColony colony) {
 		this(colony, new Coord(-1,-1));
@@ -49,10 +45,10 @@ public class Bot extends ABot{
 	public boolean moveTo(final Vertex coord){
 		if(colony.getMap().getTileTypeAt(getRow(), getCol()) == TileType.WALL) return false;
 
-		if(!visited[coord.getRow()][coord.getCol()]){
-			path.addNode(coord);
-			visited[coord.getRow()][coord.getCol()] = true;
-		}
+		if(!visited[coord.getRow()][coord.getCol()]){ path.addNode(coord); }
+
+		visited[this.getRow()][this.getCol()] = true;
+
 		setCoordinate(coord);
 		this.draw();
 		return true;
