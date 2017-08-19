@@ -38,9 +38,11 @@ public abstract class AColony extends Observable implements Drawable{
 		}
 	}
 
-	public void update(){
+	protected abstract void moveBot();
+
+	public final void update(){
 		notifyObservers(bots);
-		for(ABot b : bots) b.move();
+		this.moveBot();
 		this.setChanged();
 
 		bots.removeAll(toRemove);
@@ -62,6 +64,8 @@ public abstract class AColony extends Observable implements Drawable{
 		if(strategy == null) throw new IllegalArgumentException("La strategia della colonia non può essere 'null");
 		else this.strategy = strategy;
 	}
+
+	protected ArrayList<ABot> getBots(){return bots;}
 
 	@Override
 	public Node getNode() { return null; }

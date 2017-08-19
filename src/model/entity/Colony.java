@@ -16,4 +16,11 @@ public class Colony extends AColony{
 	@Override
 	protected ABot makeBot(final Coord startPosition){ return new Bot(this, startPosition); }
 
+	//Definisce l'ordine e in che modo di devono muovere i bot
+	//In questo caso tutti insieme
+	@Override
+	protected void moveBot() {
+		for(ABot b : this.getBots()) b.move();
+	}
+
 }
