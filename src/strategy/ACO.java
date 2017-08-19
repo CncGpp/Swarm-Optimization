@@ -77,7 +77,6 @@ public class ACO extends AS {
 	@Override
 	public void onlineUpdate(AMap map, ABot bot) {
 		map.evaporatePheromoneAt(bot.getRow(), bot.getCol(), 1.0d-phi);
-
 	}
 
 	@Override
@@ -88,7 +87,6 @@ public class ACO extends AS {
 		for(Vertex n : bestPath.getPath()){
 			map.dropPheromoneAt(n.getRow(), n.getCol(), mapDiameter(map)/bestPath.getLenght()*rho);
 		}
-
 	}
 
 
