@@ -91,7 +91,7 @@
                   </AnchorPane>
                   <AnchorPane fx:id="loginPane" prefHeight="512.0" prefWidth="324.0" stylesheets="@theme.css">
                      <children>
-                        <VBox alignment="TOP_CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="512.0" spacing="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <VBox alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="512.0" spacing="25.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <VBox alignment="TOP_CENTER" spacing="5.0">
                                  <children>
@@ -130,12 +130,12 @@
                               </VBox>
                               <VBox alignment="CENTER" minWidth="-Infinity" spacing="12.0">
                                  <children>
-                                    <TextField fx:id="nameField" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="290.0" promptText="Il tuo nome" styleClass="textField">
+                                    <TextField fx:id="nameField" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" onKeyPressed="#loginButtonKeyHandler" prefWidth="290.0" promptText="Il tuo nome" styleClass="textField">
                                        <font>
                                           <Font size="18.0" />
                                        </font>
                                     </TextField>
-                                    <TextField fx:id="surnameField" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="290.0" promptText="Il tuo cognome" styleClass="textField" stylesheets="@theme.css">
+                                    <TextField fx:id="surnameField" alignment="CENTER" maxWidth="-Infinity" minWidth="-Infinity" onKeyPressed="#loginButtonKeyHandler" prefWidth="290.0" promptText="Il tuo cognome" styleClass="textField" stylesheets="@theme.css">
                                        <font>
                                           <Font size="18.0" />
                                        </font>

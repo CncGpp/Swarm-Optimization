@@ -1,5 +1,5 @@
 .selected{
-	-fx-background-color: #e5e5e5;
+	-fx-background-color: rgba(41,128,185 ,0.7)
 }
 
 .background{
@@ -23,7 +23,7 @@
 	-fx-background-color: rgba(16, 16, 24 , 1);
 	-fx-border-radius: 7;
     -fx-background-radius: 7;
-	-fx-border-color: black;
+	-fx-border-color: derive(rgba(13,71,161 , 1),-0.80);
 	-fx-border-width: 1px;
 }
 
@@ -77,16 +77,30 @@
   	  -fx-background-radius: 7 0 0 7;
  }
 
-	.buttonGioca{
-		-fx-text-fill: #FFFFFF;
-		-fx-font-family: "Quicksand Medium";
-		-fx-font-size: 15pt;
+ /* PULSTANTE DI GIOCO */
 
-		-fx-background-color: #3498db;
-		-fx-background-radius: 100;
-		/*-fx-effect: dropshadow(one-pass-box, #2980b9, 3, 1.0, 0, 4); */
-	}
+.buttonGioca{
+	-fx-text-fill: #FFFFFF;
+	-fx-font-family: "Quicksand Medium";
+	-fx-font-size: 15pt;
 
+	-fx-background-color: #3498db;
+	-fx-background-radius: 100;
+   -fx-cursor: pointer;
+}
+
+.buttonGioca:hover { -fx-background-color:  derive(#3498db, 0.1); }
+
+.buttonGioca:pressed{
+	-fx-background-color: derive(#3498db,-0.1);
+}
+.buttonGioca:disabled{
+	-fx-background-color: derive(#3498db,-0.2);
+}
+
+/************************* */
+
+/* TEXT FIELD STYLE*/
 	.textField{
 		-fx-font-family: "Quicksand Regular";
 		-fx-font-size: 15pt;
@@ -97,12 +111,16 @@
 		-fx-prompt-text-fill: rgba(35, 35, 47 , 1);
 		-fx-text-box-border: #2c3e50;
 		-fx-focus-color: #2c3e50;
-
 		-fx-faint-focus-color: #32E4E6;
-
 		*/
 		-fx-control-inner-background: rgba(35, 35, 47 , 1);
 		-fx-background-radius: 100;
 	}
 
+.textField.error {
+  -fx-text-box-border: red ;
+  -fx-focus-color: red ;
+  -fx-control-inner-background: rgba(45, 35, 47 , 1);
+}
 
+/******************** */

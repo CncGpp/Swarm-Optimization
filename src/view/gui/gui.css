@@ -7,7 +7,7 @@
 	-fx-background-color: rgba(16, 16, 24 , 1);
 	-fx-border-radius: 7;
     -fx-background-radius: 7;
-	-fx-border-color: black;
+	-fx-border-color: derive(rgba(13,71,161 , 1),-0.80);
 	-fx-border-width: 1px;
 }
 
@@ -210,3 +210,40 @@
 }
 
 /************************************************************************ */
+
+/* BOTTONE DI CONFERMA */
+.confirmButton{
+	-fx-cursor: pointer;
+	-fx-background-color: #3498db;
+	-fx-text-fill: #ecf0f1;
+	-fx-font-family: "Quicksand Medium";
+	-fx-font-size: 12pt;
+	-fx-background-radius: 5;
+	-fx-effect: dropshadow(three-pass-box, #2980b9, 0, 1, 0, 6);
+}
+
+.confirmButton:hover { -fx-background-color:  derive(#3498db, 0.1); }
+
+.confirmButton:pressed{
+	-fx-translate-y: 4px;
+	-fx-background-color: derive(#3498db,-0.1);
+	-fx-effect: dropshadow(three-pass-box, derive(#2980b9, -0.2), 0, 1, 0, 3);
+}
+.confirmButton:disabled{
+	-fx-translate-y: 5px;
+	-fx-background-color: derive(#3498db,-0.2);
+	-fx-effect: dropshadow(three-pass-box, derive(#2980b9, -0.3), 0, 1, 0, 2);
+}
+/********************** */
+
+
+
+
+
+
+
+
+
+
+
+

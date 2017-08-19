@@ -44,6 +44,7 @@
          <styleClass>
             <String fx:value="background" />
             <String fx:value="roundedBottom" />
+            <String fx:value="rounded" />
          </styleClass>
       </AnchorPane>
    </children>
