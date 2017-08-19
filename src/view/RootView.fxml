@@ -57,10 +57,13 @@
             <String fx:value="roundedTop" />
          </styleClass>
          <children>
-            <HBox alignment="CENTER" layoutY="2.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
+            <HBox alignment="CENTER" layoutY="2.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="2.0">
                <children>
                   <Label styleClass="title" stylesheets="@gui/gui.css" text="Ant Colony Optimization" />
                </children>
+               <cursor>
+                  <Cursor fx:constant="MOVE" />
+               </cursor>
             </HBox>
             <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="855.0" layoutY="-65.0" onMouseClicked="#exitButtonHandler" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="3.0">
                <image>

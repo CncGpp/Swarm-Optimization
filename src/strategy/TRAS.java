@@ -47,6 +47,6 @@ public class TRAS extends ColonyStrategy{
 	}
 
 	@Override
-	public ColonyStrategy makeStrategy() { return new TRAS(); }
+	public ColonyStrategy makeStrategy() {return new TRAS(); }
 
 }

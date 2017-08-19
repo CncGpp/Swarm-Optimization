@@ -53,12 +53,12 @@ public class SettingController {
 
         ///// Inizializzo la Choice Box
         strategySelector.setItems( FXCollections.observableArrayList(
-        		"Ant-System", "Arctan Ant-System", "Decreasing Path Ant-System", "Linear Decreasing Path Ant-System",
-        		"True Random"
+        		"Ant-System", "Ant-Colony-Optimization", "Arctan Ant-System", "Decreasing Path Ant-System",
+        		"Linear Decreasing Path Ant-System", "True Random"
         		));
 
-        strategySelector.getSelectionModel().select(1);
-        this.setStrategy(1);
+        strategySelector.getSelectionModel().select(2);
+        this.setStrategy(2);
 
         strategySelector.getSelectionModel().selectedIndexProperty().addListener( (observable, oldValue, newValue) -> {
         	this.setStrategy(newValue);
@@ -86,7 +86,7 @@ public class SettingController {
     }
 
     public SettingController() {
-    	strategyData = Arrays.asList(new AS(), new AtanAS(), new DPAS(), new LDPAS(), new TRAS());
+    	strategyData = Arrays.asList(new AS(), new ACO(), new AtanAS(), new DPAS(), new LDPAS(), new TRAS());
 	}
 
     public void show(){
