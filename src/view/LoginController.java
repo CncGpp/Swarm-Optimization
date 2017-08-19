@@ -1,11 +1,13 @@
 package view;
 
+import java.util.Collections;
 import java.util.Optional;
 
 import application.Main;
 import javafx.animation.ParallelTransition;
 import javafx.animation.RotateTransition;
 import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -13,6 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
@@ -60,6 +64,13 @@ public class LoginController {
     }
 
     @FXML
+    void loginButtonKeyHandler(KeyEvent event) {
+    	 if(event.getCode().equals(KeyCode.ENTER) && validate()){
+    		 this.loginButtonHandler(null);
+    	 }
+    }
+
+    @FXML
     private void aboutButtonHandler(MouseEvent event){
     	RotateTransition rt = new RotateTransition(Duration.millis(animationDuration), aboutButton);
     	HorizontalCollapse hc;
@@ -93,9 +104,11 @@ public class LoginController {
         loginButton.setDisable(true);
 
         nameField.textProperty().addListener((obs, oldValue, newValue) ->{
+        	 if(newValue.trim().length() == 0) this.setError(nameField); else removeError(nameField);
         	 loginButton.setDisable(!validate());
         });
         surnameField.textProperty().addListener((obs, oldValue, newValue) ->{
+         if(newValue.trim().length() == 0) this.setError(surnameField); else removeError(surnameField);
        	 loginButton.setDisable(!validate());
        });
 
@@ -120,6 +133,15 @@ public class LoginController {
     	if(nameField.getText().equals("")) return false;
     	if(surnameField.getText().equals("")) return false;
     	return true;
+    }
+
+    private void setError(TextField tf) {
+        ObservableList<String> styleClass = tf.getStyleClass();
+        if(!styleClass.contains("error"))  styleClass.add("error");
+    }
+    private void removeError(TextField tf) {
+        ObservableList<String> styleClass = tf.getStyleClass();
+        styleClass.removeAll(Collections.singleton("error"));
     }
 
     private void restoreMementoScene(){
