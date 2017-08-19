@@ -19,7 +19,7 @@ public class TRAS extends ColonyStrategy{
 		ArrayList<Vertex> oldDirections = new ArrayList<>();		//Array di nodi nell'intorno 3x3 GIA' VISITATI
 		bot.getNeighbors(newDirections, oldDirections);
 
-		ArrayList<Vertex> directions = newDirections;				//Inizialmente, i nodi da considerare sono quelli "nuovi" ma se ho
+		ArrayList<Vertex> directions = newDirections;			//Inizialmente, i nodi da considerare sono quelli "nuovi" ma se ho
 		if(newDirections.isEmpty()) directions = oldDirections; //Già visitato tutto l'intorno allora scelgo la direzione fra quelle visitate
 
 		if(directions.isEmpty()) return null;					//Se non ci sono direzioni possibili allora ritorno.
@@ -35,9 +35,7 @@ public class TRAS extends ColonyStrategy{
 	public void initialize(AMap map) { map.setPheromone(0); }
 
 	@Override
-	public String getStrategyName() {
-		return "True Random";
-	}
+	public String getStrategyName() { return "True Random"; }
 
 	@Override
 	public String getStrategyDescriprion() {

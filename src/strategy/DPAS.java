@@ -15,8 +15,6 @@ public class DPAS extends AS{
 	protected double tau = .2;
 	protected double Q = 3;
 
-	//@Override public ColonyStartType getColonyStartType() { return ColonyStartType.MULTIPLE; }
-
 	@Override
 	public void onlineUpdate(AMap map, ABot bot) {
 		map.evaporatePheromoneAt(bot.getRow(), bot.getCol(), 1-rho);
@@ -41,8 +39,6 @@ public class DPAS extends AS{
 
 	protected double mapDiameter(final AMap map){ return Math.sqrt(map.getRows()*map.getRows() + map.getCols()*map.getCols());}
 
-
-
 	@Override
 	public String getStrategyName() {
 		return "Decreasing Path Ant-System";
@@ -50,8 +46,13 @@ public class DPAS extends AS{
 
 	@Override
 	public String getStrategyDescriprion() {
-		return  "nmncmn sfdlhsd,fsd fl jshdfjshdfj jsdhf sdjhf sj dhfhjjh jsoipoi poie opadpo asdj "
-			  + "Non so cosa scrivere blabla poi si vede jsodfho sjdhfksdh lhflsdjhfs lore ipsum";
+		return  "Un'evoluzione dell'Ant-System. Ogni volta che una soluzione è stata trovata Il "
+			  + "ferormone viene distribuito descrescentemente a retroso sul percorso effettuato dalla "
+		      + "formica. Le fasi di aggiornamento, online resta invariata, mentre la fase offline è effettuata utilizzando "
+		      + "la funzione logaritmo ottenendo un tasso di decadenza logaritmico, favorendo i valori alti a discapito "
+		      + "di quelli bassi.\n"
+			  + "In questo modo si favorisce il concetramento di feromone intorno all'uscita che decresce allontanandosi "
+			  + "portando i microbot 'risalire' il feromone fino all'uscita.";
 	}
 
 	@Override

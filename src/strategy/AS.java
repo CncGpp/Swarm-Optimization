@@ -92,7 +92,11 @@ public class AS extends ColonyStrategy{
 	@Override
 	public String getStrategyDescriprion() {
 		return  "Si tratta del primo algoritmo proposto basato sul comportamento delle formiche. "
-			  + "Non so cosa scrivere blabla poi si vede jsodfho sjdhfksdh lhflsdjhfs lore ipsum";
+			  + "Quando una formica raggiunge l'uscita lascia lungo il suo percorso una traccia di ferormone proporzionale "
+			  + "alla bontà della soluzione trovata. Il movimento delle formiche è di tipo stocatsico e la probabilità di "
+			  + "di spostarsi in una determinata direzione dipende dalla quantità di feromone che attualmente vi è depositata. "
+			  + "Il feromone depositato tuttavia evapora con il passare del tempo, dunque i percorsi migliori e più visitati "
+			  + "tenderanno a rafforzarsi depositando sempre più ferormomne, mentre quelli peggiori tenderanno a sparire.";
 	}
 
 	@Override

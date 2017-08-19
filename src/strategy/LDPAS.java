@@ -16,9 +16,7 @@ public class LDPAS extends DPAS{
 	}
 
 	@Override
-	public void onlineUpdate(AMap map, ABot bot) {
-		super.onlineUpdate(map, bot);
-	}
+	public void onlineUpdate(AMap map, ABot bot) {super.onlineUpdate(map, bot); }
 
 	@Override
 	public void offlineUpdate(AMap map, final Path path) {
@@ -39,14 +37,16 @@ public class LDPAS extends DPAS{
 	}
 
 	@Override
-	public String getStrategyName() {
-		return "Linear Decreasing Path Ant-System";
-	}
+	public String getStrategyName() { return "Linear Decreasing Path Ant-System"; }
 
 	@Override
 	public String getStrategyDescriprion() {
-		return  "nmncmn sfdlhsd,fsd fl jshdfjshdfj jsdhf sdjhf sj dhfhjjh jsoipoi poie opadpo asdj "
-			  + "Non so cosa scrivere blabla poi si vede jsodfho sjdhfksdh lhflsdjhfs lore ipsum";
+		return  "Una variante del Decreasing Path Ant-System. Ogni volta che una soluzione è stata trovata Il "
+			  + "ferormone viene distribuito descrescentemente e linearmente a retroso sul percorso effettuato dalla "
+		      + "formica. Le fasi di aggiornamento, online resta invariata, mentre la fase offline è effettuata utilizzando "
+		      + "una funzione lineare ottenendo un tasso di decadenza lineare."
+			  + "In questo modo si favorisce il concetramento di feromone intorno all'uscita che decresce allontanandosi "
+			  + "portando i microbot 'risalire' il feromone fino all'uscita.";
 	}
 
 	@Override

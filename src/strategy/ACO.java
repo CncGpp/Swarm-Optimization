@@ -96,7 +96,7 @@ public class ACO extends AS {
 	}
 
 	@Override
-	public String getStrategyName() { return "Ant-Colony-Optimization"; }
+	public String getStrategyName() { return "Ant Colony Optimization"; }
 
 	@Override
 	public String getStrategyDescriprion() {
