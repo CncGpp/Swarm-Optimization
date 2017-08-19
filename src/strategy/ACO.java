@@ -7,6 +7,7 @@ import model.map.AMap;
 import util.Path;
 import util.Vertex;
 
+// ANT COLONY OPTIMIZATION
 public class ACO extends AS {
 
 	protected Path bestPath;
@@ -32,7 +33,6 @@ public class ACO extends AS {
 	}
 
 	private double mapDiameter(final AMap map){ return Math.sqrt(map.getRows()*map.getRows() + map.getCols()*map.getCols());}
-
 
 	@Override
 	public Vertex selectNextMove(final AMap map, final ABot bot) {
@@ -71,7 +71,6 @@ public class ACO extends AS {
 
 		if(i == 0) return directions.get(0);
 		return directions.get(i-1);
-
 	}
 
 	@Override
@@ -96,11 +95,8 @@ public class ACO extends AS {
 		map.setPheromone(tau);
 	}
 
-
 	@Override
-	public String getStrategyName() {
-		return "Ant-Colony-Optimization";
-	}
+	public String getStrategyName() { return "Ant-Colony-Optimization"; }
 
 	@Override
 	public String getStrategyDescriprion() {
@@ -117,6 +113,5 @@ public class ACO extends AS {
 	public ColonyStrategy makeStrategy() {
 		return new ACO();
 	}
-
 
 }
