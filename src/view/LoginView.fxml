@@ -63,7 +63,7 @@
                                                 <Insets bottom="-3.0" />
                                              </VBox.margin>
                                           </Label>
-                                          <Label styleClass="labelAboutRegular" stylesheets="@theme.css" text="Mat. 124001064" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
+                                          <Label styleClass="labelAboutRegular" stylesheets="@theme.css" text="Mat. 0124001064" textAlignment="CENTER" textFill="WHITE" textOverrun="CLIP">
                                              <font>
                                                 <Font size="24.0" />
                                              </font>

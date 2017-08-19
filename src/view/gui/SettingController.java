@@ -99,6 +99,11 @@ public class SettingController {
     }
     public void toggle(){
     	pane_setting.setVisible(!pane_setting.isVisible());
-    	pane_setting.setDisable(!pane_setting.isDisabled());
+    	pane_setting.setDisable(!pane_setting.isDisable());
+    }
+
+    public void toggleStatus(){
+    	botCountSpinner.setDisable(!botCountSpinner.isDisable());
+    	strategySelector.setDisable(!strategySelector.isDisable());
     }
 }
