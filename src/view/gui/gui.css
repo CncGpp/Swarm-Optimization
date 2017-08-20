@@ -99,6 +99,11 @@
 }
 
 .list-view {
+  -fx-background-color: rgba(35, 35, 47 , 1);
+  -fx-background-image: url("../../image/noRank.png");
+  -fx-background-repeat: no-repeat;
+  -fx-background-position: center;
+
   -fx-background-insets: 0;
   -fx-padding: 0;
 }
