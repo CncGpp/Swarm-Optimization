@@ -55,13 +55,11 @@ public class AS extends ColonyStrategy{
 		double sum = 0;
 
 		while(sum < max){
-			if(i == directions.size()) break;
 			Vertex node = directions.get(i);
 			sum+=nodeGoodness(map, node);
 			i++;
 		}
-		//FIXME: Porcodio perchè non funziona? chi lo sa...
-		if(i == 0) return directions.get(0);
+
 		return directions.get(i-1);
 	}
 
