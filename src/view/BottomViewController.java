@@ -12,7 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
-import model.Game;
+import model.AGame;
 import model.Stage;
 import model.player.PlayerData;
 import util.Gloabal.Controllers;
@@ -24,7 +24,7 @@ public class BottomViewController {
 	private Main application;
 	public void setApplication(final Main application){this.application = application;}
 
-	private Game g;
+	private AGame g;
 	PlayerData playerData = new PlayerData();
 	private Stage stage = new Stage();
 
@@ -93,7 +93,7 @@ public class BottomViewController {
 
     @FXML
     private void loginButtonHandler(){
-    	if(!this.logoutScene()) g.pauseGame();
+    	if(!this.logoutScene()) g.pause();
     }
 
 
@@ -104,7 +104,7 @@ public class BottomViewController {
     }
 
     ////////// METODI DI CLASSE ////////////////
-    public void setGame(Game game){ this.g = game;}
+    public void setGame(AGame game){ this.g = game;}
     public void cloaseAll(){
     	Controllers.rankController.hide();
     	Controllers.infoController.hide();
@@ -124,26 +124,26 @@ public class BottomViewController {
     public void initializeNewGame(){
     	this.pauseGame();
 		this.stage = new Stage(0);
-		g.newGame(this.stage);
+		g.init(this.stage);
 		Chronometer.set(0);
 		stageLabel.setText( 1 + stage.getStageNumber() + "");
 		enableSettingStatus();
     }
     private void initializeGameStage(){
 		this.pauseGame();
-		g.newGame(this.stage);
+		g.init(this.stage);
 		stageLabel.setText( 1 + this.stage.getStageNumber() + "");
     }
     private void startGame(){
     	 cloaseAll();
     	 toggleSettingStatus();
 		 Chronometer.start();
-		 g.startGame();
+		 g.start();
 		 startButton.setImage(new Image(Gloabal.R.PAUSE_ICON_URI));
     }
     private void pauseGame(){
 		 Chronometer.pause();
-		 g.pauseGame();
+		 g.pause();
 		 startButton.setImage(new Image(Gloabal.R.START_ICON_URI));
     }
 

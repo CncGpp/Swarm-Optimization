@@ -54,7 +54,7 @@ public class AS extends ColonyStrategy{
 		int i = 0;
 		double sum = 0;
 
-		while(sum < max){
+		while(sum <= max){
 			Vertex node = directions.get(i);
 			sum+=nodeGoodness(map, node);
 			i++;

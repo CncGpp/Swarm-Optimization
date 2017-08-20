@@ -66,9 +66,9 @@ public class Main extends Application {
 	private void gameInitializer(){
 		if(game == null) {
 			game = new Game();
-			game.newGame();
+			game.init();
 		}
-		game.newGame();
+		game.init();
 		if(Controllers.bottomViewController == null) throw new IllegalStateException("La view non è stata inizializzata!");
 			Controllers.bottomViewController.setGame(game);
 	}

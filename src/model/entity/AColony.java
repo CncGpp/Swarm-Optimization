@@ -59,6 +59,8 @@ public abstract class AColony extends Observable implements Drawable{
 		else this.map = map;
 	}
 
+	public boolean isEmpty() {return bots.isEmpty();}
+
 	public ColonyStrategy getStrategy(){ return strategy; }
 	public void setStrategy(final ColonyStrategy strategy){
 		if(strategy == null) throw new IllegalArgumentException("La strategia della colonia non può essere 'null");

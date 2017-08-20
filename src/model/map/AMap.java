@@ -1,7 +1,7 @@
 package model.map;
 
+import model.AGame;
 import model.Drawable;
-import model.Game;
 import model.Stage;
 
 public abstract class AMap implements Drawable{
@@ -9,13 +9,13 @@ public abstract class AMap implements Drawable{
 	private int cols;
 	private double tileSize;
 
-	public AMap(final Game game, final Stage stage) {
+	public AMap(final AGame game, final Stage stage) {
 		if(game == null) throw new IllegalArgumentException("Il Game non può essere 'null");
 		else if(stage == null) throw new IllegalArgumentException("Lo stage non può essere 'null");
 		loadMap(game, stage);
 	}
 
-	protected abstract void loadMap(final Game game, final Stage stage);
+	protected abstract void loadMap(final AGame game, final Stage stage);
 
 	public int getRows(){return rows;}
 	public int getCols(){return cols;}

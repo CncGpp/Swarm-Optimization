@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 import javafx.scene.Node;
-import model.Game;
+import model.AGame;
 import model.Stage;
 import model.entity.End;
 import model.entity.Manhole;
@@ -18,12 +18,12 @@ public class Map extends AMap{
 	private TileLayer tileLayer;
 
 	// COSTRUTTORI
-	public Map(final Game game, final Stage stage) {
+	public Map(final AGame game, final Stage stage) {
 		super(game, stage);
 	}
 
 	@Override
-	protected void loadMap(final Game game, final Stage stage){
+	protected void loadMap(final AGame game, final Stage stage){
 		loadTileMap(game, stage.getStagePath());
 		pheromoneLayer = new PheromoneLayer(this);
 	}
@@ -51,7 +51,7 @@ public class Map extends AMap{
 	public TileType getTileTypeAt(int row, int col) { return tileLayer.getTileAt(row, col).getTileType();}
 
 
-	private void loadTileMap(final Game game, String stagePath){
+	private void loadTileMap(final AGame game, String stagePath){
 		try(Scanner s = new Scanner(R.CLASSLOADER.getResourceAsStream(stagePath))){
 			// Leggo le dimensioni della mappa
 			setDimensions(s.nextInt(), s.nextInt(), s.nextDouble());
