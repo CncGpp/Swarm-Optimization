@@ -13,7 +13,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import model.AGame;
-import model.Stage;
+import model.GameStatus;
 import model.player.PlayerData;
 import util.Gloabal.Controllers;
 import util.Chronometer;
@@ -26,7 +26,6 @@ public class BottomViewController {
 
 	private AGame g;
 	PlayerData playerData = new PlayerData();
-	private Stage stage = new Stage();
 
     @FXML
     private Pane rankSelection, infoSelection, settingSelection;
@@ -123,16 +122,15 @@ public class BottomViewController {
 
     public void initializeNewGame(){
     	this.pauseGame();
-		this.stage = new Stage(0);
-		g.init(this.stage);
+		g.init();
 		Chronometer.set(0);
-		stageLabel.setText( 1 + stage.getStageNumber() + "");
+		stageLabel.setText( 1 + g.getStage().getStageNumber() + "");
 		enableSettingStatus();
     }
     private void initializeGameStage(){
 		this.pauseGame();
-		g.init(this.stage);
-		stageLabel.setText( 1 + this.stage.getStageNumber() + "");
+		g.restore();
+		stageLabel.setText( 1 + g.getStage().getStageNumber() + "");
     }
     private void startGame(){
     	 cloaseAll();
@@ -149,7 +147,7 @@ public class BottomViewController {
 
     public void stageEnded(){
     	toggleSettingStatus();
-    	if(!stage.nextStage()){
+    	if(!g.getStage().nextStage()){
     		System.out.println("Il gioco è finito");
     		playerData.getCurrentPlayer().setTime(Chronometer.getTotalTime());
     		Controllers.rankController.submitScore(playerData.getCurrentPlayer());
@@ -171,8 +169,11 @@ public class BottomViewController {
 		Optional<ButtonType> result = al.showAndWait();						//Verifico la scelta
 		if(result.get() == ButtonType.CANCEL) return true;					//Se non si vuole proseguire con il cambio ritorno
 
-		playerData.getCurrentPlayer().setTime(Chronometer.getTotalTime());
-		playerData.addMemento(g.getMemento());
+		if(g.getStatus() != GameStatus.ENDED){
+			g.pause();
+			playerData.getCurrentPlayer().setTime(Chronometer.getTotalTime());
+			playerData.addMemento(g.getMemento());
+		}
 
 		this.initializeNewGame();
 

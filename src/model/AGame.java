@@ -29,7 +29,7 @@ public abstract class AGame implements Observer{
 	private Stage stage;
 
 	//Metodi che gestiscono lo stato della partita
-	public final void init(){ init(new Stage());}
+	public final void init(){ init(new Stage()); }
 
 	public final void init(final Stage stage){
 		this.stage = stage;
@@ -44,6 +44,11 @@ public abstract class AGame implements Observer{
 		this.addNode();
 
 		this.setStatus(GameStatus.READY);
+	}
+
+	public void restore(){
+		if(this.stage == null) init();
+		else init(this.stage);
 	}
 
 	public void start(){
@@ -93,6 +98,7 @@ public abstract class AGame implements Observer{
 	// GETTERS & SETTERS
 	protected void setStatus(final GameStatus gameStatus){ if(gameStatus != null) this.gameStatus = gameStatus; }
 	public GameStatus getStatus(){ return gameStatus; }
+	public Stage getStage(){ return stage;}
 	public void setStart(final AStart start){this.start = start;}
 	public void addEnd(final AEnd end){this.ends.add(end);}
 	public void addManhole(final AManhole manhole){this.manholes.add(manhole);}
