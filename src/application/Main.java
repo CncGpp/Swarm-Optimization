@@ -8,10 +8,12 @@ import javafx.stage.StageStyle;
 import model.Game;
 import util.Gloabal;
 import util.Gloabal.Controllers;
+import util.Gloabal.R;
 import view.BottomViewController;
 import view.LoginController;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -35,6 +37,8 @@ public class Main extends Application {
 
 
 		try {
+			stage.getIcons().add(new Image(R.APP_ICON_URI));
+			loginStage.getIcons().add(new Image(R.APP_ICON_URI));
 			Font.loadFont(Gloabal.R.BOLD_FONT_URI, 24);
 			Font.loadFont(Gloabal.R.MEDIUM_FONT_URI, 14);
 			Font.loadFont(Gloabal.R.REGULAR_FONT_URI, 14);

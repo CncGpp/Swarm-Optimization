@@ -43,7 +43,7 @@ public abstract class Gloabal {
 		public final static String MONOSPACE_FONT_URI = CLASSLOADER.getResource("font/Quicksand-Bold.ttf").toExternalForm();
 
 		/* RISORSE - ICONE */
-		public final static String APP_ICON_URI = CLASSLOADER.getResource("icon/icon.png").toExternalForm();
+		public final static String APP_ICON_URI = CLASSLOADER.getResource("icon/app.png").toExternalForm();
 		public final static String START_ICON_URI = CLASSLOADER.getResource("icon/start.png").toExternalForm();
 		public final static String PAUSE_ICON_URI = CLASSLOADER.getResource("icon/pause.png").toExternalForm();
 		public final static String RESTART_ICON_URI = CLASSLOADER.getResource("icon/restart.png").toExternalForm();
