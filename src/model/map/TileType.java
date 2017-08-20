@@ -3,6 +3,7 @@ package model.map;
 import javafx.scene.paint.Color;
 
 public enum TileType {
+	RAISED(-1, Color.GRAY),
 	FREE(0, Color.WHITE),
 	WALL(1, Color.BLACK),
 	MANHOLE(2, Color.DODGERBLUE),

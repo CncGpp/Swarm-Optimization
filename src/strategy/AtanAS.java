@@ -13,7 +13,7 @@ public class AtanAS extends AS{
 
 	public AtanAS() {
 		super.alpha = 10;
-		super.beta = 2;
+		super.beta = 4;
 	}
 
 	protected double func(final double pLevel, final double k){

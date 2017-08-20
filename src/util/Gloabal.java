@@ -23,7 +23,7 @@ public abstract class Gloabal {
 
 	public static class C{	//Colori
 		public final static Color PHEROMONE_COLOR = Color.RED;
-		public final static Color MICROBOT_COLOR = Color.SLATEGREY;
+		public final static Color MICROBOT_COLOR = Color.MEDIUMPURPLE;
 		public final static Color START_COLOR = Color.DARKRED;
 		public final static Color END_COLOR = Color.LIMEGREEN;
 		public final static Color MANHOLE_COLOR = Color.DODGERBLUE;

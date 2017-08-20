@@ -3,7 +3,7 @@ package model.map;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
-public class Tile extends Rectangle{
+public class Tile extends Rectangle implements Weighable{
 
 	private final TileType tileType;
 

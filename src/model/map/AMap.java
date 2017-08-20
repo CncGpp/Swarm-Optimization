@@ -3,6 +3,7 @@ package model.map;
 import model.AGame;
 import model.Drawable;
 import model.Stage;
+import util.Coord;
 
 public abstract class AMap implements Drawable{
 	private int rows;
@@ -17,9 +18,11 @@ public abstract class AMap implements Drawable{
 
 	protected abstract void loadMap(final AGame game, final Stage stage);
 
+	// GETTERS & SETTERS
 	public int getRows(){return rows;}
 	public int getCols(){return cols;}
 	public double getTileSize(){ return tileSize; }
+	public abstract double getWeight(final Coord from, final Coord to);
 	protected void setDimensions(final int rows, final int cols, final double tileSize){
 		try{
 			if(rows <= 0) throw new IllegalArgumentException("Il numero di righe della mappa deve essere > 0. \t rows: "+ rows);

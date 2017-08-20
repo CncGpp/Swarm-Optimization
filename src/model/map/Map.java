@@ -2,13 +2,13 @@ package model.map;
 
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-
 import javafx.scene.Node;
 import model.AGame;
 import model.Stage;
 import model.entity.End;
 import model.entity.Manhole;
 import model.entity.Start;
+import util.Coord;
 import util.Gloabal.Controllers;
 import util.Gloabal.R;
 
@@ -75,6 +75,9 @@ public class Map extends AMap{
 					case 4: tt = TileType.END;
 							game.addEnd(new End(this, i, j));
 							break;
+					case -1: tt = TileType.RAISED;
+							tileLayer.setTileAt(i, j, new RaisedTile(getTileSize(), tt, s.nextDouble()));
+							continue;
 					default: tt = TileType.WALL; break;
 					}
 					tileLayer.setTileAt(i, j, new Tile(getTileSize(), tt));
@@ -90,6 +93,18 @@ public class Map extends AMap{
 			e.printStackTrace();
 			System.exit(-2);
 		}
+	}
+
+	@Override
+	public double getWeight(Coord from, Coord to) {
+		final double peso = (from.getRow() == to.getRow() || from.getCol() == to.getCol()) ? 1 : 1.4142135623;
+		final Weighable wFrom = tileLayer.getTileAt(from.getRow(), from.getCol());
+		final Weighable wTo = tileLayer.getTileAt(to.getRow(), to.getCol());
+
+		if(wFrom.getWeight() >= wTo.getWeight())
+			return peso - wFrom.getWeight()/peso;
+		else
+			return peso + wTo.getWeight()/peso;
 	}
 
 	@Override

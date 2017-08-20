@@ -78,8 +78,8 @@ public class Bot extends ABot{
 				//Se la coordinate ricade fuori la mappa, non la considero.
 				if(_row < 0 || _col < 0 || _row >= map.getRows() || _col >= map.getCols()) continue;
 
-				/** Essendo la map basata su griglia quadrata le direzioni diagonali avranno peso sqrt(2), le restanti 1*/
-				final double peso = (_row == getRow() || _col == getCol()) ? 1 : 1.4142135623;
+				/** Determino il peso fra i due nodi*/
+				final double peso = map.getWeight(new Coord(getRow(), getCol()), new Coord(_row,_col) );
 
 				//Se l'ho gia' visitato, lo aggiungo a oldDirections, altrimenti se è una direzione
 				//possibile lo aggiungo a newDirections
