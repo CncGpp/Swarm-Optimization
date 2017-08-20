@@ -16,7 +16,7 @@ import view.gui.SettingController;
 public abstract class Gloabal {
 
 	public abstract static class Settings{
-		public final static int UPDATE_DELAY = 25;
+		public final static int UPDATE_DELAY = 1;
 		public static int BOT_NUMBER = 50;
 		public static ColonyStrategy COLONY_STRATEGY = new AtanAS();
 	}
@@ -61,7 +61,8 @@ public abstract class Gloabal {
 		public final static String RANK_URI = "rank.txt";
 		public final static List<String> STAGE_LIST = Arrays.asList( "file/1a.txt",
 																	 "file/2a.txt",
-																	 "file/3.txt"
+																	 "file/3.txt",
+																	 "file/4a.txt"
 																	);
 	}
 
