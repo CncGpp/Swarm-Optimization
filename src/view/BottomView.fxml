@@ -30,7 +30,7 @@
                   <fx:include source="gui/ChronometerView.fxml" />
                   <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../res/icon/time.png" />
+                        <Image url="@../icon/time.png" />
                      </image>
                   </ImageView>
                </children>
@@ -54,7 +54,7 @@
          <children>
             <ImageView fx:id="settingButton" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#settingButtonHandler" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../res/icon/setting.png" />
+                  <Image url="@../icon/setting.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -62,7 +62,7 @@
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#infoButtonHandler" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../res/icon/info.png" />
+                  <Image url="@../icon/info.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -70,7 +70,7 @@
             </ImageView>
             <ImageView fitHeight="40.0" fitWidth="40.0" onMouseClicked="#rankButtonHandler" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../res/icon/rank.png" />
+                  <Image url="@../icon/rank.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -82,7 +82,7 @@
          <children>
             <ImageView fx:id="loginButton" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#loginButtonHandler" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../res/icon/change.png" />
+                  <Image url="@../icon/change.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -90,7 +90,7 @@
             </ImageView>
             <ImageView fx:id="startButton" fitHeight="40.0" fitWidth="40.0" layoutX="10.0" layoutY="10.0" onMouseClicked="#startButtonHandle" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../res/icon/start.png" />
+                  <Image url="@../icon/start.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />

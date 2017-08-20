@@ -27,14 +27,14 @@
                      <children>
                         <ImageView fitHeight="512.0" fitWidth="420.0" pickOnBounds="true" preserveRatio="true" styleClass="roundedLeft" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <image>
-                              <Image url="@../../res/image/bg.png" />
+                              <Image url="@../image/bg.png" />
                            </image>
                         </ImageView>
                         <VBox alignment="TOP_CENTER" maxWidth="420.0" minWidth="420.0" prefWidth="420.0" spacing="20.0" styleClass="roundedLeft" stylesheets="@theme.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <ImageView fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../res/image/ant-512.png" />
+                                    <Image url="@../image/ant-512.png" />
                                  </image>
                               </ImageView>
                               <VBox alignment="TOP_CENTER" spacing="50.0">
@@ -97,7 +97,7 @@
                                  <children>
                                     <ImageView fitHeight="125.0" fitWidth="125.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@../../res/image/Logo.png" />
+                                          <Image url="@../image/Logo.png" />
                                        </image>
                                        <effect>
                                           <Glow />
@@ -160,7 +160,7 @@
                         </VBox>
                         <ImageView fx:id="aboutButton" fitHeight="30.0" fitWidth="30.0" onMouseClicked="#aboutButtonHandler" pickOnBounds="true" preserveRatio="true" rotate="90.0" AnchorPane.leftAnchor="8.0" AnchorPane.topAnchor="8.0">
                            <image>
-                              <Image url="@../../res/icon/collapse.png" />
+                              <Image url="@../icon/collapse.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />
@@ -168,7 +168,7 @@
                         </ImageView>
                         <ImageView fitHeight="18.0" fitWidth="18.0" onMouseClicked="#exitButtonHandler" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="8.0" AnchorPane.topAnchor="8.0">
                            <image>
-                              <Image url="@../../res/icon/exit.png" />
+                              <Image url="@../icon/exit.png" />
                            </image>
                            <cursor>
                               <Cursor fx:constant="HAND" />

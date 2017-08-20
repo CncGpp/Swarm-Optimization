@@ -26,7 +26,7 @@
                      <graphic>
                         <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="@../../../res/icon/setting2.png" />
+                              <Image url="@../../icon/setting2.png" />
                            </image>
                         </ImageView>
                      </graphic>
@@ -38,7 +38,7 @@
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../res/icon/icon.png" />
+                                    <Image url="@../../icon/icon.png" />
                                  </image>
                               </ImageView>
                            </graphic>
@@ -58,7 +58,7 @@
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
-                                    <Image url="@../../../res/icon/strategy.png" />
+                                    <Image url="@../../icon/strategy.png" />
                                  </image>
                               </ImageView>
                            </graphic>

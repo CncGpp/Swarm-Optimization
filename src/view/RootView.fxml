@@ -67,7 +67,7 @@
             </HBox>
             <ImageView fitHeight="18.0" fitWidth="18.0" layoutX="855.0" layoutY="-65.0" onMouseClicked="#exitButtonHandler" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="3.0">
                <image>
-                  <Image url="@../../res/icon/exit.png" />
+                  <Image url="@../icon/exit.png" />
                </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
