@@ -10,13 +10,13 @@ import model.entity.AColony;
 import model.entity.AEnd;
 import model.entity.AManhole;
 import model.entity.AStart;
-import model.entity.Colony;
 import model.map.AMap;
 import util.Memento;
 import util.Gloabal.Settings;
 
 public abstract class AGame implements Observer{
 
+	private Thread thread;
 	private GameStatus gameStatus = GameStatus.NOTREADY;
 
 	protected AStart start;
@@ -55,7 +55,7 @@ public abstract class AGame implements Observer{
 		if(getStatus() != GameStatus.READY && getStatus() != GameStatus.PAUSED) return;
 		this.setStatus(GameStatus.RUNNING);
 
-	   ( new Thread() { public void run() {
+	   thread = new Thread() { public void run() {
 
 		   	while(getStatus() == GameStatus.RUNNING){
 		   		Platform.runLater( () -> { colony.update(); });	//Tutti gli aggiornamenti dell'UI di fx vanno fatti in un thread di FX
@@ -66,10 +66,14 @@ public abstract class AGame implements Observer{
 		   		System.out.println("Il labirinto è stato completato.");
 		   	}
 
-		} } ).start();
+		} };// ).start();
+		thread.start();
 	}
 
-	public void pause(){ this.setStatus(GameStatus.PAUSED);}
+	public void pause(){
+		this.setStatus(GameStatus.PAUSED);
+		try {if(thread !=null) thread.join(); } catch (InterruptedException e) { e.printStackTrace();}
+	}
 	public void restart(){ this.start();}
 	public void end(){ pause(); this.setStatus(GameStatus.ENDED);}
 
@@ -122,9 +126,9 @@ public abstract class AGame implements Observer{
 	}
 
 	@Override
-	public void update(Observable o, Object arg) {
-		if(!(o instanceof Colony)) return;
-		if(((AColony) o).isEmpty()) this.end();
+	public synchronized void update(Observable o, Object arg) {
+		if(!(o instanceof AColony)) return;
+		if(getStatus()!= GameStatus.ENDED && ((AColony) o).isEmpty()) this.end();
 	}
 
 	/* #########################################################################
