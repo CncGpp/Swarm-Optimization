@@ -1,5 +1,7 @@
 package model.map;
 
+import util.Gloabal.C;
+
 public class RaisedTile extends Tile {
 
 	private final double height;
@@ -16,6 +18,6 @@ public class RaisedTile extends Tile {
 	@Override
 	void draw() {
 		super.draw();
-		this.setOpacity(height);
+		this.setFill(C.RAISED_COLOR.deriveColor(0,0.4,0.3,height));
 	}
 }

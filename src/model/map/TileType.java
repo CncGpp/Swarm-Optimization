@@ -1,14 +1,15 @@
 package model.map;
 
 import javafx.scene.paint.Color;
+import util.Gloabal.C;
 
 public enum TileType {
-	RAISED(-1, Color.GRAY),
-	FREE(0, Color.WHITE),
-	WALL(1, Color.BLACK),
-	MANHOLE(2, Color.DODGERBLUE),
-	START(3, Color.BROWN),
-	END(4, Color.LIMEGREEN);
+	RAISED(-1, C.RAISED_COLOR),
+	FREE(0, C.FREE_COLOR),
+	WALL(1, C.WALL_COLOR),
+	MANHOLE(2, C.MANHOLE_COLOR),
+	START(3, C.START_COLOR),
+	END(4, C.END_COLOR);
 
 
 	private final int id;
