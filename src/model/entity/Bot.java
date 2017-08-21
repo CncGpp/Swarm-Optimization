@@ -11,12 +11,30 @@ import util.Coord;
 import util.Gloabal.C;
 import util.Vertex;
 
+/** Implementazione concreta della classe {@code ABot}.
+ * <p> La classe implementa i metodi astratti della superclasse definendo cosi' il comportamento del Bot</p>
+ * <p> La scelta della prossima posizione, della quantita' di ferormone da depositare localmente o globalmente dipendono dalla
+ * strategia del Colonia di cui fa parte il bot</p>
+ * */
 public class Bot extends ABot{
 
+	/**
+	 * Istanzia un nuovo Bot.
+	 *
+	 * @param colony la colonia di appartenenza del bot
+	 * @see AColony
+	 */
 	public Bot(final AColony colony) {
 		this(colony, new Coord(-1,-1));
 	}
 
+	/**
+	 * Istanzia un nuovo Bot.
+	 *
+	 * @param colony la colonia di appartenenza del bot
+	 * @param coordinate le coordinate del bot sulla mappa
+	 * @see AColony
+	 * @see Coord */
 	public Bot(final AColony colony, final Coord coordinate){
 		super(colony, coordinate);
 		this.colony = colony;
@@ -24,6 +42,9 @@ public class Bot extends ABot{
 		visited = new boolean[colony.getMap().getRows()][colony.getMap().getCols()];
 	}
 
+	/* (non-Javadoc)
+	 * @see model.entity.Entity#makeNode(model.map.AMap)
+	 */
 	@Override
 	protected Node makeNode(AMap map) {
 		final Circle c = new Circle(map.getTileSize()/2);
@@ -34,6 +55,9 @@ public class Bot extends ABot{
 		return c;
 	}
 
+	/* (non-Javadoc)
+	 * @see model.entity.ABot#move()
+	 */
 	@Override
 	public boolean move(){
 		colony.getStrategy().onlineUpdate(colony.getMap(), this);
@@ -41,6 +65,9 @@ public class Bot extends ABot{
 		return moveTo(nextPos);
 	}
 
+	/* (non-Javadoc)
+	 * @see model.entity.ABot#moveTo(util.Vertex)
+	 */
 	@Override
 	public boolean moveTo(final Vertex coord){
 		if(colony.getMap().getTileTypeAt(getRow(), getCol()) == TileType.WALL) return false;
@@ -54,14 +81,8 @@ public class Bot extends ABot{
 		return true;
 	}
 
-	/**
-	 * La funzione permette di ottenere le possibili che si trovano in un 8-connesso.
-	 * <p> tali direzioni verranno in seguito utilizzate per pianificare il movimento del bot. </p>
-	 *
-	 * @param newDirections è un parametro di <code>in/out</code> dove verranno ritornate le nuove direzioni, ovvero
-	 * quelle praticabili e che nell'intorno non sono state ancora visitate dal bot.
-	 * @param oldDirections è un parametro di <code>in/out</code> dove verranno ritornate le vecchie direzioni, ovvero
-	 * quelle che nell'intorno sono state già visitate dal bot.
+	/* (non-Javadoc)
+	 * @see model.entity.ABot#getNeighbors(java.util.ArrayList, java.util.ArrayList)
 	 */
 	@Override
 	public void getNeighbors(ArrayList<Vertex> newDirections, ArrayList<Vertex> oldDirections){
@@ -78,7 +99,7 @@ public class Bot extends ABot{
 				//Se la coordinate ricade fuori la mappa, non la considero.
 				if(_row < 0 || _col < 0 || _row >= map.getRows() || _col >= map.getCols()) continue;
 
-				/** Determino il peso fra i due nodi*/
+				/* Determino il peso fra i due nodi*/
 				final double peso = map.getWeight(new Coord(getRow(), getCol()), new Coord(_row,_col) );
 
 				//Se l'ho gia' visitato, lo aggiungo a oldDirections, altrimenti se è una direzione
@@ -89,14 +110,19 @@ public class Bot extends ABot{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see model.entity.ABot#leaved()
+	 */
 	@Override
 	public void leaved(){
-		//System.out.println("Sono uscito dal labirinto YEAHHH");
 		colony.getStrategy().offlineUpdate(colony.getMap(), path);
 		colony.removeBot(this);
 		this.removeNode();
 	}
 
+	/**
+	 * Metodo privato utilizzato solo per ridisegnare il bot dopo un suo spostamento.
+	 */
 	private void draw(){
 		final AMap map = colony.getMap();
 		this.getNode().relocate(getCol() * map.getTileSize(),  getRow() * map.getTileSize());
