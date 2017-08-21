@@ -2,6 +2,10 @@ package model.player;
 
 import util.Memento;
 
+/**
+ * La classe {@code PlayerMemento} Modella il salvataggio di stato di un player
+ * <p> Il suo salvataggio comprende Il memento della partita e i suoi dati </p>
+ * */
 public class PlayerMemento {
 	private Memento memento;
 	private PlayerScore playerScore;

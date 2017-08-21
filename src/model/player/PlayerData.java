@@ -1,7 +1,6 @@
 package model.player;
 
 import java.util.ArrayList;
-
 import util.Memento;
 
 /**
