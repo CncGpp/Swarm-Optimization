@@ -115,6 +115,7 @@ public abstract class AGame implements Observer{
 	 * <p> Dopo la chiamata di questo metodo il gioco si trova nello stato {@code GameStatus.PAUSED}</p>
 	 */
 	public void pause(){
+		if(this.gameStatus == GameStatus.NOTREADY) return;
 		this.setStatus(GameStatus.PAUSED);
 		try {if(thread !=null) thread.join(); } catch (InterruptedException e) { e.printStackTrace();}
 	}
@@ -286,7 +287,7 @@ public abstract class AGame implements Observer{
 	 * 									+--------------------------------------------------+          	              */
 
 	/**
-	 * The Class AGameMemento.
+	 * Modella il salvataggio dello stato del gioco.
 	 * <p>Permette di salvare lo stato attuale della partita, in modo da essere successivamente ripristinato.</p>
 	 */
 	public class AGameMemento implements Memento{
