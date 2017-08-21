@@ -1,24 +1,36 @@
 package model.map;
-
 import javafx.scene.Group;
 import javafx.scene.Node;
 import model.Drawable;
 import util.Gloabal.Controllers;
 
+/**
+ * La classe {@code PheromoneLayer} modella e gestisce il ferormone presente sulla mappa.
+ * <p> La classe gestisce un'array 2D delle stesse dimensioni della mappa che mantiene informazioni circa il valore di
+ * ferormone</p>
+ * */
 public class PheromoneLayer implements Drawable{
+	/** Il gruppo dove tutti i nodi Pheromone sono posti per poi essere rappresentato*/
 	private Group group;
-	private Pheromone[][] layer;
-	private double tileSize;
 
-	public PheromoneLayer(final Map map) {
+	/** Array bidimensionale di Pheromone della stessa dimensione della mappa*/
+	private Pheromone[][] layer;
+
+	/** Istanzia un nuovo PheromoneLayer
+	 * @param map la mappa di appartenenza
+	 * */
+	public PheromoneLayer(final AMap map) {
 		layer = new Pheromone[map.getRows()][map.getCols()];
 		group = new Group();
-		tileSize = map.getTileSize();
 
 		initPheromone(map);
 	}
 
-	private void initPheromone(final Map map){
+	/**
+	 * Inizializza il layer di ferormone e aggiunge gli elementi al group
+	 * */
+	private void initPheromone(final AMap map){
+		final double tileSize = map.getTileSize();
 		for(int i = 0; i < map.getRows(); i++)
 			for(int j = 0; j < map.getCols(); j++){
 				layer[i][j] = new Pheromone(tileSize);
@@ -30,7 +42,9 @@ public class PheromoneLayer implements Drawable{
 			}
 	}
 
-	// METODI GETTER & SETTER E MODIFICATORI
+	/* 								+-----------------------------------------------------+
+	 * 								|        METODI DI MANIPOLAZIONE DEL FERORMONE        |
+	 * 								+-----------------------------------------------------+      	             */
 	public double getPheromoneAt(final int row, final int col){ return layer[row][col].getPheromoneValue();}
 	public void setPheromoneAt(final int row, final int col, final double value){ layer[row][col].setPheromoneValue(value);}
 	public void evaporatePheromoneAt(final int row, final int col, final double scalar){layer[row][col].evaporatePheromone(scalar);}

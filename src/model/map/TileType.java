@@ -3,6 +3,9 @@ package model.map;
 import javafx.scene.paint.Color;
 import util.Gloabal.C;
 
+/**
+ * La classe definisce i diversi tipi possibili di tile
+ * */
 public enum TileType {
 	RAISED(-1, C.RAISED_COLOR),
 	FREE(0, C.FREE_COLOR),

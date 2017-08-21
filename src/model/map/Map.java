@@ -12,16 +12,33 @@ import util.Coord;
 import util.Gloabal.Controllers;
 import util.Gloabal.R;
 
+/**
+ * Implementazione concreta della classe {@code AMap}
+ * <p> La classe implementa delle strutture dati e sottoclassi per modellare la mappa e il feromone in modo da implementare
+ * i metodi astratti della superclasse </p>
+ */
 public class Map extends AMap{
 
+	/** Il layer della mappa contenente il ferormone */
 	private PheromoneLayer pheromoneLayer;
+
+	/** Il layer della mappa contenente i tile */
 	private TileLayer tileLayer;
 
+	/**
+	 * Istanzia una nuova mappa
+	 *
+	 * @param game il gioco di appartenenza della mappa
+	 * @param stage lo stage relativo alla mappa da istanziare
+	 */
 	// COSTRUTTORI
 	public Map(final AGame game, final Stage stage) {
 		super(game, stage);
 	}
 
+	/* (non-Javadoc)
+	 * @see model.map.AMap#loadMap(model.AGame, model.Stage)
+	 */
 	@Override
 	protected void loadMap(final AGame game, final Stage stage){
 		loadTileMap(game, stage.getStagePath());
@@ -29,7 +46,9 @@ public class Map extends AMap{
 	}
 
 
-	//MODIFICATORI DEL FERORMONE
+	/* 								+--------------------------------------------------------+
+	 * 								|        METODI IL FERORMONE SULLA MAPPA DI GIOCO        |
+	 * 								+--------------------------------------------------------+      	             */
 	@Override
 	public double getPheromoneAt(final int row, final int col){ return pheromoneLayer.getPheromoneAt(row, col);}
 	@Override
@@ -38,19 +57,21 @@ public class Map extends AMap{
 	public void evaporatePheromoneAt(final int row, final int col, final double scalar){ pheromoneLayer.evaporatePheromoneAt(row, col, scalar);}
 	@Override
 	public void dropPheromoneAt(final int row, final int col, final double amount){pheromoneLayer.dropPheromoneAt(row, col, amount);}
-
 	@Override
 	public void setPheromone(final double value){ pheromoneLayer.setPheromone(value); }
 	@Override
 	public void evaporatePheromone(final double scalar){ pheromoneLayer.evaporatePheromone(scalar); }
 	@Override
 	public void dropPheromone(final double amount){ pheromoneLayer.dropPheromone(amount); }
-
-	//MODIFICATORI DEI TILE
 	@Override
 	public TileType getTileTypeAt(int row, int col) { return tileLayer.getTileAt(row, col).getTileType();}
 
-
+	/**
+	 * Carica la mappa dei tile da file
+	 *
+	 * @param game l'stanza di game a cui la mappa deve appartenere
+	 * @param stagePath il path del file contenente la mappa
+	 */
 	private void loadTileMap(final AGame game, String stagePath){
 		try(Scanner s = new Scanner(R.CLASSLOADER.getResourceAsStream(stagePath))){
 			// Leggo le dimensioni della mappa
@@ -95,6 +116,9 @@ public class Map extends AMap{
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see model.map.AMap#getWeight(util.Coord, util.Coord)
+	 */
 	@Override
 	public double getWeight(Coord from, Coord to) {
 		final double peso = (from.getRow() == to.getRow() || from.getCol() == to.getCol()) ? 1 : 1.4142135623;
@@ -107,15 +131,25 @@ public class Map extends AMap{
 			return peso + wTo.getWeight()/peso;
 	}
 
+	/* (non-Javadoc)
+	 * @see model.Drawable#getNode()
+	 */
 	@Override
 	public Node getNode() { return null; }
 
+	/* (non-Javadoc)
+	 * @see model.Drawable#addNode()
+	 */
 	@Override
 	public void addNode(){
 		tileLayer.addNode();
 		pheromoneLayer.addNode();
 		Controllers.rootView.setSize(getRows()*getTileSize(), getCols()*getTileSize());
 	}
+
+	/* (non-Javadoc)
+	 * @see model.Drawable#removeNode()
+	 */
 	@Override
 	public void removeNode(){ tileLayer.removeNode(); pheromoneLayer.removeNode(); }
 }
