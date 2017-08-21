@@ -60,24 +60,24 @@ public class Bot extends ABot{
 	 */
 	@Override
 	public boolean move(){
-		colony.getStrategy().onlineUpdate(colony.getMap(), this);
-		Vertex nextPos = colony.getStrategy().selectNextMove(colony.getMap(), this);
-		return moveTo(nextPos);
+		colony.getStrategy().onlineUpdate(colony.getMap(), this);						//Effettuo l'onlineUpdate del ferormone
+		Vertex nextPos = colony.getStrategy().selectNextMove(colony.getMap(), this);	//Determino il prossimo spostamento
+		return moveTo(nextPos);															//Muovo il bot
 	}
 
 	/* (non-Javadoc)
 	 * @see model.entity.ABot#moveTo(util.Vertex)
 	 */
 	@Override
-	public boolean moveTo(final Vertex coord){
-		if(colony.getMap().getTileTypeAt(getRow(), getCol()) == TileType.WALL) return false;
+	protected boolean moveTo(final Vertex coord){
+		if(colony.getMap().getTileTypeAt(getRow(), getCol()) == TileType.WALL) return false;	//Se la coordinata è impraticabile ritorno
 
-		if(!visited[coord.getRow()][coord.getCol()]){ path.addNode(coord); }
+		if(!visited[coord.getRow()][coord.getCol()]) path.addNode(coord);   //Se le coordinate non sono state visitate le aggiungo al percorso
 
-		visited[this.getRow()][this.getCol()] = true;
+		visited[this.getRow()][this.getCol()] = true;						//Marco le coordinate come visitate
 
-		setCoordinate(coord);
-		this.draw();
+		setCoordinate(coord);												//Sposto il Bot settando le nuove coordinate
+		this.draw();														//e riloco la sua rappresentazione alle nuove coordinate
 		return true;
 	}
 
@@ -115,9 +115,9 @@ public class Bot extends ABot{
 	 */
 	@Override
 	public void leaved(){
-		colony.getStrategy().offlineUpdate(colony.getMap(), path);
-		colony.removeBot(this);
-		this.removeNode();
+		colony.getStrategy().offlineUpdate(colony.getMap(), path);		//Effettuo l'offlineUpdate del ferormone
+		colony.removeBot(this);											//Rimuovo il bot dalla colonia
+		this.removeNode();												//Cancello il bot dalla scena rimuovendo il nodo dalla View
 	}
 
 	/**
