@@ -7,6 +7,9 @@ import model.map.Map;
 import util.Coord;
 import util.Gloabal.C;
 
+/**
+ * Implementazione concreta della classe {@code AEnd}.
+ * */
 public class End extends AEnd{
 
 	public End(final Map map, final Coord coordinate) {

@@ -7,8 +7,18 @@ import model.map.Map;
 import util.Coord;
 import util.Gloabal.C;
 
+/**
+ * Implementazione concreta della classe {@code AManhole}.
+ * */
 public class Manhole extends AManhole{
 
+	/**
+	 * Istanzia una nuova Botola
+	 *
+	 * @param map la mappa di gioco
+	 * @param row l'indice di riga della coordinata y
+	 * @param col l'indice di riga della coordinata x
+	 */
 	public Manhole(final Map map, final int row, final int col) {
 		super(map, new Coord(row, col));
 	}
@@ -19,10 +29,6 @@ public class Manhole extends AManhole{
 		r.setFill(C.MANHOLE_COLOR);
 		r.relocate(getCol() * map.getTileSize(),  getRow() * map.getTileSize());
 		return r;
-	}
-
-	public boolean teleport(final Map map, final ABot b){
-		return super.teleport(map, b);
 	}
 
 }

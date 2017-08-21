@@ -104,7 +104,7 @@ public abstract class AColony extends Observable implements Drawable{
 	 * dalla colonia i bot che si trovano nella lista {@code toRemove}</p>.
 	 */
 	public final void update(){
-		notifyObservers(bots);			// Notifico gli observer il cambiamento (in questo caso dello stato precedente..)
+		notifyObservers();				// Notifico gli observer il cambiamento (in questo caso dello stato precedente..)
 		this.moveBot();					// Muovo i bot della colonia
 		this.setChanged();				// Setto lo stato dell'observable a modificato in modo da notificare il cambiamento
 

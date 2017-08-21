@@ -7,6 +7,9 @@ import model.map.Map;
 import util.Coord;
 import util.Gloabal.C;
 
+/**
+ * Implementazione concreta della classe {@code AStart}.
+ * */
 public class Start extends AStart{
 
 	public Start(final Map map, final int row, final int col) {
