@@ -13,7 +13,7 @@ public class PheromoneMapController {
     	drawingPane.setMinSize(width, height);
     	drawingPane.setPrefSize(height, width);
     	drawingPane.setMaxSize(width, height);
-    	Main.stage.sizeToScene();
+    	Main.gameStage.sizeToScene();
     }
 
     @FXML

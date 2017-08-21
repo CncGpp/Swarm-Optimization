@@ -53,7 +53,7 @@ public class RootViewController {
     	tileMapController.setSize(height, width);
     	pheromoneMapController.setSize(height, width);
     	entityMapController.setSize(height, width);
-    	Main.stage.centerOnScreen();
+    	Main.gameStage.centerOnScreen();
     }
 
     public void addNode(final Entity entity){ entityMapController.add(entity.getNode());}

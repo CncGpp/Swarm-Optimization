@@ -16,7 +16,7 @@ import view.gui.SettingController;
 public abstract class Gloabal {
 
 	public abstract static class Settings{
-		public final static int UPDATE_DELAY = 10;
+		public final static int UPDATE_DELAY = 20;
 		public static int BOT_NUMBER = 50;
 		public static ColonyStrategy COLONY_STRATEGY = new AtanAS();
 	}
