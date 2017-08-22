@@ -27,20 +27,11 @@ public class BottomViewController {
 	private AGame g;
 	PlayerData playerData = new PlayerData();
 
-    @FXML
-    private Pane rankSelection, infoSelection, settingSelection;
-
-    @FXML
-    private ImageView startButton;
-
-    @FXML
-    private ImageView loginButton;
-
-    @FXML
-    private ImageView settingButton;
-
-    @FXML
-    private Label stageLabel;
+    @FXML private Pane rankSelection, infoSelection, settingSelection;
+    @FXML private ImageView startButton;
+    @FXML private ImageView loginButton;
+    @FXML private ImageView settingButton;
+    @FXML private Label stageLabel;
 
     /// METODI
     @FXML
@@ -113,18 +104,15 @@ public class BottomViewController {
     	settingSelection.setVisible(false);
 	}
 
-    private void toggleSettingStatus(){
-    	Controllers.settingController.toggleSetting();
-    }
-    private void enableSettingStatus(){
-    	Controllers.settingController.enableSetting();
-    }
+    private void toggleSettingStatus(){	Controllers.settingController.toggleSetting(); }
+    private void enableSettingStatus(){ Controllers.settingController.enableSetting(); }
 
     public void initializeNewGame(){
     	this.pauseGame();
 		g.init();
 		Chronometer.set(0);
 		stageLabel.setText( 1 + g.getStage().getStageNumber() + "");
+		startButton.setImage(new Image(Gloabal.R.START_ICON_URI));
 		enableSettingStatus();
     }
     private void initializeGameStage(){
@@ -147,6 +135,7 @@ public class BottomViewController {
 
     public void stageEnded(){
     	toggleSettingStatus();
+
     	if(!g.getStage().nextStage()){
     		System.out.println("Il gioco è finito");
     		playerData.getCurrentPlayer().setTime(Chronometer.getTotalTime());
@@ -159,6 +148,7 @@ public class BottomViewController {
     	}
     }
 
+
     private boolean logoutScene(){
 		Alert al = new Alert(AlertType.CONFIRMATION);						//Creo un alert di conferma
 		al.setTitle("Cambio giocatore");
@@ -167,8 +157,8 @@ public class BottomViewController {
 		al.setGraphic(new ImageView(Gloabal.R.CHANGE_ICON_URI));
 
 		Optional<ButtonType> result = al.showAndWait();						//Verifico la scelta
-		if(result.get() == ButtonType.CANCEL) return true;					//Se non si vuole proseguire con il cambio ritorno
-
+		if(result.get() == ButtonType.CANCEL) return true;					//Se non si vuole proseguire con il cambio ritorno...
+																			//... Altrimenti inizio la procedura di logout
 		if(g.getStatus() != GameStatus.ENDED){
 			g.pause();
 			playerData.getCurrentPlayer().setTime(Chronometer.getTotalTime());
@@ -177,9 +167,7 @@ public class BottomViewController {
 
 		this.initializeNewGame();
 
-		startButton.setImage(new Image(Gloabal.R.START_ICON_URI));
-
-		playerData.logoutPlayer();											//Altrimenti effettuo il "logout"
+		playerData.logoutPlayer();											//effettuo il "logout"
 		this.application.setLoginView();
 		return false;
     }
