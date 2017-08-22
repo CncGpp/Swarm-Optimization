@@ -14,7 +14,6 @@ public class RankController {
 
 	private Rank ranks;
 
-
     @FXML
     private AnchorPane pane_rank;
 
@@ -37,7 +36,6 @@ public class RankController {
         //IMPOSTO GLI ITEM NELLA LISTA DELLA CLASSIFICA
         listView_rank.setItems(observableList_rank);
         listView_rank.setCellFactory(listView_rank -> new PlayerListViewCell());	//Cell factory
-
     }
 
     public void show(){

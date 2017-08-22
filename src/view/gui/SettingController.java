@@ -18,26 +18,22 @@ import javafx.scene.layout.AnchorPane;
 import strategy.*;
 import util.Gloabal.Controllers;
 import util.Gloabal.Settings;
-
+/**
+ * Classe controller del menù delle impostazioni
+ * */
 public class SettingController {
 
+	/** Property che tiene traccia di eventuali modifiche alle impostazioni per abilitare il pulsante di conferma*/
 	private BooleanProperty changedSettings = new SimpleBooleanProperty(false);
+
+	/** Data delle strategie disponibili*/
 	private List<ColonyStrategy> strategyData;
 
-    @FXML
-    private AnchorPane pane_setting;
-
-    @FXML
-    private Spinner<Integer> botCountSpinner;
-
-    @FXML
-    private ChoiceBox<String> strategySelector;
-
-    @FXML
-    private TextArea descriptionText;
-
-    @FXML
-    private Button confirmButton;
+    @FXML private AnchorPane pane_setting;
+    @FXML private Spinner<Integer> botCountSpinner;
+    @FXML private ChoiceBox<String> strategySelector;
+    @FXML private TextArea descriptionText;
+    @FXML private Button confirmButton;
 
     @FXML
     void confirmButtonHandler(MouseEvent event) {
@@ -52,10 +48,10 @@ public class SettingController {
         Controllers.settingController = this;
         this.hide();
 
-        ///// Inizializzo la Choice Box
+        ///// INIZIALIZZO LA CHOICE BOX
         final ArrayList<String> names = new ArrayList<>();
         strategyData.forEach( name -> names.add(name.getStrategyName()) );
-        strategySelector.setItems( FXCollections.observableArrayList( names ));
+        strategySelector.setItems( FXCollections.observableArrayList(names) );
 
         strategySelector.getSelectionModel().select(2);
         this.setStrategy(2);
@@ -65,7 +61,7 @@ public class SettingController {
         	changedSettings.set(true);
         });
 
-        //// Inizializzo lo spinner
+        //// INIZIALIZZO LO SPINNER
         SpinnerValueFactory<Integer> valueFactory = new SpinnerValueFactory.IntegerSpinnerValueFactory(1,100, Settings.BOT_NUMBER);
         botCountSpinner.setValueFactory(valueFactory);
         botCountSpinner.valueProperty().addListener((observer, oldValue, newValue)->{
@@ -73,7 +69,7 @@ public class SettingController {
         		changedSettings.set(true);
         });
 
-        /// Inizializzo il bottone di conferma
+        /// INIZIALIZZO IL BOTTONE DI CONFERMA
         changedSettings.addListener((obs, oldValue, newValue) ->{
         	confirmButton.setDisable(!newValue.booleanValue());
         });
@@ -85,10 +81,13 @@ public class SettingController {
     	Settings.COLONY_STRATEGY = strategyData.get(index.intValue()).makeStrategy();
     }
 
+    /** Costruttore*/
     public SettingController() {
     	strategyData = Arrays.asList(new AS(), new ACO(), new AtanAS(), new DPAS(), new LDPAS(), new TRAS(), new RAS());
 	}
 
+
+    /* METODI PER MOSTRARE/NASCONDERE/DISABILITARE IL MENU' */
     public void show(){
     	pane_setting.setVisible(true);
     	pane_setting.setDisable(false);
