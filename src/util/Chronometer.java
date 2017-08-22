@@ -5,7 +5,11 @@ import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleLongProperty;
 import util.Gloabal.Controllers;
 import view.gui.ChronometerController;
-
+/**
+ * La classe {@code Chronometer} modella il funzionamento di un cronometro
+ * <p> La classe fornisce essenzialmente un punto di accesso condiviso al cronometro attraverso i suoi metodi
+ * in oltre il tempo totale è legato attreverso una property alla view di gioco in modo che possa mostrare il tempo. </p>
+ * */
 public class Chronometer {
 	private static ChronometerController controller;
 
@@ -29,7 +33,7 @@ public class Chronometer {
 		isPaused = false;
 
 	    ( new Thread() { public void run() {
-	    	while(! isPaused){
+	    	while( !isPaused ){
 		    	_totalTime.set(getElapsedTime());
 		    	try { Thread.sleep(10); } catch (InterruptedException e) { e.printStackTrace();}
 	    	}

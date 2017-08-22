@@ -8,8 +8,9 @@ import util.Path;
 
 public class AtanAS extends AS{
 
-	protected double lambda = 3.0d;
-	protected double omega = 1.5d;
+	//Maggiori sono i valori e minore è il decremento dei valori alti
+	protected double lambda = 3.0d;		//Costante che regola l'aggiornamento locale
+	protected double omega = 1.5d;		//Costante che regola l'aggiornamento globale
 
 	public AtanAS() {
 		super.alpha = 10;
