@@ -25,35 +25,30 @@ import model.player.PlayerData;
 import model.player.PlayerScore;
 import util.Chronometer;
 import util.Gloabal;
-
+/**
+ * La classe {@code LoginController} si occupa di gestire la LoginView.fxml
+ * <p> Tramite questo controller si gestisce il login, la validazione dell'username e l'eventuale ripristino dello stato precedente</p>
+ * */
 public class LoginController {
 
+	/** L'istanza della nostra applicazione corrente in modo da mostrare/nascondere la schermata di login*/
 	private Main application;
 	public void setApplication(final Main application){ this.application = application;}
 
+	/** Punto di accesso ai dati dei giocatori*/
 	private PlayerData playerData =  new PlayerData();
 
+	/** Durata dell'animazione dell'aboutPane*/
 	private final int animationDuration = 600;
 
-    @FXML
-    private ImageView aboutButton;
-
-    @FXML
-    private AnchorPane aboutPane;
+    @FXML private ImageView aboutButton;
+    @FXML private AnchorPane aboutPane;
     private double initialSize;
     private boolean isCollapsed = false;
-
-    @FXML
-    private AnchorPane loginPane;
-
-    @FXML
-    private TextField nameField;
-
-    @FXML
-    private TextField surnameField;
-
-    @FXML
-    private Button loginButton;
+    @FXML private AnchorPane loginPane;
+    @FXML private TextField nameField;
+    @FXML  private TextField surnameField;
+    @FXML private Button loginButton;
 
     @FXML
     private void loginButtonHandler(MouseEvent event) {
@@ -64,7 +59,7 @@ public class LoginController {
     }
 
     @FXML
-    void loginButtonKeyHandler(KeyEvent event) {
+    private void loginButtonKeyHandler(KeyEvent event) {
     	 if(event.getCode().equals(KeyCode.ENTER) && validate()){
     		 this.loginButtonHandler(null);
     	 }
@@ -103,26 +98,29 @@ public class LoginController {
 
         loginButton.setDisable(true);
 
+        /// AGGIUNGO I LISTENER AI TEXTFIELD PER CAMBIARE LO STILE QUANDO C'E' UN INPUT NON CORRETTO
         nameField.textProperty().addListener((obs, oldValue, newValue) ->{
-        	 if(newValue.trim().length() == 0) this.setError(nameField); else removeError(nameField);
+        	 if(!validateInput(newValue)) this.setError(nameField); else removeError(nameField);
         	 loginButton.setDisable(!validate());
         });
         surnameField.textProperty().addListener((obs, oldValue, newValue) ->{
-         if(newValue.trim().length() == 0) this.setError(surnameField); else removeError(surnameField);
-       	 loginButton.setDisable(!validate());
+        	 if(!validateInput(newValue)) this.setError(surnameField); else removeError(surnameField);
+	       	 loginButton.setDisable(!validate());
        });
 
+        /// CREO UNA SHAPE CHE FUNGERA' DA CLIPPER PER 'TAGLIRARE' I BORDI DELL' aboutPane
         final Rectangle clipper = new Rectangle();
-        clipper.setArcHeight(7);
+        clipper.setArcHeight(7);													//Setto i raggi di curvatura del bordo
         clipper.setArcWidth(7);
-        aboutPane.setClip(clipper);
-        aboutPane.layoutBoundsProperty().addListener((ov, oldValue, newValue) -> {
+        aboutPane.setClip(clipper);													//Setto il clipper al pane
+        aboutPane.layoutBoundsProperty().addListener((ov, oldValue, newValue) -> {	//Lego le dimensioni del clipper a quelle del pane
         	clipper.setWidth(newValue.getWidth());
         	clipper.setHeight(newValue.getHeight());
         });
 
-       initialSize = aboutPane.prefWidth(-1);
-       aboutPane.setMaxWidth(0);
+        /// INIZIALIZZO L'ANIMAZIONE
+       initialSize = aboutPane.prefWidth(-1);		//Ottengo le dimensioni iniziali del pane aperto
+       aboutPane.setMaxWidth(0);					//Lo chiudo riducendo a 0 la larghezza
        aboutPane.setPrefWidth(0);
        aboutPane.setMinWidth(0);
        isCollapsed = true;
@@ -130,9 +128,10 @@ public class LoginController {
     }
 
     private boolean validate(){
-    	if(nameField.getText().equals("")) return false;
-    	if(surnameField.getText().equals("")) return false;
-    	return true;
+    	return validateInput(nameField.getText()) && validateInput(surnameField.getText());
+    }
+    private boolean validateInput(final String s){
+    	return (s != null) && s.matches("[A-Za-z0-9_]+");
     }
 
     private void setError(TextField tf) {
