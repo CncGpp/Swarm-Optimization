@@ -48,12 +48,11 @@ public class RootViewController {
         Controllers.rootView = this;
     }
 
-    //FIXME: Fixare
     public void setSize(final double height, final double width){
     	tileMapController.setSize(height, width);
     	pheromoneMapController.setSize(height, width);
     	entityMapController.setSize(height, width);
-    	Main.gameStage.centerOnScreen();
+    	Main.centerGameStage();
     }
 
     public void addNode(final Entity entity){ entityMapController.add(entity.getNode());}

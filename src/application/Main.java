@@ -26,7 +26,7 @@ import javafx.fxml.FXMLLoader;
 public class Main extends Application {
 
 	/** Lo stage contenente la schermata di gioco */
-	public static Stage gameStage;
+	private static Stage gameStage;
 
 	/** Lo stage contenente la schermata di 'login' */
 	private static Stage loginStage;
@@ -140,7 +140,11 @@ public class Main extends Application {
 		gameStage.centerOnScreen();
 		gameStage.show();
 	}
+	/** Centra la finestra di gioco*/
+	public static void centerGameStage(){gameStage.centerOnScreen();}
 
+	/** Ridimensiona la finestra di gioco per contenere il gioco*/
+	public static void resizeGameStage(){gameStage.sizeToScene();}
 
 	/**
 	 * Il metodo Main non viene utilizzato per il lancio dell'applicazione.

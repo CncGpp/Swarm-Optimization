@@ -13,7 +13,7 @@ public class TileMapController {
     	drawingPane.setMinSize(width, height);
     	drawingPane.setPrefSize(height, width);
     	drawingPane.setMaxSize(width, height);
-    	Main.gameStage.sizeToScene();
+    	Main.resizeGameStage();
     }
 
     @FXML

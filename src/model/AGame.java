@@ -14,7 +14,6 @@ import model.map.AMap;
 import util.Memento;
 import util.Gloabal.Settings;
 
-// TODO: Auto-generated Javadoc
 /**
  * La classe {@code AGame} modella una partita.
  * <p> Essa descrive le caratteristiche, funzionamento e comportamenti base che deve avere il gioco, come ad esempio
@@ -254,7 +253,7 @@ public abstract class AGame implements Observer{
 		for(AManhole m : manholes) m.addNode();
 		for(AEnd e : ends) e.addNode();
 		if(colony != null) colony.addNode();
-		Main.gameStage.sizeToScene();
+		Main.resizeGameStage();
 	}
 
 	/**
