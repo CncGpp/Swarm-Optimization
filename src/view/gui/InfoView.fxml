@@ -19,7 +19,7 @@
    <children>
       <AnchorPane stylesheets="@gui.css" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <VBox maxWidth="380.0" spacing="8.0">
+            <VBox maxWidth="435.0" spacing="8.0">
                <children>
                   <Label graphicTextGap="8.0" styleClass="titleLabel" stylesheets="@gui.css" text="Informazioni">
                      <font>
@@ -134,6 +134,36 @@
                                  </font>
                               </Label>
                               <Label styleClass="labelRegularInfo" stylesheets="@gui.css" text="I microbot che si muovono su di una botola verranno teletrasportati in una posizione casuale della mappa" wrapText="true">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="18.0" layoutY="384.0" spacing="10.0">
+                     <children>
+                        <Rectangle fx:id="manhole_figure1" arcHeight="5.0" arcWidth="5.0" height="50.0" stroke="#b5b5b5" strokeType="INSIDE" width="50.0">
+                           <fill>
+                              <LinearGradient endX="1.0" endY="1.0" startX="1.0">
+                                 <stops>
+                                    <Stop color="#464646" />
+                                    <Stop color="#464646" offset="0.007662835249042145" />
+                                    <Stop color="#b2b2b2" offset="0.577319587628866" />
+                                    <Stop color="WHITE" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </fill>
+                        </Rectangle>
+                        <VBox alignment="CENTER_LEFT">
+                           <children>
+                              <Label styleClass="labelBoldInfo" stylesheets="@gui.css" text="Rialzo">
+                                 <font>
+                                    <Font name="System Bold" size="18.0" />
+                                 </font>
+                              </Label>
+                              <Label styleClass="labelRegularInfo" stylesheets="@gui.css" text="Rappresenta una zono della mappa rialzata dal suolo e quindi di più difficile raggiungimento, il rialzo è proporzionale all'intensità di colore" wrapText="true">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
