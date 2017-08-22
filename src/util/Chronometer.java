@@ -37,6 +37,7 @@ public class Chronometer {
 		    	_totalTime.set(getElapsedTime());
 		    	try { Thread.sleep(10); } catch (InterruptedException e) { e.printStackTrace();}
 	    	}
+	    	_totalTime.set(getTotalTime());
 	    } } ).start();
 	}
 

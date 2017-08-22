@@ -160,6 +160,7 @@ public class BottomViewController {
 		if(result.get() == ButtonType.CANCEL) return true;					//Se non si vuole proseguire con il cambio ritorno...
 																			//... Altrimenti inizio la procedura di logout
 		if(g.getStatus() != GameStatus.ENDED){
+			Chronometer.pause();
 			g.pause();
 			playerData.getCurrentPlayer().setTime(Chronometer.getTotalTime());
 			playerData.addMemento(g.getMemento());
