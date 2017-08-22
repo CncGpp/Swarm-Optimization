@@ -8,7 +8,7 @@ import javafx.scene.shape.Circle;
 import model.map.AMap;
 import model.map.TileType;
 import util.Coord;
-import util.Gloabal.C;
+import util.Global.C;
 import util.Vertex;
 
 /** Implementazione concreta della classe {@code ABot}.

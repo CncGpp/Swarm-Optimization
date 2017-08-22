@@ -2,7 +2,7 @@ package model;
 
 import java.util.List;
 
-import util.Gloabal.R;
+import util.Global.R;
 
 /**
  * La classe {@code Stage} modella lo stage (livello) attuale in cui si trova il gioco.

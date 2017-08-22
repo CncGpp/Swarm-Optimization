@@ -7,8 +7,8 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import model.player.PlayerScore;
 import model.player.Rank;
-import util.Gloabal.Controllers;
-import util.Gloabal.R;
+import util.Global.Controllers;
+import util.Global.R;
 
 public class RankController {
 

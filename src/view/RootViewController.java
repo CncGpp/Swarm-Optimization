@@ -12,7 +12,7 @@ import javafx.scene.layout.StackPane;
 import model.entity.Entity;
 import model.map.PheromoneLayer;
 import model.map.TileLayer;
-import util.Gloabal.Controllers;
+import util.Global.Controllers;
 import view.map.EntityMapController;
 import view.map.PheromoneMapController;
 import view.map.TileMapController;

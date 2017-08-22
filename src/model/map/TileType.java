@@ -1,7 +1,7 @@
 package model.map;
 
 import javafx.scene.paint.Color;
-import util.Gloabal.C;
+import util.Global.C;
 
 /**
  * La classe definisce i diversi tipi possibili di tile

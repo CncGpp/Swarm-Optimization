@@ -2,7 +2,7 @@ package model.map;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import model.Drawable;
-import util.Gloabal.Controllers;
+import util.Global.Controllers;
 
 /**
  * La classe {@code PheromoneLayer} modella e gestisce il ferormone presente sulla mappa.

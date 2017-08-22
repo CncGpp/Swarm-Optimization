@@ -4,7 +4,7 @@ import javafx.scene.Node;
 import model.Drawable;
 import model.map.AMap;
 import util.Coord;
-import util.Gloabal.Controllers;
+import util.Global.Controllers;
 
 /**
  * La classe <code>Entity</code> rappresenta in maniera astratta un'entita' che si trova sulla mappa di gioco.

@@ -3,7 +3,7 @@ package model.map;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import model.Drawable;
-import util.Gloabal.Controllers;
+import util.Global.Controllers;
 
 /**
  * La classe {@code TileLayer} modella e gestisce la composizione della mappa

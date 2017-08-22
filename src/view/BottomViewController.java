@@ -15,9 +15,9 @@ import javafx.scene.layout.Pane;
 import model.AGame;
 import model.GameStatus;
 import model.player.PlayerData;
-import util.Gloabal.Controllers;
+import util.Global.Controllers;
 import util.Chronometer;
-import util.Gloabal;
+import util.Global;
 
 /**
  * La classe {@code BottomViewController} si occupa di gestire la BottowView.fxml
@@ -125,7 +125,7 @@ public class BottomViewController {
 		g.init();
 		Chronometer.set(0);
 		stageLabel.setText( 1 + g.getStage().getStageNumber() + "");
-		startButton.setImage(new Image(Gloabal.R.START_ICON_URI));
+		startButton.setImage(new Image(Global.R.START_ICON_URI));
 		enableSettingStatus();
     }
 
@@ -142,14 +142,14 @@ public class BottomViewController {
     	 toggleSettingStatus();
 		 Chronometer.start();
 		 g.start();
-		 startButton.setImage(new Image(Gloabal.R.PAUSE_ICON_URI));
+		 startButton.setImage(new Image(Global.R.PAUSE_ICON_URI));
     }
 
     /** Mette in pausa il gioco*/
     private void pauseGame(){
 		 Chronometer.pause();
 		 g.pause();
-		 startButton.setImage(new Image(Gloabal.R.START_ICON_URI));
+		 startButton.setImage(new Image(Global.R.START_ICON_URI));
     }
 
     /** Metodo chiamato quando uno stage si è concluso, quando il gioco termina fa il submite dei punteggi*/
@@ -161,7 +161,7 @@ public class BottomViewController {
 			Chronometer.pause();
     		playerData.getCurrentPlayer().setTime(Chronometer.getTotalTime());
     		Controllers.rankController.submitScore(playerData.getCurrentPlayer());
-    		startButton.setImage(new Image(Gloabal.R.RESTART_ICON_URI));
+    		startButton.setImage(new Image(Global.R.RESTART_ICON_URI));
     		enableSettingStatus();
     	} else {
     		initializeGameStage();
@@ -175,7 +175,7 @@ public class BottomViewController {
 		al.setTitle("Cambio giocatore");
 		al.setHeaderText("Vuoi realmente cambiare giocatore?");
 		al.setContentText("La partita attuale verrà salvatae potrà essere ripristinata al prossimo login.");
-		al.setGraphic(new ImageView(Gloabal.R.CHANGE_ICON_URI));
+		al.setGraphic(new ImageView(Global.R.CHANGE_ICON_URI));
 
 		Optional<ButtonType> result = al.showAndWait();						//Verifico la scelta
 		if(result.get() == ButtonType.CANCEL) return true;					//Se non si vuole proseguire con il cambio ritorno...

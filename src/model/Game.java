@@ -5,7 +5,7 @@ import model.entity.AStart;
 import model.entity.Colony;
 import model.map.AMap;
 import model.map.Map;
-import util.Gloabal.Controllers;
+import util.Global.Controllers;
 
 /** Implementazione concreta della classe {@code AGame}.
  * <p> La classe ridefinisce i factory metodi per creare una proprie implementazione del gioco, in oltre si effettua

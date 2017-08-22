@@ -3,7 +3,7 @@ package util;
 import javafx.application.Platform;
 import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleLongProperty;
-import util.Gloabal.Controllers;
+import util.Global.Controllers;
 import view.gui.ChronometerController;
 /**
  * La classe {@code Chronometer} modella il funzionamento di un cronometro

@@ -9,7 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import model.player.PlayerScore;
-import util.Gloabal.R;
+import util.Global.R;
 
 public class PlayerListViewCell extends ListCell<PlayerScore>{
     @FXML // fx:id="position"

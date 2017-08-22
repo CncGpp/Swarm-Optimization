@@ -6,9 +6,9 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import model.Game;
-import util.Gloabal;
-import util.Gloabal.Controllers;
-import util.Gloabal.R;
+import util.Global;
+import util.Global.Controllers;
+import util.Global.R;
 import view.BottomViewController;
 import view.LoginController;
 import javafx.scene.Parent;
@@ -57,11 +57,11 @@ public class Main extends Application {
 			loginStage.getIcons().add(new Image(R.APP_ICON_URI));
 
 			// Carico i font scelti per l'interfaccia grafica
-			Font.loadFont(Gloabal.R.BOLD_FONT_URI, 24);
-			Font.loadFont(Gloabal.R.MEDIUM_FONT_URI, 14);
-			Font.loadFont(Gloabal.R.REGULAR_FONT_URI, 14);
-			Font.loadFont(Gloabal.R.LIGHT_FONT_URI, 18);
-			Font.loadFont(Gloabal.R.MONOSPACE_FONT_URI, 18);
+			Font.loadFont(Global.R.BOLD_FONT_URI, 24);
+			Font.loadFont(Global.R.MEDIUM_FONT_URI, 14);
+			Font.loadFont(Global.R.REGULAR_FONT_URI, 14);
+			Font.loadFont(Global.R.LIGHT_FONT_URI, 18);
+			Font.loadFont(Global.R.MONOSPACE_FONT_URI, 18);
 
 			/* Carico la RootView del gioco */
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/RootView.fxml"));

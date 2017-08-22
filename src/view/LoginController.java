@@ -24,7 +24,7 @@ import javafx.util.Duration;
 import model.player.PlayerData;
 import model.player.PlayerScore;
 import util.Chronometer;
-import util.Gloabal;
+import util.Global;
 /**
  * La classe {@code LoginController} si occupa di gestire la LoginView.fxml
  * <p> Tramite questo controller si gestisce il login, la validazione dell'username e l'eventuale ripristino dello stato precedente</p>
@@ -153,7 +153,7 @@ public class LoginController {
 		al.setTitle("Ripristino partita");
 		al.setHeaderText("Bentornato " + playerData.getCurrentPlayer().getName() + "!");
 		al.setContentText("Vuoi ripristinare lo stato dell'ultima partita?");
-		al.setGraphic(new ImageView(Gloabal.R.CHANGE_ICON_URI));
+		al.setGraphic(new ImageView(Global.R.CHANGE_ICON_URI));
 
 		Optional<ButtonType> result = al.showAndWait();						//Verifico la scelta
 		if(result.get() == ButtonType.CANCEL) return ;						//Se non si vuole proseguire con il ripristino ritorno

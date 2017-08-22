@@ -16,8 +16,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import strategy.*;
-import util.Gloabal.Controllers;
-import util.Gloabal.Settings;
+import util.Global.Controllers;
+import util.Global.Settings;
 /**
  * Classe controller del menù delle impostazioni
  * */

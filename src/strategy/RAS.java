@@ -2,7 +2,7 @@ package strategy;
 
 import model.entity.ABot;
 import model.map.AMap;
-import util.Gloabal.Settings;
+import util.Global.Settings;
 import util.Path;
 import util.Vertex;
 

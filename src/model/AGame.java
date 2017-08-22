@@ -12,7 +12,7 @@ import model.entity.AManhole;
 import model.entity.AStart;
 import model.map.AMap;
 import util.Memento;
-import util.Gloabal.Settings;
+import util.Global.Settings;
 
 /**
  * La classe {@code AGame} modella una partita.

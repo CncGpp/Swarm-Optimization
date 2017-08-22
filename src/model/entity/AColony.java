@@ -9,8 +9,8 @@ import model.Drawable;
 import model.map.AMap;
 import strategy.ColonyStrategy;
 import util.Coord;
-import util.Gloabal;
-import util.Gloabal.Settings;
+import util.Global;
+import util.Global.Settings;
 
 /**
  * La classe <code>AColony</code> modella una colonia/sciame di microbot.
@@ -36,7 +36,7 @@ public abstract class AColony extends Observable implements Drawable{
 
 	/** La strategia utilizzata dai bot della colonia per muoversi, seguire il ferormone e uscire dalla mappa.
 	 * <p> Di default la strategia è definita nella classe {@code Global.Settings}.</p>
-	 * @see Gloabal.Settings
+	 * @see Global.Settings
 	 * @see ColonyStrategy
 	 * */
 	private ColonyStrategy strategy;

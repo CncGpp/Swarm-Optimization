@@ -13,7 +13,7 @@ import view.gui.InfoController;
 import view.gui.RankController;
 import view.gui.SettingController;
 
-public abstract class Gloabal {
+public abstract class Global {
 
 	public abstract static class Settings{
 		public final static int UPDATE_DELAY = 20;
@@ -34,7 +34,7 @@ public abstract class Gloabal {
 	}
 
 	public abstract static class R{
-		public final static ClassLoader CLASSLOADER = Gloabal.class.getClassLoader();
+		public final static ClassLoader CLASSLOADER = Global.class.getClassLoader();
 
 		/* RISORSE - FONT */
 		public final static String BOLD_FONT_URI = CLASSLOADER.getResource("font/Quicksand-Bold.ttf").toExternalForm();

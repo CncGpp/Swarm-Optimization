@@ -6,8 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
-import util.Gloabal.C;
-import util.Gloabal.Controllers;
+import util.Global.C;
+import util.Global.Controllers;
 
 public class InfoController {
 

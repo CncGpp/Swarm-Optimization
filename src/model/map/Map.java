@@ -9,8 +9,8 @@ import model.entity.End;
 import model.entity.Manhole;
 import model.entity.Start;
 import util.Coord;
-import util.Gloabal.Controllers;
-import util.Gloabal.R;
+import util.Global.Controllers;
+import util.Global.R;
 
 /**
  * Implementazione concreta della classe {@code AMap}

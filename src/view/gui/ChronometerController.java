@@ -2,7 +2,7 @@ package view.gui;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import util.Gloabal.Controllers;
+import util.Global.Controllers;
 
 public class ChronometerController {
 

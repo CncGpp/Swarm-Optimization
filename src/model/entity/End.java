@@ -5,7 +5,7 @@ import javafx.scene.shape.Shape;
 import model.map.AMap;
 import model.map.Map;
 import util.Coord;
-import util.Gloabal.C;
+import util.Global.C;
 
 /**
  * Implementazione concreta della classe {@code AEnd}.

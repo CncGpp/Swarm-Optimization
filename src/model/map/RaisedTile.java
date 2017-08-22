@@ -1,6 +1,6 @@
 package model.map;
 
-import util.Gloabal.C;
+import util.Global.C;
 
 /**
  * TRappresenta un'estenzione della classe {@code Tile}.
