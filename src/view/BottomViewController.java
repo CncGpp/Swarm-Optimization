@@ -19,12 +19,20 @@ import util.Gloabal.Controllers;
 import util.Chronometer;
 import util.Gloabal;
 
+/**
+ * La classe {@code BottomViewController} si occupa di gestire la BottowView.fxml
+ * <p> Tramite questo controller si gestisce k'iterazione dell'utente con la GUI e con il gioco</p>
+ * */
 public class BottomViewController {
 
+	/** L'istanza della nostra applicazione corrente in modo da mostrare/nascondere la schermata di gioco*/
 	private Main application;
 	public void setApplication(final Main application){this.application = application;}
 
+	/** Il gioco che deve essere controllato da questo controller*/
 	private AGame g;
+
+	/** Punto di accesso ai dati dei giocatori*/
 	PlayerData playerData = new PlayerData();
 
     @FXML private Pane rankSelection, infoSelection, settingSelection;
@@ -33,7 +41,6 @@ public class BottomViewController {
     @FXML private ImageView settingButton;
     @FXML private Label stageLabel;
 
-    /// METODI
     @FXML
     void startButtonHandle(MouseEvent event) {
     	if(!playerData.isLogged()) return;
@@ -93,8 +100,11 @@ public class BottomViewController {
         Controllers.bottomViewController = this;
     }
 
-    ////////// METODI DI CLASSE ////////////////
+	/* 										+--------------------------------+
+	 * 										|        METODI DI CLASSE        |
+	 * 										+--------------------------------+          	                          */
     public void setGame(AGame game){ this.g = game;}
+    /** Chiude tutte le 'finestre' aperte*/
     public void cloaseAll(){
     	Controllers.rankController.hide();
     	Controllers.infoController.hide();
@@ -103,10 +113,13 @@ public class BottomViewController {
     	infoSelection.setVisible(false);
     	settingSelection.setVisible(false);
 	}
-
+    /** Effettua un toggle dello status delle impostazioni per abilitarle/disabilitarle*/
     private void toggleSettingStatus(){	Controllers.settingController.toggleSetting(); }
+
+    /** Abilita le impostazioni*/
     private void enableSettingStatus(){ Controllers.settingController.enableSetting(); }
 
+    /** Inizializza un nuovo gioco partendo dal primo stage*/
     public void initializeNewGame(){
     	this.pauseGame();
 		g.init();
@@ -115,11 +128,15 @@ public class BottomViewController {
 		startButton.setImage(new Image(Gloabal.R.START_ICON_URI));
 		enableSettingStatus();
     }
+
+    /** Inizializza un nuovo gioco ripartendo dallo stage corrente*/
     private void initializeGameStage(){
 		this.pauseGame();
 		g.restore();
 		stageLabel.setText( 1 + g.getStage().getStageNumber() + "");
     }
+
+    /** Avvia il gioco*/
     private void startGame(){
     	 cloaseAll();
     	 toggleSettingStatus();
@@ -127,17 +144,21 @@ public class BottomViewController {
 		 g.start();
 		 startButton.setImage(new Image(Gloabal.R.PAUSE_ICON_URI));
     }
+
+    /** Mette in pausa il gioco*/
     private void pauseGame(){
 		 Chronometer.pause();
 		 g.pause();
 		 startButton.setImage(new Image(Gloabal.R.START_ICON_URI));
     }
 
+    /** Metodo chiamato quando uno stage si è concluso, quando il gioco termina fa il submite dei punteggi*/
     public void stageEnded(){
     	toggleSettingStatus();
 
     	if(!g.getStage().nextStage()){
     		System.out.println("Il gioco è finito");
+			Chronometer.pause();
     		playerData.getCurrentPlayer().setTime(Chronometer.getTotalTime());
     		Controllers.rankController.submitScore(playerData.getCurrentPlayer());
     		startButton.setImage(new Image(Gloabal.R.RESTART_ICON_URI));
@@ -148,7 +169,7 @@ public class BottomViewController {
     	}
     }
 
-
+    /** Gestisce il logout dell'utente mostrando un alert di conferma e ne salva*/
     private boolean logoutScene(){
 		Alert al = new Alert(AlertType.CONFIRMATION);						//Creo un alert di conferma
 		al.setTitle("Cambio giocatore");
@@ -160,7 +181,6 @@ public class BottomViewController {
 		if(result.get() == ButtonType.CANCEL) return true;					//Se non si vuole proseguire con il cambio ritorno...
 																			//... Altrimenti inizio la procedura di logout
 		if(g.getStatus() != GameStatus.ENDED){
-			Chronometer.pause();
 			g.pause();
 			playerData.getCurrentPlayer().setTime(Chronometer.getTotalTime());
 			playerData.addMemento(g.getMemento());
