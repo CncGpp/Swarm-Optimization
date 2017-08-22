@@ -143,6 +143,11 @@ public class LoginController {
         styleClass.removeAll(Collections.singleton("error"));
     }
 
+    /**
+     * Funzione che permette il ripristino dello stato
+     * <p>Nel caso in cui ci sia un 'salvataggio' di una partita precedente viene mostrato un alert
+     * che chiede al giocatore se vuole o meno ripristinare la partita</p>
+     * */
     private void restoreMementoScene(){
 		Alert al = new Alert(AlertType.CONFIRMATION);						//Creo un alert di conferma
 		al.setTitle("Ripristino partita");
@@ -152,7 +157,6 @@ public class LoginController {
 
 		Optional<ButtonType> result = al.showAndWait();						//Verifico la scelta
 		if(result.get() == ButtonType.CANCEL) return ;						//Se non si vuole proseguire con il ripristino ritorno
-
 
     	playerData.restoreCurrentMemento();									//Altrimenti procedo al ripristino
  		Chronometer.set(playerData.getCurrentPlayer().getTime());
