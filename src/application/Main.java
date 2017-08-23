@@ -2,6 +2,8 @@ package application;
 
 import java.io.IOException;
 
+import controller.BottomViewController;
+import controller.LoginController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -9,8 +11,6 @@ import model.Game;
 import util.Global;
 import util.Global.Controllers;
 import util.Global.R;
-import view.BottomViewController;
-import view.LoginController;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;

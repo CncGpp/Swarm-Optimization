@@ -1,4 +1,4 @@
-package view.gui;
+package controller.gui;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -2,6 +2,7 @@ package model.entity;
 
 import java.util.ArrayList;
 
+import model.map.AMap;
 import strategy.ColonyStrategy;
 import util.Coord;
 import util.Path;

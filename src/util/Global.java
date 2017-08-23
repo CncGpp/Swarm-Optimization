@@ -3,15 +3,15 @@ package util;
 import java.util.Arrays;
 import java.util.List;
 
+import controller.BottomViewController;
+import controller.RootViewController;
+import controller.gui.ChronometerController;
+import controller.gui.InfoController;
+import controller.gui.RankController;
+import controller.gui.SettingController;
 import javafx.scene.paint.Color;
 import strategy.AtanAS;
 import strategy.ColonyStrategy;
-import view.BottomViewController;
-import view.RootViewController;
-import view.gui.ChronometerController;
-import view.gui.InfoController;
-import view.gui.RankController;
-import view.gui.SettingController;
 
 public abstract class Global {
 

@@ -1,4 +1,4 @@
-package view;
+package controller;
 
 import java.util.Collections;
 import java.util.Optional;
@@ -25,6 +25,7 @@ import model.player.PlayerData;
 import model.player.PlayerScore;
 import util.Chronometer;
 import util.Global;
+import view.HorizontalCollapse;
 /**
  * La classe {@code LoginController} si occupa di gestire la LoginView.fxml
  * <p> Tramite questo controller si gestisce il login, la validazione dell'username e l'eventuale ripristino dello stato precedente</p>
