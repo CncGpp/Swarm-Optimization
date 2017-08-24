@@ -2,7 +2,7 @@ package model.entity;
 import java.util.Observable;
 import java.util.Observer;
 
-import model.map.Map;
+import model.map.AMap;
 import util.Coord;
 
 /**
@@ -18,7 +18,7 @@ public abstract class AEnd extends Entity implements Observer{
 	 * @param map la mappa di gioco
 	 * @param coordinate le coordinate dell'uscita
 	 */
-	public AEnd(final Map map, final Coord coordinate) {
+	public AEnd(final AMap map, final Coord coordinate) {
 		super(map, coordinate);
 	}
 

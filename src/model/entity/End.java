@@ -3,7 +3,6 @@ package model.entity;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
 import model.map.AMap;
-import model.map.Map;
 import util.Coord;
 import util.Global.C;
 
@@ -12,11 +11,11 @@ import util.Global.C;
  * */
 public class End extends AEnd{
 
-	public End(final Map map, final Coord coordinate) {
+	public End(final AMap map, final Coord coordinate) {
 		super(map,coordinate);
 	}
 
-	public End(final Map map, final int row, final int col){
+	public End(final AMap map, final int row, final int col){
 		this(map, new Coord(row,col));
 	}
 

@@ -3,7 +3,6 @@ package model.entity;
 import javafx.scene.Node;
 import javafx.scene.shape.Rectangle;
 import model.map.AMap;
-import model.map.Map;
 import util.Coord;
 import util.Global.C;
 
@@ -19,7 +18,7 @@ public class Manhole extends AManhole{
 	 * @param row l'indice di riga della coordinata y
 	 * @param col l'indice di riga della coordinata x
 	 */
-	public Manhole(final Map map, final int row, final int col) {
+	public Manhole(final AMap map, final int row, final int col) {
 		super(map, new Coord(row, col));
 	}
 

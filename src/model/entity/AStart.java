@@ -1,6 +1,6 @@
 package model.entity;
 
-import model.map.Map;
+import model.map.AMap;
 import util.Coord;
 
 /**
@@ -15,7 +15,7 @@ public abstract class AStart extends Entity {
 	 * @param map la mappa di gioco
 	 * @param coordinate le coordinate dell'entità
 	 */
-	public AStart(final Map map, final Coord coordinate) {
+	public AStart(final AMap map, final Coord coordinate) {
 		super(map, coordinate);
 	}
 
@@ -26,7 +26,7 @@ public abstract class AStart extends Entity {
 	 * @param row l'indice di riga della coordinata y
 	 * @param col l'indice di riga della coordinata x
 	 */
-	public AStart(final Map map, final int row, final int col) {
+	public AStart(final AMap map, final int row, final int col) {
 		this(map, new Coord(row,col));
 	}
 
