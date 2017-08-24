@@ -86,6 +86,7 @@ public class LoginController {
     @FXML
     private void exitButtonHandler(MouseEvent event){
     	Platform.exit();
+    	System.exit(0);
     }
 
     @FXML
