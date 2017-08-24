@@ -36,6 +36,6 @@ public class Colony extends AColony{
 	 * Tutti i bot si muovono ad ogni cambio di stato
 	 */
 	@Override
-	protected void moveBot() { for(ABot b : this.getBots()) b.move(); }
+	protected void moveBot() { this.getBots().forEach( b->b.move()); }
 
 }
