@@ -121,14 +121,11 @@ public class Map extends AMap{
 	 */
 	@Override
 	public double getWeight(Coord from, Coord to) {
-		final double peso = (from.getRow() == to.getRow() || from.getCol() == to.getCol()) ? 1 : 1.4142135623;
+		final double peso = (from.getRow() == to.getRow() || from.getCol() == to.getCol()) ? 1.0d : 1.4142135623d;
 		final Weighable wFrom = tileLayer.getTileAt(from.getRow(), from.getCol());
 		final Weighable wTo = tileLayer.getTileAt(to.getRow(), to.getCol());
 
-		if(wFrom.getWeight() >= wTo.getWeight())
-			return peso - wFrom.getWeight()/peso;
-		else
-			return peso + wTo.getWeight()/peso;
+		return peso + (wTo.getWeight() - wFrom.getWeight())/peso;
 	}
 
 	/* (non-Javadoc)
