@@ -53,8 +53,8 @@ public class SettingController {
         strategyData.forEach( name -> names.add(name.getStrategyName()) );
         strategySelector.setItems( FXCollections.observableArrayList(names) );
 
-        strategySelector.getSelectionModel().select(2);
-        this.setStrategy(2);
+        strategySelector.getSelectionModel().select(3);
+        this.setStrategy(3);
 
         strategySelector.getSelectionModel().selectedIndexProperty().addListener( (observable, oldValue, newValue) -> {
         	this.setStrategy(newValue);
@@ -83,7 +83,7 @@ public class SettingController {
 
     /** Costruttore*/
     public SettingController() {
-    	strategyData = Arrays.asList(new AS(), new ACO(), new AtanAS(), new DPAS(), new LDPAS(), new TRAS(), new RAS());
+    	strategyData = Arrays.asList(new OAS(), new AS(), new ACO(), new AtanAS(), new DPAS(), new LDPAS(), new TRAS(), new RAS());
 	}
 
 
