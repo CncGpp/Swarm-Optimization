@@ -9,7 +9,6 @@ import util.Vertex;
 public class RAS extends AS {
 	private int count = 0;
 	private int remaning = Settings.BOT_NUMBER;
-	private double Q;
 
 	public RAS() {
 		alpha = 10;
@@ -34,14 +33,13 @@ public class RAS extends AS {
 		double sum = 0;
 		for(Vertex n : path.getPath()){
 			sum+=n.getWeight();
-			map.dropPheromoneAt(n.getRow(), n.getCol(), sum/(Q * path.getLenght()));
+			map.dropPheromoneAt(n.getRow(), n.getCol(), sum/(path.getLenght()));
 		}
 	}
 
 	@Override
 	public void initialize(AMap map) {
-		Q = mapDiameter(map)/(alpha+beta);
-		phi = 1.0d-0.25d/mapDiameter(map);
+		phi = 1.0d-0.20d/mapDiameter(map);
 		map.setPheromone(0);
 	}
 	private double mapDiameter(final AMap map){ return Math.sqrt(map.getRows()*map.getRows() + map.getCols()*map.getCols());}
