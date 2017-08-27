@@ -12,11 +12,11 @@ public class AS extends ColonyStrategy{
 
 	protected Random r = new Random();
 
-	protected double alpha = 8;
-	protected double beta = 2;
-	protected double phi = 0.95;
-	protected double rho = 0.10;
-	protected double tau = .2;
+	protected double alpha = 10;
+	protected double beta = 3;
+	protected double phi = 0.95;	//Evaporazione locale
+	protected double rho = 0.10;	//Evaporazione globale
+	protected double tau = .2;		//Valore iniziale
 
 	private double totalNeighborsGoodness(AMap map, ArrayList<Vertex> directions){
 		double totalGoodness = 0;				//feromone TOTALE presente sui nodi considerati.

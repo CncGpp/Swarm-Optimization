@@ -8,12 +8,15 @@ import util.Path;
 //Decreasing Pheromone Ant System
 public class DPAS extends AS{
 
-	protected double alpha = 10;
-	protected double beta = 2;
-	protected double rho = .1;
-	protected double phi = .30;
-	protected double tau = .2;
 	protected double Q = 3;
+
+	public DPAS() {
+		alpha = 10;
+		beta = 3;
+	    rho = .1;
+		phi = .20;
+		tau = .2;
+	}
 
 	@Override
 	public void onlineUpdate(AMap map, ABot bot) {
@@ -26,14 +29,14 @@ public class DPAS extends AS{
 
 		double sum = 0;
 		for (Vertex node : path.getPath()) {
-			map.dropPheromoneAt(node.getRow(), node.getCol(), Math.log1p(sum/path.getLenght())/Math.log(Q));
+			map.dropPheromoneAt(node.getRow(), node.getCol(), Math.log1p(sum/path.getLenght())/Q);
 			sum+=node.getWeight();
 		}
 	}
 
 	@Override
 	public void initialize(AMap map) {
-		Q = Math.log10(mapDiameter(map))*(alpha+beta);
+		Q = Math.log1p(mapDiameter(map)/alpha);
 		map.setPheromone(tau);
 	}
 

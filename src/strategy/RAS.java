@@ -12,8 +12,8 @@ public class RAS extends AS {
 	private double Q;
 
 	public RAS() {
-		alpha = 15;
-		beta = 2;
+		alpha = 10;
+		beta = 3;
 		rho = 0.92;	//Evaporazione online
 		tau = 1.05; //Incremento online solo alla prima visita
 	}

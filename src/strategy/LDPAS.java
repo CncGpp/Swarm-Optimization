@@ -10,8 +10,8 @@ import util.Path;
 public class LDPAS extends DPAS{
 
 	public LDPAS() {
-		this.alpha = 16.0d;
-		this.beta = 1.0d;
+		this.alpha = 10.0d;
+		this.beta = 3.0d;
 		this.rho = 0.1;
 	}
 
