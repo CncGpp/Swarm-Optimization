@@ -83,7 +83,7 @@ public class SettingController {
 
     /** Costruttore*/
     public SettingController() {
-    	strategyData = Arrays.asList(new OAS(), new AS(), new ACO(), new AtanAS(), new DPAS(), new LDPAS(), new TRAS(), new RAS());
+    	strategyData = Arrays.asList(new OAS(), new AS(), new ACO(), new AtanAS(), new DPAS(), new LDPAS(), new RAS(), new TRAS());
 	}
 
 
