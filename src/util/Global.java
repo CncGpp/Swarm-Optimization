@@ -41,7 +41,7 @@ public abstract class Global {
 		public final static String MEDIUM_FONT_URI = CLASSLOADER.getResource("font/Quicksand-Medium.ttf").toExternalForm();
 		public final static String REGULAR_FONT_URI = CLASSLOADER.getResource("font/Quicksand-Regular.ttf").toExternalForm();
 		public final static String LIGHT_FONT_URI = CLASSLOADER.getResource("font/Quicksand-Light.ttf").toExternalForm();
-		public final static String MONOSPACE_FONT_URI = CLASSLOADER.getResource("font/Quicksand-Bold.ttf").toExternalForm();
+		public final static String MONOSPACE_FONT_URI = CLASSLOADER.getResource("font/Consolas.ttf").toExternalForm();
 
 		/* RISORSE - ICONE */
 		public final static String APP_ICON_URI = CLASSLOADER.getResource("icon/app.png").toExternalForm();
