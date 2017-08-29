@@ -2,6 +2,7 @@ package model.map;
 
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.scene.CacheHint;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -26,6 +27,8 @@ public class Pheromone extends Rectangle{
 
 		this.setOpacity(pheromoneValue.get());
 		this.setFill(Color.RED);
+		this.setCache(true);
+		this.setCacheHint(CacheHint.SPEED);
 	}
 
 

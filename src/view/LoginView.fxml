@@ -23,7 +23,7 @@
          <children>
             <HBox alignment="CENTER" styleClass="windowBorder" stylesheets="@theme.css">
                <children>
-                  <AnchorPane fx:id="aboutPane" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="420.0" stylesheets="@theme.css">
+                  <AnchorPane fx:id="aboutPane" cache="true" cacheHint="SPEED" maxWidth="-Infinity" minWidth="-Infinity" prefWidth="420.0" stylesheets="@theme.css">
                      <children>
                         <ImageView fitHeight="512.0" fitWidth="420.0" pickOnBounds="true" preserveRatio="true" styleClass="roundedLeft" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <image>

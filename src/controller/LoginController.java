@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.Optional;
 
 import application.Main;
+import javafx.animation.Interpolator;
 import javafx.animation.ParallelTransition;
 import javafx.animation.RotateTransition;
 import javafx.application.Platform;
@@ -79,6 +80,7 @@ public class LoginController {
     	}
 
     	ParallelTransition pt = new ParallelTransition(rt,hc);
+    	pt.setInterpolator(Interpolator.EASE_BOTH);
     	pt.play();
 		isCollapsed = !isCollapsed;
     }

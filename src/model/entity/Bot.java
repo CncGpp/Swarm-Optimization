@@ -2,6 +2,7 @@ package model.entity;
 
 import java.util.ArrayList;
 
+import javafx.scene.CacheHint;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -48,6 +49,8 @@ public class Bot extends ABot{
 	@Override
 	protected Node makeNode(AMap map) {
 		final Circle c = new Circle(map.getTileSize()/2);
+		c.setCache(true);
+		c.setCacheHint(CacheHint.SPEED);
 		c.setFill(C.MICROBOT_COLOR);
 		c.setStrokeWidth(0.3);
 		c.setStroke(Color.BLACK);
