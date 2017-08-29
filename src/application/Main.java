@@ -45,6 +45,12 @@ public class Main extends Application {
 	 */
 	@Override
 	public void start(Stage primaryStage) {
+		//Ottengo il delay dalla linea di comando [per debug]
+		if(!getParameters().getNamed().isEmpty()){
+			final int delay = Integer.parseInt(getParameters().getNamed().get("delay"));
+			if(delay > 0) Global.Settings.UPDATE_DELAY = delay;
+		}
+
 		gameStage = primaryStage;
 		loginStage = new Stage();
 		loginStage.initStyle(StageStyle.TRANSPARENT);			//Rendo trasparenti e non decorati gli stage

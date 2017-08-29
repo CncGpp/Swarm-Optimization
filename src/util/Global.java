@@ -16,7 +16,7 @@ import strategy.ColonyStrategy;
 public abstract class Global {
 
 	public abstract static class Settings{
-		public final static int UPDATE_DELAY = 20;
+		public static int UPDATE_DELAY = 20;
 		public static int BOT_NUMBER = 50;
 		public static ColonyStrategy COLONY_STRATEGY = new AtanAS();
 	}
