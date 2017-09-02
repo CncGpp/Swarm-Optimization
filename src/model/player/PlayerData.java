@@ -1,7 +1,14 @@
 package model.player;
 
-import java.util.ArrayList;
-import util.Memento;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+import model.AGame;
+import model.AGame.AGameMemento;
 
 /**
  * la classe {@code PlayerData} gestisce i dati dei giocatori memorizzati e il giocatore che attualmente sta giocando
@@ -9,14 +16,19 @@ import util.Memento;
  */
 public class PlayerData {
 
-	/** la lista dei Mementi dei giocatori che hanno effettuato il logout */
-	private static ArrayList<PlayerMemento> playerMementos = new ArrayList<>();
-
 	/** Il giocatore correntemente loggato */
 	private static PlayerScore currentPlayer = null;
 
 	/** Il memento del giocatore loggato */
-	private static Memento currentMemento = null;
+	private static AGameMemento currentMemento = null;
+
+	/** Il percorso di default per il salvataggio dei mementi*/
+	private static final String savePath = "save/";
+
+	static {
+		final File saveDir = new File(savePath);
+		if(!saveDir.exists()) saveDir.mkdir();
+	}
 
 	/**
 	 * La funzione effettua il login del player
@@ -38,23 +50,21 @@ public class PlayerData {
 	}
 
 	/**
-	 * Aggiunge il memento relativo al plater corrente nella lista dei mementi.
+	 * Aggiunge il memento relativo al player corrente nella lista dei mementi.
 	 *
 	 * @param memento the memento
 	 */
-	public void addMemento(final Memento memento){
+	public void addMemento(final AGameMemento memento){
 		if(currentPlayer == null) return;
 		if(memento == null) return;
 
-		//Se già c'è nella lista lo sostituisco con il nuovo
-		for (PlayerMemento playerMemento : playerMementos) {
-			if(playerMemento.getPlayerScore().equals(currentPlayer)){
-				playerMementos.remove(playerMemento);
-				break;
-			}
+		final File f = new File(savePath + "/" + currentPlayer.getSurname() + currentPlayer.getName());
+		try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(f)) ) {
+			out.writeObject( new PlayerMemento(memento, currentPlayer));
+		} catch (IOException e) {
+			System.err.println("C'è stato un problema durante il salvataggio del memento: \n" + f.getPath());
+			e.printStackTrace();
 		}
-		//Altrimenti lo aggiungo
-		playerMementos.add(new PlayerMemento(memento, currentPlayer));
 	}
 
 	/**
@@ -62,21 +72,27 @@ public class PlayerData {
 	 */
 	private void findCurrentPlayerMemento(){
 		if(currentPlayer == null) return;
-		for (PlayerMemento playerMemento : playerMementos) {
-			if(playerMemento.getPlayerScore().equals(currentPlayer)) {
-				currentPlayer = playerMemento.getPlayerScore();
-				currentMemento = playerMemento.getMemento();
-				playerMementos.remove(playerMemento);
-				return;
-			}
+
+		final File f = new File(savePath + "/" + currentPlayer.getSurname() + currentPlayer.getName());
+		if(!f.exists()) return;
+
+		try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(f)) ) {
+			final PlayerMemento playerMemento = (PlayerMemento) in.readObject();
+			currentPlayer = playerMemento.getPlayerScore();
+			currentMemento = playerMemento.getMemento();
+			in.close();
+			f.delete();
+		} catch (IOException | ClassNotFoundException e) {
+			System.err.println("C'è stato un problema durante il caricamento del memento: \n" + f.getPath());
+			e.printStackTrace();
 		}
 	}
 
 	/**
 	 * Ripristina il memento corrente
 	 */
-	public void restoreCurrentMemento(){
-		if(currentMemento != null) currentMemento.restoreMemento();
+	public void restoreCurrentMemento(AGame game){
+		if(currentMemento != null) game.restoreMemento(currentMemento);
 	}
 
 	/**

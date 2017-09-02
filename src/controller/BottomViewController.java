@@ -14,6 +14,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import model.AGame;
 import model.GameStatus;
+import model.AGame.AGameMemento;
 import model.player.PlayerData;
 import util.Global.Controllers;
 import util.Chronometer;
@@ -66,6 +67,8 @@ public class BottomViewController {
     	settingSelection.setVisible(!settingSelection.isVisible());
     }
 
+    AGameMemento mem;
+
     @FXML
     void rankButtonHandler(MouseEvent event) {
     	Controllers.infoController.hide();
@@ -90,7 +93,7 @@ public class BottomViewController {
 
     @FXML
     private void loginButtonHandler(){
-    	if(!this.logoutScene()) g.pause();
+    	if(!this.logoutScene()) pauseGame();
     }
 
 
@@ -181,9 +184,10 @@ public class BottomViewController {
 		if(result.get() == ButtonType.CANCEL) return true;					//Se non si vuole proseguire con il cambio ritorno...
 																			//... Altrimenti inizio la procedura di logout
 		if(g.getStatus() != GameStatus.ENDED){
-			g.pause();
+			pauseGame();
 			playerData.getCurrentPlayer().setTime(Chronometer.getTotalTime());
-			playerData.addMemento(g.getMemento());
+			System.out.println(Chronometer.getTotalTime());
+			playerData.addMemento(g.saveMemento());
 		}
 
 		this.initializeNewGame();

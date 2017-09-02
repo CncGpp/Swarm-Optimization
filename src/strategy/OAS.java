@@ -7,6 +7,7 @@ import util.Path;
 import util.Vertex;
 
 public class OAS extends AS{
+	private static final long serialVersionUID = -45707840532651L;
 
 	private ArrayList<Path> paths = new ArrayList<>();
 	private double Q;

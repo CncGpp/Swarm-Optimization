@@ -7,6 +7,8 @@ import util.Path;
 import util.Vertex;
 
 public class RAS extends AS {
+	private static final long serialVersionUID = -8945756587781283964L;
+
 	private int count = 0;
 	private int remaning = Settings.BOT_NUMBER;
 

@@ -7,6 +7,7 @@ import util.Path;
 
 //Decreasing Pheromone Ant System
 public class DPAS extends AS{
+	private static final long serialVersionUID = 1231238840532651L;
 
 	protected double Q = 3;
 

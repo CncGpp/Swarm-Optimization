@@ -58,6 +58,14 @@ public class Bot extends ABot{
 		return c;
 	}
 
+	@Override
+	public void setCoordinate(Coord coordinate) {
+		super.setCoordinate(coordinate);
+		if(getNode()!=null)
+		getNode().relocate(getCol() * colony.getMap().getTileSize(),
+						   getRow() * colony.getMap().getTileSize());
+	}
+
 	/* (non-Javadoc)
 	 * @see model.entity.ABot#move()
 	 */
@@ -79,8 +87,7 @@ public class Bot extends ABot{
 
 		visited[this.getRow()][this.getCol()] = true;						//Marco le coordinate come visitate
 
-		setCoordinate(coord);												//Sposto il Bot settando le nuove coordinate
-		this.draw();														//e riloco la sua rappresentazione alle nuove coordinate
+		this.setCoordinate(coord);											//Sposto il Bot settando le nuove coordinate
 		return true;
 	}
 
@@ -121,14 +128,6 @@ public class Bot extends ABot{
 		colony.getStrategy().offlineUpdate(colony.getMap(), path);		//Effettuo l'offlineUpdate del ferormone
 		colony.removeBot(this);											//Rimuovo il bot dalla colonia
 		this.removeNode();												//Cancello il bot dalla scena rimuovendo il nodo dalla View
-	}
-
-	/**
-	 * Metodo privato utilizzato solo per ridisegnare il bot dopo un suo spostamento.
-	 */
-	private void draw(){
-		final AMap map = colony.getMap();
-		this.getNode().relocate(getCol() * map.getTileSize(),  getRow() * map.getTileSize());
 	}
 
 }

@@ -1,14 +1,17 @@
 package model.map;
 
+import java.io.Serializable;
+
 import model.AGame;
 import model.Drawable;
 import model.Stage;
 import util.Coord;
+import util.Memento;
 
 /**
  * La classe {@code AMap} modella in maniera astratta la mappa di gioco e il suo funzionamento
  */
-public abstract class AMap implements Drawable{
+public abstract class AMap implements Drawable, Memento<AMap.AMapMemento>{
 
 	/** Il numero di righe della mappa*/
 	private int rows;
@@ -158,4 +161,26 @@ public abstract class AMap implements Drawable{
 	 * @return the tile type at
 	 */
 	public abstract TileType getTileTypeAt(int row, int col);
+
+
+	public static class AMapMemento implements Serializable{
+		private static final long serialVersionUID = -7697203825882413117L;
+
+		private final double[][] pheromone;
+
+		public AMapMemento(AMap map) {
+		pheromone = new double[map.getRows()][map.getCols()];
+		for(int i =0 ; i < map.getRows(); i++)
+			for(int j = 0; j < map.getCols(); j++)
+				pheromone[i][j] = map.getPheromoneAt(i, j);
+		}
+	}
+	@Override
+	public AMapMemento saveMemento(){return new AMapMemento(this);}
+	@Override
+	public void restoreMemento(AMapMemento memento){
+		for(int i =0 ; i < getRows(); i++)
+			for(int j = 0; j < getCols(); j++)
+				 setPheromoneAt(i, j, memento.pheromone[i][j]);
+	}
 }

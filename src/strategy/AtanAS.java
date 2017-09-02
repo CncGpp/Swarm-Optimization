@@ -7,6 +7,7 @@ import util.Vertex;
 import util.Path;
 
 public class AtanAS extends AS{
+	private static final long serialVersionUID = 18938222340532651L;
 
 	//Maggiori sono i valori e minore è il decremento dei valori alti
 	protected double lambda = 3.0d;		//Costante che regola l'aggiornamento locale

@@ -10,6 +10,7 @@ import util.Path;
 
 // True Random Ant System - Senza ferormone ne nulla
 public class TRAS extends ColonyStrategy{
+	private static final long serialVersionUID = 3367111270380522110L;
 
 	protected Random r =  new Random();
 

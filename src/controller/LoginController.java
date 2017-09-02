@@ -162,7 +162,7 @@ public class LoginController {
 		Optional<ButtonType> result = al.showAndWait();						//Verifico la scelta
 		if(result.get() == ButtonType.CANCEL) return ;						//Se non si vuole proseguire con il ripristino ritorno
 
-    	playerData.restoreCurrentMemento();									//Altrimenti procedo al ripristino
+    	playerData.restoreCurrentMemento(Main.getGame());					//Altrimenti procedo al ripristino
  		Chronometer.set(playerData.getCurrentPlayer().getTime());
     }
 }

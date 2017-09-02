@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Observer;
@@ -7,12 +8,14 @@ import java.util.Observer;
 import application.Main;
 import javafx.application.Platform;
 import model.entity.AColony;
+import model.entity.AColony.AColonyMemento;
 import model.entity.AEnd;
 import model.entity.AManhole;
 import model.entity.AStart;
 import model.map.AMap;
-import util.Memento;
+import model.map.AMap.AMapMemento;
 import util.Global.Settings;
+import util.Memento;
 
 /**
  * La classe {@code AGame} modella una partita.
@@ -23,7 +26,7 @@ import util.Global.Settings;
  * un'interfaccia per la creazione di della mappa e della colonia senza specificarne l'implementazione. In questo modo
  * è possibile lasciare alle sottoclassi la scelta di quale oggetto istanzire.</p>
  */
-public abstract class AGame implements Observer{
+public abstract class AGame implements Observer, Memento<AGame.AGameMemento>{
 
 	/** Il thread attraverso il quale verrà eseguito il gioco, in modo tale da non bloccare il thread principale */
 	private Thread thread;
@@ -289,24 +292,17 @@ public abstract class AGame implements Observer{
 	 * Modella il salvataggio dello stato del gioco.
 	 * <p>Permette di salvare lo stato attuale della partita, in modo da essere successivamente ripristinato.</p>
 	 */
-	public class AGameMemento implements Memento{
+	public static class AGameMemento implements Serializable{
+		private static final long serialVersionUID = -7393205379191303676L;
 
-		private AMap _map = map;
-		private AColony _colony = colony;
-		private AStart _start;
-		private ArrayList<AManhole> _manholes = manholes;
-		private ArrayList<AEnd> _ends = ends;
-		private Stage _stage = stage;
+	    private final int stage;
+	    private final AMapMemento mapMemento;
+	    private final AColonyMemento colonyMemento;
 
-		@Override public void restoreMemento(){
-			AGame.this.removeNode();
-			map = _map;
-			colony = _colony;
-			start = _start;
-			manholes = _manholes;
-			ends = _ends;
-			stage = _stage;
-			AGame.this.addNode();
+		public AGameMemento(Stage stage, AMap map, AColony colony) {
+			this.stage = stage.getStageNumber();
+			mapMemento = map.saveMemento();
+			colonyMemento = colony.saveMemento();
 		}
 	}
 
@@ -315,7 +311,38 @@ public abstract class AGame implements Observer{
 	 * <p> Viene creato un nuovo memento il quale salverà, al suo interno, lo stato della partita </p>
 	 * @return the memento
 	 */
-	public Memento getMemento(){return new AGameMemento();}
-	/*              ############################################################################                     */
+	@Override
+	public AGameMemento saveMemento(){
+		return new AGameMemento(stage, map, colony);
+	}
 
+	/**
+	 * Ripristina lo stato salvato della partita
+	 * @param memento Lo stato della partita
+	 * */
+	@Override
+	public void restoreMemento(AGameMemento memento){
+		removeNode();
+		this.stage = new Stage(memento.stage);
+		this.buildGame();
+		this.map.restoreMemento(memento.mapMemento);
+		colony.restoreMemento(memento.colonyMemento);
+		addNode();
+	}
+	/*              ############################################################################                     */
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

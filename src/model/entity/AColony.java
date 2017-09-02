@@ -1,16 +1,19 @@
 package model.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Observable;
 
 import javafx.scene.Node;
 import model.AGame;
 import model.Drawable;
+import model.entity.ABot.ABotMemento;
 import model.map.AMap;
 import strategy.ColonyStrategy;
 import util.Coord;
 import util.Global;
 import util.Global.Settings;
+import util.Memento;
 
 /**
  * La classe <code>AColony</code> modella una colonia/sciame di microbot.
@@ -21,7 +24,7 @@ import util.Global.Settings;
  * @see ABot
  * @see AGame
  * */
-public abstract class AColony extends Observable implements Drawable{
+public abstract class AColony extends Observable implements Drawable, Memento<AColony.AColonyMemento>{
 
 	/**  La mappa di gioco su cui si trova la colonia. */
 	private AMap map;
@@ -178,4 +181,33 @@ public abstract class AColony extends Observable implements Drawable{
 	@Override
 	public void removeNode(){ for(ABot b : bots) b.removeNode();}
 
+
+	public static class AColonyMemento implements Serializable{
+		private static final long serialVersionUID = 5334564269643135183L;
+
+		private ABotMemento[] botMementos;
+		private ColonyStrategy actualStrategy;
+
+		public AColonyMemento(AColony colony) {
+			botMementos = new ABotMemento[colony.getBots().size()];
+			for (int i = 0; i < botMementos.length; i++) {
+				botMementos[i] = colony.getBots().get(i).saveMemento();
+			}
+			actualStrategy = colony.getStrategy();
+		}
+	}
+
+	@Override
+	public AColonyMemento saveMemento(){ return new AColonyMemento(this);}
+
+	@Override
+	public void restoreMemento(AColonyMemento memento){
+		this.strategy = memento.actualStrategy;
+		this.getBots().clear();
+		for(int i = 0; i < memento.botMementos.length; i++){
+			ABot b = makeBot(new Coord(-1,-1));
+			b.restoreMemento(memento.botMementos[i]);
+			bots.add(b);
+		}
+	}
 }

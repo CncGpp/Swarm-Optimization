@@ -9,6 +9,7 @@ import util.Vertex;
 import util.Path;
 
 public class AS extends ColonyStrategy{
+	private static final long serialVersionUID = 2712345707840532651L;
 
 	protected Random r = new Random();
 

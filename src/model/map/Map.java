@@ -149,6 +149,7 @@ public class Map extends AMap{
 	 */
 	@Override
 	public void removeNode(){ tileLayer.removeNode(); pheromoneLayer.removeNode(); }
+
 }
 
 

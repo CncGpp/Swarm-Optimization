@@ -8,6 +8,7 @@ import util.Path;
 
 // LINEAR DECREASING PATH ANT SYSTEM
 public class LDPAS extends DPAS{
+	private static final long serialVersionUID = -116045707840532651L;
 
 	public LDPAS() {
 		this.alpha = 10.0d;

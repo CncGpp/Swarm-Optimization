@@ -1,6 +1,7 @@
 package util;
 
 public class Vertex extends Coord {
+	private static final long serialVersionUID = 5333808555167810911L;
 
 	private double weight;
 

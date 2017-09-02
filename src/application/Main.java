@@ -7,6 +7,7 @@ import controller.LoginController;
 import javafx.application.Application;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import model.AGame;
 import model.Game;
 import util.Global;
 import util.Global.Controllers;
@@ -38,7 +39,7 @@ public class Main extends Application {
 	private Scene gameScene;
 
 	/** Il gioco in sè */
-	private static Game game;
+	private static AGame game;
 
 	/* (non-Javadoc)
 	 * @see javafx.application.Application#start(javafx.stage.Stage)
@@ -91,7 +92,35 @@ public class Main extends Application {
 
 		gameInitializer();
 		setLoginView();
+
+
+		/*
+		Path p = new Path();
+		//p.addNode(new Vertex(0, 102, 2));
+		 File file = new File("DIOCAN");
+		 */
+	     /*
+		 if (file != null) {
+	            try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file))) {
+	                out.writeObject(p);
+	            } catch (Exception exc) {
+	                exc.printStackTrace();
+	            }
+	         }
+	     */
+		 /*
+		 if (file != null) {
+	            try (ObjectInputStream out = new ObjectInputStream(new FileInputStream(file))) {
+	                p = (Path) out.readObject();
+	            } catch (Exception exc) {
+	                exc.printStackTrace();
+	            }
+	         }
+		 System.out.println(p.getLenght());
+		 */
 	}
+
+	public static AGame getGame(){ return game;}
 
 	/**
 	 * Inizializza il gioco

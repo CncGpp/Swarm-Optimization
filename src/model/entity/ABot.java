@@ -1,10 +1,12 @@
 package model.entity;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import model.map.AMap;
 import strategy.ColonyStrategy;
 import util.Coord;
+import util.Memento;
 import util.Path;
 import util.Vertex;
 
@@ -20,7 +22,7 @@ import util.Vertex;
  * @see AColony
  * @see Entity
  * */
-public abstract class ABot extends Entity {
+public abstract class ABot extends Entity implements Memento<ABot.ABotMemento>{
 
 	/** Colonia di appartenenza del bot. */
 	protected AColony colony;
@@ -102,4 +104,29 @@ public abstract class ABot extends Entity {
 	 * @see ColonyStrategy
 	 */
 	public abstract void leaved();
+
+	public static class ABotMemento implements Serializable{
+		private static final long serialVersionUID = -9016344173289626677L;
+
+		private boolean visited[][];
+		private Path path;
+		private Coord coord;
+
+
+		public ABotMemento(ABot bot) {
+			visited = bot.visited;
+			path = bot.path;
+			coord = bot.getCoordinate();
+		}
+	}
+
+	@Override
+	public ABotMemento saveMemento() {return new ABotMemento(this);}
+	@Override
+	public void restoreMemento(final ABotMemento memento) {
+		visited = memento.visited;
+		path = memento.path;
+		this.setCoordinate(memento.coord);
+	}
+
 }

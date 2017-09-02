@@ -9,6 +9,7 @@ import util.Vertex;
 
 // ANT COLONY OPTIMIZATION
 public class ACO extends AS {
+	private static final long serialVersionUID = 2716045707840532651L;
 
 	protected Path bestPath;
 	private final double q0 = 0.02d;
