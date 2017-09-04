@@ -10,7 +10,7 @@ import util.Global.Controllers;
  * <p> La classe gestisce un'array 2D delle stesse dimensioni della mappa che mantiene informazioni circa il valore di
  * ferormone</p>
  * */
-public class PheromoneLayer implements PheromoneDrawable{
+class PheromoneLayer implements PheromoneDrawable{
 	/** Il gruppo dove tutti i nodi Pheromone sono posti per poi essere rappresentato*/
 	private Group group;
 
