@@ -1,50 +1,50 @@
 package util;
 
 import controller.gui.ChronometerController;
-import javafx.application.Platform;
-import javafx.beans.property.LongProperty;
-import javafx.beans.property.SimpleLongProperty;
+import javafx.animation.AnimationTimer;
 import util.Global.Controllers;
 /**
  * La classe {@code Chronometer} modella il funzionamento di un cronometro
  * <p> La classe fornisce essenzialmente un punto di accesso condiviso al cronometro attraverso i suoi metodi
- * in oltre il tempo totale è legato attreverso una property alla view di gioco in modo che possa mostrare il tempo. </p>
+ * in oltre il tempo totale è aggiornato attraverso un'AnimationTimer </p>
  * */
 public class Chronometer {
 	private static ChronometerController controller;
 
-	private static long startTime = 0;
-	private static long totalTime = 0;
-	private static LongProperty _totalTime;
+	private static long startTime = 0;			//Tempo iniziale
+	private static long totalTime = 0;			//Tempo trascorso in totale
+	private static long _totalTime = 0;         //Tempo trascorso dall'ultima pausa
 	private static boolean isPaused = false;
 
 	static {
-		_totalTime = new SimpleLongProperty(0);
 		controller = Controllers.chronometerController;
-
-		if(controller !=null)
-		_totalTime.addListener( (observer, oldValue, newValue) -> {
-			Platform.runLater(()->{ controller.updateTimer(newValue.longValue()); });
-		} );
 	}
 
 	public static void start(){
 		startTime = System.currentTimeMillis();
 		isPaused = false;
 
-	    ( new Thread() { public void run() {
-	    	while( !isPaused ){
-		    	_totalTime.set(getElapsedTime());
-		    	try { Thread.sleep(10); } catch (InterruptedException e) { e.printStackTrace();}
-	    	}
-	    	_totalTime.set(getTotalTime());
-	    } } ).start();
+		AnimationTimer at = new AnimationTimer() {
+
+			@Override
+			public void handle(long now) {
+				if(isPaused) {
+					_totalTime = getTotalTime();
+					controller.updateTimer(_totalTime);
+					return;
+				}
+
+				_totalTime = (getElapsedTime());
+				controller.updateTimer(_totalTime);
+			}
+		};
+		at.start();
 	}
 
 	public static void set(final long time){
 		startTime = 0;
 		totalTime = time;
-		_totalTime.set(time);
+		_totalTime = totalTime;
 	}
 
 	public static void pause(){									//Mette in pausa il timer, salvano il tempo ottenuto fino ad ora
