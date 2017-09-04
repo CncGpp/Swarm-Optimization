@@ -37,5 +37,6 @@ class RaisedTile extends Tile {
 	protected void draw() {
 		super.draw();
 		this.setFill(C.RAISED_COLOR.deriveColor(0.0,0.0,1.0d-height*0.8d,1.0));
+		this.setStroke(C.RAISED_COLOR.deriveColor(0.0,0.0,1.0d-height*0.8d,1.0));
 	}
 }

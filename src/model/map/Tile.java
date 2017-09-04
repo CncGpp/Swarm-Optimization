@@ -1,5 +1,6 @@
 package model.map;
 
+import javafx.scene.CacheHint;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 
@@ -21,6 +22,8 @@ class Tile extends Rectangle implements Weighable{
 	public Tile(final double tileSize, final TileType tileType) {
 		super(tileSize,tileSize);
 		this.tileType = tileType;
+		this.setCache(true);
+		this.setCacheHint(CacheHint.SPEED);
 		draw();
 	}
 
@@ -35,7 +38,8 @@ class Tile extends Rectangle implements Weighable{
 	 */
 	protected void draw(){
 		this.setFill(tileType.getTileColor());
-		this.setStroke(Color.BLACK);
-		this.setStrokeWidth(0.3);
+		if(tileType == TileType.WALL) return;
+		this.setStroke(Color.GAINSBORO);
+		this.setStrokeWidth(1);
 	}
 }

@@ -1,5 +1,6 @@
 package model.map;
 
+import javafx.scene.CacheHint;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import model.TileDrawable;
@@ -26,6 +27,8 @@ class TileLayer implements TileDrawable{
 	public TileLayer(final Map map) {
 		layer = new Tile[map.getRows()][map.getCols()];
 		group = new Group();
+		group.setCache(true);
+		group.setCacheHint(CacheHint.SPEED);
 		tileSize = map.getTileSize();
 	}
 
