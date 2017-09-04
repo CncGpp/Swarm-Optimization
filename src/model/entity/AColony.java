@@ -5,9 +5,9 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 import javafx.scene.Node;
-import model.AGame;
 import model.Drawable;
 import model.entity.ABot.ABotMemento;
+import model.game.AGame;
 import model.map.AMap;
 import strategy.ColonyStrategy;
 import util.Coord;

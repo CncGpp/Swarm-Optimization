@@ -2,9 +2,9 @@ package model.map;
 
 import java.io.Serializable;
 
-import model.AGame;
 import model.Drawable;
-import model.Stage;
+import model.game.AGame;
+import model.game.Stage;
 import util.Coord;
 import util.Memento;
 

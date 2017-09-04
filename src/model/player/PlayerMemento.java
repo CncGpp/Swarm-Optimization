@@ -2,7 +2,7 @@ package model.player;
 
 import java.io.Serializable;
 
-import model.AGame.AGameMemento;
+import model.game.AGame.AGameMemento;
 
 /**
  * La classe {@code PlayerMemento} Modella il salvataggio di stato di un player

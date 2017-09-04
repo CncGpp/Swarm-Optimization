@@ -1,4 +1,4 @@
-package model;
+package model.game;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -14,6 +14,7 @@ import model.entity.AManhole;
 import model.entity.AStart;
 import model.map.AMap;
 import model.map.AMap.AMapMemento;
+import util.Coord;
 import util.Global.Settings;
 import util.Memento;
 
@@ -177,6 +178,10 @@ public abstract class AGame implements Observer, Memento<AGame.AGameMemento>{
 	 */
 	protected abstract AColony makeColony(final AMap map, final int botCount, final AStart start);
 
+	protected abstract AStart makeStart(final AMap map, final Coord coord);
+	protected abstract AEnd makeEnd(final AMap map, final Coord coord);
+	protected abstract AManhole makeManhole(final AMap map, final Coord coord);
+
 	/**
 	 * Aggiunge gli observer delle uscite, delle botole e del gioco alla colonia
 	 */
@@ -214,32 +219,36 @@ public abstract class AGame implements Observer, Memento<AGame.AGameMemento>{
 
 	/**
 	 * Metodo setter per settare lo start
-	 *
-	 * @param start l'entità che descrive il punto di start
+	 * <p> Crea la nuova entità {@code AStart} usando il relativo factory Method</p>
+	 * @param map la mappa di appartenenza
+	 * @param startCoord le coordinate dell'entrate
+	 * @see AStart
 	 */
-	public void setStart(final AStart start){
-		if(start == null) throw new IllegalArgumentException("Il valore di start non può essere null.");
-		this.start = start;
+	public void setStart(final AMap map, final Coord startCoord){
+		if(startCoord == null) throw new IllegalArgumentException("Le coordinate di Start non possono essere null.");
+		this.start = makeStart(map, startCoord);
 	}
 
 	/**
 	 * Permette di aggiungere un'ulteriore uscita alla lista di uscite del gioco.
-	 *
-	 * @param end l'uscita da aggiungere
+	 * <p> Crea la nuova entità {@code AEnd} da aggiungere usando il relativo factory Method</p>
+	 * @param map la mappa di appartenenza
+	 * @param endCoord le coordinate dell'uscita
 	 */
-	public void addEnd(final AEnd end){
-		if(end == null) throw new IllegalArgumentException("Il valore di end non può essere null.");
-		this.ends.add(end);
+	public void addEnd(final AMap map, final Coord endCoord){
+		if(endCoord == null) throw new IllegalArgumentException("Le coordinate dell'usicta non possono essere null.");
+		this.ends.add(makeEnd(map, endCoord));
 	}
 
 	/**
 	 * Permette di aggiungere un'ulteriore botola alla lista di botole del gioco.
-	 *
-	 * @param manhole la botola da aggiungere
+	 * <p> Crea la nuova entità {@code AMahole} da aggiungere usando il relativo factory Method</p>
+	 * @param map la mappa di appartenenza
+	 * @param manholeCoord le coordinate della botola
 	 */
-	public void addManhole(final AManhole manhole){
-		if(manhole == null) throw new IllegalArgumentException("Il valore di manhole non può essere null");
-		this.manholes.add(manhole);
+	public void addManhole(final AMap map, final Coord manholeCoord){
+		if(manholeCoord == null) throw new IllegalArgumentException("Le coordinate dell'botola non possono essere null.");
+		this.manholes.add(makeManhole(map, manholeCoord));
 	}
 
 
@@ -318,7 +327,7 @@ public abstract class AGame implements Observer, Memento<AGame.AGameMemento>{
 
 	/**
 	 * Ripristina lo stato salvato della partita
-	 * @param memento Lo stato della partita
+	 * @param memento Lo stato della partita da ripristinare
 	 * */
 	@Override
 	public void restoreMemento(AGameMemento memento){

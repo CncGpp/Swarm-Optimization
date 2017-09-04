@@ -6,7 +6,7 @@ import util.Global.C;
  * TRappresenta un'estenzione della classe {@code Tile}.
  * <p>Il raised Tile è un tile rialzato dal suolo, dunque di più difficile raggiungimento per un Bot</p>
  */
-public class RaisedTile extends Tile {
+class RaisedTile extends Tile {
 
 	/** l'altezza del tile */
 	private final double height;

@@ -2,6 +2,7 @@ package model.entity;
 
 import javafx.scene.Node;
 import model.Drawable;
+import model.EntityDrawable;
 import model.map.AMap;
 import util.Coord;
 import util.Global.Controllers;
@@ -17,7 +18,7 @@ import util.Global.Controllers;
  * @see Node
  * @see Drawable
  * */
-public abstract class Entity implements Drawable{
+public abstract class Entity implements EntityDrawable{
 
 	/** Elemento grafico utilizzato per la rappresentazione dell'entità*/
 	protected Node node;

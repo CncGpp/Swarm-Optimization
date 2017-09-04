@@ -1,7 +1,7 @@
 package model.entity;
 
 
-import model.AGame;
+import model.game.AGame;
 import model.map.AMap;
 import util.Coord;
 

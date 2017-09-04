@@ -1,4 +1,4 @@
-package model;
+package model.game;
 
 /**
  * l'enum {@code GameStatus} definisce i possibili stati in cui si puo' trovare il gioco.

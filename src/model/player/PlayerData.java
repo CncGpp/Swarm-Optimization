@@ -7,8 +7,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
-import model.AGame;
-import model.AGame.AGameMemento;
+import model.game.AGame;
+import model.game.AGame.AGameMemento;
 
 /**
  * la classe {@code PlayerData} gestisce i dati dei giocatori memorizzati e il giocatore che attualmente sta giocando
