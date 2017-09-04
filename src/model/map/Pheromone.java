@@ -9,7 +9,7 @@ import javafx.scene.shape.Rectangle;
 /**
  * La classe {@code Pheromone} modella il ferormone presente ad una certa posizione della mappa.
  */
-public class Pheromone extends Rectangle{
+class Pheromone extends Rectangle{
 
 	/** Il valore del ferormone */
 	private DoubleProperty pheromoneValue = new SimpleDoubleProperty(0);

@@ -1,7 +1,8 @@
 package model.map;
+import javafx.scene.CacheHint;
 import javafx.scene.Group;
 import javafx.scene.Node;
-import model.Drawable;
+import model.PheromoneDrawable;
 import util.Global.Controllers;
 
 /**
@@ -9,7 +10,7 @@ import util.Global.Controllers;
  * <p> La classe gestisce un'array 2D delle stesse dimensioni della mappa che mantiene informazioni circa il valore di
  * ferormone</p>
  * */
-public class PheromoneLayer implements Drawable{
+public class PheromoneLayer implements PheromoneDrawable{
 	/** Il gruppo dove tutti i nodi Pheromone sono posti per poi essere rappresentato*/
 	private Group group;
 
@@ -22,6 +23,8 @@ public class PheromoneLayer implements Drawable{
 	public PheromoneLayer(final AMap map) {
 		layer = new Pheromone[map.getRows()][map.getCols()];
 		group = new Group();
+		group.setCache(true);
+		group.setCacheHint(CacheHint.SPEED);
 
 		initPheromone(map);
 	}

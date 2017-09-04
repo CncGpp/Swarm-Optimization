@@ -9,9 +9,9 @@ import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
-import model.entity.Entity;
-import model.map.PheromoneLayer;
-import model.map.TileLayer;
+import model.EntityDrawable;
+import model.PheromoneDrawable;
+import model.TileDrawable;
 import util.Global.Controllers;
 import view.map.EntityMapController;
 import view.map.PheromoneMapController;
@@ -56,12 +56,12 @@ public class RootViewController {
     	Main.centerGameStage();
     }
 
-    public void addNode(final Entity entity){ entityMapController.add(entity.getNode());}
-    public void removeNode(final Entity entity){ entityMapController.remove(entity.getNode());}
+    public void addNode(final EntityDrawable entityDrawable){ entityMapController.add(entityDrawable.getNode());}
+    public void removeNode(final EntityDrawable entityDrawable){ entityMapController.remove(entityDrawable.getNode());}
 
-    public void addNode(final TileLayer tileLayer){ tileMapController.add(tileLayer.getNode()); }
-    public void removeNode(final TileLayer tileLayer){ tileMapController.remove(tileLayer.getNode()); }
+    public void addNode(final TileDrawable tileDrawable){ tileMapController.add(tileDrawable.getNode()); }
+    public void removeNode(final TileDrawable tileDrawable){ tileMapController.remove(tileDrawable.getNode()); }
 
-    public void addNode(final PheromoneLayer pheromoneLayer){ pheromoneMapController.add(pheromoneLayer.getNode()); }
-    public void removeNode(final PheromoneLayer pheromoneLayer){ pheromoneMapController.remove(pheromoneLayer.getNode()); }
+    public void addNode(final PheromoneDrawable pheromoneDrawable){ pheromoneMapController.add(pheromoneDrawable.getNode()); }
+    public void removeNode(final PheromoneDrawable pheromoneDrawable){ pheromoneMapController.remove(pheromoneDrawable.getNode()); }
 }

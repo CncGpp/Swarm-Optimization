@@ -1,13 +1,11 @@
 package model.map;
 
+import java.util.Locale;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 import javafx.scene.Node;
-import model.AGame;
-import model.Stage;
-import model.entity.End;
-import model.entity.Manhole;
-import model.entity.Start;
+import model.game.AGame;
+import model.game.Stage;
 import util.Coord;
 import util.Global.Controllers;
 import util.Global.R;
@@ -73,7 +71,7 @@ public class Map extends AMap{
 	 * @param stagePath il path del file contenente la mappa
 	 */
 	private void loadTileMap(final AGame game, String stagePath){
-		try(Scanner s = new Scanner(R.CLASSLOADER.getResourceAsStream(stagePath))){
+		try(Scanner s = new Scanner(R.CLASSLOADER.getResourceAsStream(stagePath)).useLocale(Locale.ITALIAN)){
 			// Leggo le dimensioni della mappa
 			setDimensions(s.nextInt(), s.nextInt(), s.nextDouble());
 
@@ -88,13 +86,13 @@ public class Map extends AMap{
 					case 0: tt = TileType.FREE; break;
 					case 1: tt = TileType.WALL; break;
 					case 2: tt = TileType.MANHOLE;
-							game.addManhole(new Manhole(this, i, j));
+							game.addManhole(this, new Coord(i, j));
 							break;
 					case 3: tt = TileType.START;
-							game.setStart(new Start(this, i, j));
+							game.setStart(this, new Coord(i, j));
 							break;
 					case 4: tt = TileType.END;
-							game.addEnd(new End(this, i, j));
+							game.addEnd(this, new Coord(i, j));
 							break;
 					case -1: tt = TileType.RAISED;
 							tileLayer.setTileAt(i, j, new RaisedTile(getTileSize(), tt, s.nextDouble()));

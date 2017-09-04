@@ -2,14 +2,14 @@ package model.map;
 
 import javafx.scene.Group;
 import javafx.scene.Node;
-import model.Drawable;
+import model.TileDrawable;
 import util.Global.Controllers;
 
 /**
  * La classe {@code TileLayer} modella e gestisce la composizione della mappa
  * <p> La classe gestisce un'array 2D delle stesse dimensioni della mappa che mantiene informazioni circa la mappa</p>
  * */
-public class TileLayer implements Drawable{
+public class TileLayer implements TileDrawable{
 	/** Il gruppo dove tutti i nodi Tile sono posti per poi essere rappresentato*/
 	private Group group;
 

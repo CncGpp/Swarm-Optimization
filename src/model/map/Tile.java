@@ -7,7 +7,7 @@ import javafx.scene.shape.Rectangle;
  * La classe {@code Tile} modella una singola cella della mappa
  * <p> Il tipo della cella può variare e dipende dalla mappa stessa</p>
  */
-public class Tile extends Rectangle implements Weighable{
+class Tile extends Rectangle implements Weighable{
 
 	/** Il tipo del tile */
 	private final TileType tileType;
