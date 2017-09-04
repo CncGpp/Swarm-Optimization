@@ -20,7 +20,7 @@ public abstract class AMap implements Drawable, Memento<AMap.AMapMemento>{
 	private int cols;
 
 	/** La dimensione in pixel di un elemento quadrato della mappa */
-	private double tileSize;
+	private int tileSize;
 
 	/**
 	 * Istanzia una nuova mappa
@@ -81,7 +81,7 @@ public abstract class AMap implements Drawable, Memento<AMap.AMapMemento>{
 	 * @param cols the cols
 	 * @param tileSize the tile size
 	 */
-	protected void setDimensions(final int rows, final int cols, final double tileSize){
+	protected void setDimensions(final int rows, final int cols, final int tileSize){
 		try{
 			if(rows <= 0) throw new IllegalArgumentException("Il numero di righe della mappa deve essere > 0. \t rows: "+ rows);
 			if(cols <= 0) throw new IllegalArgumentException("Il numero di colonne della mappa deve essere > 0. \t cols: "+ cols);

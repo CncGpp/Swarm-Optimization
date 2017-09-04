@@ -73,7 +73,7 @@ public class Map extends AMap{
 	private void loadTileMap(final AGame game, String stagePath){
 		try(Scanner s = new Scanner(R.CLASSLOADER.getResourceAsStream(stagePath)).useLocale(Locale.ITALIAN)){
 			// Leggo le dimensioni della mappa
-			setDimensions(s.nextInt(), s.nextInt(), s.nextDouble());
+			setDimensions(s.nextInt(), s.nextInt(), s.nextInt());
 
 			// Creo la mappa dei tile
 			tileLayer = new TileLayer(this);
